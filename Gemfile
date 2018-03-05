@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'faker'
 gem 'devise'
 gem 'figaro' # SECURITY
 gem 'cloudinary' # PHOTO_UPLOAD
