@@ -14,9 +14,9 @@ class DestinationsController < ApplicationController
   end
 
   def create
-    destination.create(params_destination)
-    destination.save
-    redirect_to destination
+    @destination = Destination.new(params_destination)
+    @destination.save
+    redirect_to destination_path(@destination)
   end
 
   def edit
@@ -25,12 +25,12 @@ class DestinationsController < ApplicationController
 
   def update
     @destination.update(destination_params)
-    redirect to destination_path(destination)
+    redirect_to destination_path(@destination)
   end
 
-  def destroy
-    redirect to
-  end
+  # def destroy
+  #   redirect to
+  # end
 
 private
 
@@ -38,8 +38,8 @@ def set_destination
   @destination = Destination.find(params[:id])
 end
 
-  def destination_params
-    params.require(:destination).permit(:name, :description, :address, :latitude, :longitude, :type)
+  def params_destination
+    params.require(:destination).permit(:name, :description, :address)
   end
 end
 

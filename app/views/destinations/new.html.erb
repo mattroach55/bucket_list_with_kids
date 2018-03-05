@@ -1,1 +1,6 @@
-new.html.erb
+<%= simple_form_for(@destinations) do |f| %>
+<%= f.input :name, placeholder: "Enter destination title" %>
+<%= f.input :description, placeholder: "Enter destination synopsis" %>
+<%= f.input :address, placeholder: "Destination address, zipcode, country" %>
+<%= f.submit %>
+<% end %>
