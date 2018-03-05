@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
+  # LANDING PAGE
+  root to: 'destinations#index'
+  get '/bucketlist', to: 'users#bucketlist', as: :bucketlist
+
+  # RESOURCES
   devise_for :users
-  root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :destinations do
+    resources :experiences, only: [:create]
+    resources :accomodations, only: [:create]
+  end
+  resources :experiences, only: [:index, :show, :edit, :destroy] do
+   resources :reviews, only: [:create]
+ end
+  resources :accomondations, only: [:index, :show, :edit, :destroy] do
+   resources :reviews, only: [:create]
+ end
+  resources :reviews, only: [:destroy]
 end
