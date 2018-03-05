@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305121546) do
+ActiveRecord::Schema.define(version: 20180305135503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,13 +22,12 @@ ActiveRecord::Schema.define(version: 20180305121546) do
     t.float "latitude"
     t.float "longitude"
     t.string "photo"
-    t.boolean "kids_club"
-    t.boolean "kids_menu"
-    t.boolean "pool"
-    t.boolean "beach"
-    t.boolean "connecting_rooms"
-    t.integer "average_review_score"
-    t.integer "bucket_list_count"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bucket_list_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,8 +38,7 @@ ActiveRecord::Schema.define(version: 20180305121546) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.string "holiday_type"
-    t.integer "bucket_list_count"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,10 +53,7 @@ ActiveRecord::Schema.define(version: 20180305121546) do
     t.integer "duration"
     t.integer "bucket_list_count"
     t.integer "average_review_score"
-    t.integer "theme"
-    t.integer "kids_age_from"
-    t.integer "kids_age_to"
-    t.float "price"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,8 +66,10 @@ ActiveRecord::Schema.define(version: 20180305121546) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "username"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "photo"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
