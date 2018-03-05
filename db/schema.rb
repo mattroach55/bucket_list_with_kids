@@ -10,10 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305114410) do
+ActiveRecord::Schema.define(version: 20180305121620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommodations", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "photo"
+    t.boolean "kids_club"
+    t.boolean "kids_menu"
+    t.boolean "pool"
+    t.boolean "beach"
+    t.boolean "connecting_rooms"
+    t.integer "average_review_score"
+    t.integer "bucket_list_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bucket_lists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "holiday_type"
+    t.integer "bucket_list_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "experiences", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "photo"
+    t.integer "duration"
+    t.integer "bucket_list_count"
+    t.integer "average_review_score"
+    t.integer "theme"
+    t.integer "kids_age_from"
+    t.integer "kids_age_to"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "description"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
