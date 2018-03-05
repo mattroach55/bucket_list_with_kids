@@ -4,7 +4,9 @@ ruby '2.4.3'
 gem 'faker'
 gem 'cloudinary'
 gem 'devise'
-gem 'figaro'
+gem 'figaro' # SECURITY
+gem 'cloudinary' # PHOTO_UPLOAD
+gem 'carrierwave', '~> 1.2' # PHOTO_UPLOAD
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
@@ -29,4 +31,7 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # DEBUG GEMS
+  gem 'binding_of_caller'
+  gem 'better_errors'
 end
