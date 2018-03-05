@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'faker'
+gem 'cloudinary'
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'

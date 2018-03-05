@@ -25,7 +25,7 @@ class ExperiencesController < ApplicationController
 
   def show
     @experience = Experience.find(params[:id])
-    authorize @experience
+    # authorize @experience
     @markers = [{ lat: @experience.latitude, lng: @experience.longitude }]
     @review = Review.new
   end
@@ -82,4 +82,3 @@ class ExperiencesController < ApplicationController
   end
 end
 
-end
