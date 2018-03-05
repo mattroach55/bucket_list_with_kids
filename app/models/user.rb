@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :experiences
   has_many :reviews, through: :accommodations
   has_many :reviews, through: :experiences
-  has_one :bucket_list
+  has_many :bucket_list_items
 
   # mount_uploader :photo, PhotoUploader
 end

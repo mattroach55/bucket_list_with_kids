@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BucketListTest < ActiveSupport::TestCase
+class BucketListItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
