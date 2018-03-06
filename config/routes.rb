@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/bucketlist', to: 'users#bucketlist', as: :bucketlist
 
   # PROFILE PAGE (DASHBOARD STYLE)
-  get '/profile', to: 'users#profile', as: :profile
+  get '/dashboard', to: "users#dashboard", as: :dashboard
 
   # RESOURCES
   devise_for :users
