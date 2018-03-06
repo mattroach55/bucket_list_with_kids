@@ -11,5 +11,5 @@ class User < ApplicationRecord
   has_many :reviews, through: :experiences
   has_many :bucket_list_items
 
-  # mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 end
