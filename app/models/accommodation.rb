@@ -6,9 +6,9 @@ class Accommodation < ApplicationRecord
 
   # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE
   geocoded_by :full_address
-  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: :will_save_change_to_street?
 
   def full_address
-    "#{street} #{number}, #{locality}, #{country}, #{region}"
+    "#{street} #{street_number}, #{locality}, #{country}, #{region}"
   end
 end
