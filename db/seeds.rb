@@ -9,6 +9,14 @@
 
 require 'csv'
 
+puts "Cleaning our database..."
+Experience.destroy_all
+Accommodation.destroy_all
+Destination.destroy_all
+User.destroy_all
+puts "Database cleaned"
+
+puts "Starting seeding process..."
 csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 filepath    = 'db/blwkseed.csv'
 
@@ -18,7 +26,8 @@ user.save
 CSV.foreach(filepath, csv_options) do |row|
   if row['entity'] == 'destination'
     new_destination = Destination.new(user_id: user.id)
-    new_destination.name = row['name']
+
+    new_destination.name = row.first.last
     new_destination.entity = row['entity']
     new_destination.show = row['show']
     new_destination.description = row['description']
@@ -48,7 +57,7 @@ CSV.foreach(filepath, csv_options) do |row|
   elsif row['entity'] == 'accommodation'
     new_accommodation = Accommodation.new(user_id: user.id)
     new_accommodation.destination = Destination.all.sample
-    new_accommodation.name = row['name']
+    new_accommodation.name = row.first.last
     new_accommodation.entity = row['entity']
     new_accommodation.show = row['show']
     new_accommodation.description = row['description']
@@ -78,7 +87,7 @@ CSV.foreach(filepath, csv_options) do |row|
   else
     new_experience = Experience.new(user_id: user.id)
     new_experience.destination = Destination.all.sample
-    new_experience.name = row['name']
+    new_experience.name = row.first.last
     new_experience.entity = row['entity']
     new_experience.show = row['show']
     new_experience.description = row['description']
@@ -107,4 +116,6 @@ CSV.foreach(filepath, csv_options) do |row|
     new_experience.save!
   end
 end
+puts "Finished seeding process..."
+
 

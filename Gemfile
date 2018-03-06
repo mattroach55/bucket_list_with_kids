@@ -6,6 +6,7 @@ gem 'devise'
 gem 'figaro' # SECURITY
 gem 'cloudinary' # PHOTO_UPLOAD
 gem 'carrierwave', '~> 1.2' # PHOTO_UPLOAD
+gem 'country_select' #SIMPLE FORM COUNTRY
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'

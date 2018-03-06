@@ -1,7 +1,7 @@
-<h1>This is the home<h1>
+<h1>All destinations<h1>
 <% @destinations.each do |destination| %>
 <%= destination.name %><br>
-<%= destination.address %><br>
+<%= destination.locality %><br>
+<%= destination.country %><br>
+<%= destination.region %><br>
 <% end %>
-
-
