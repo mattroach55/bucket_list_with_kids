@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-
-  before_action :authenticate_user!
   include Pundit
 
   # Pundit: white-list approach.
@@ -20,5 +18,10 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def authenticate_admin!
+    authenticate_user!
+    redirect_to(root_path) unless current_user.admin?
   end
 end

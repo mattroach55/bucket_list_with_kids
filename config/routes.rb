@@ -3,12 +3,6 @@ Rails.application.routes.draw do
   root to: 'destinations#index'
   get '/bucketlist', to: 'users#bucketlist', as: :bucketlist
 
-
-  # ADMIN PAGES
-  namespace :admin do
-    resources :destinations, :experiences, :accommodations
-  end
-
   # RESOURCES
   devise_for :users
 
