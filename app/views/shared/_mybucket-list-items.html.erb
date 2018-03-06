@@ -1,1 +1,43 @@
 <!-- render for the bucket-list-items -->
+
+<!-- Simple dashboard setup -->
+<!-- <div class="dashboard-page">
+  <div class="wrapper" style="margin-top: 20px;">
+   <div class="container">
+     <div class="row">
+       <div class="col-xs-12 text-center">
+        <h1>Hello <%= @user.username %></h1>
+        <h4>All your bucketlist items:</h4>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Filter tabs -->
+<div class="tabs">
+  <a class="tab" data-target="#myaccommodations">
+    <p>accommodations</p>
+  </a>
+  <a class="tab" data-target="#mydestinations">
+    <p>destinations</p>
+  </a>
+  <a class="tab" data-target="#myexperiences">
+    <p>experiences</p>
+  </a>
+</div>
+
+
+<!-- Should be a iteration over all three? -->
+
+<!-- All bucketlist items, will filter with pressed tabs -->
+<div class="container text-center">
+  <div class="tab-content" id="mydestinations">
+    <%= render 'shared/mydestinations' %>
+  </div>
+  <div class="tab-content" id="myaccomodations">
+    <%= render 'shared/myaccommodations' %>
+  </div>
+  <div class="tab-content" id="myexperiences">
+    <%= render 'shared/myexperiences' %>
+  </div>
+</div>
