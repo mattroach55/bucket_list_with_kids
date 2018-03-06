@@ -11,12 +11,25 @@ class DestinationsController < ApplicationController
     @destinations = Destination.all
     #future code to mix destination, accomdation and experiences
     end
+
+# CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES
+    @destinations = Destination.where.not(latitude: nil, longitude: nil)
+    @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
+    @experiences = Experience.where.not(latitude: nil, longitude: nil)
+    @all_entities = @destinations + @experiences + @accommodations
+
+    @markers = @all_entities.map do |entity|
+      {
+        lat: entity.latitude,
+        lng: entity.longitude ,
+        infoWindow: { content: entity.name }
+      }
+    end
   end
 
   def mix
     #future code
   end
-
 
   def show
     authorize @destination
