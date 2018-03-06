@@ -1,7 +1,10 @@
 class DestinationsController < ApplicationController
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
   def index
+    policy_scope(Destination)
     if params[:query].present?
       @experiences = Experience.search_by_name_description(params[:query])
     else
@@ -16,6 +19,7 @@ class DestinationsController < ApplicationController
 
 
   def show
+    authorize @destination
     @markers = [{ lat: @destination.latitude, lng: @destination.longitude }]
   end
 
@@ -25,17 +29,18 @@ class DestinationsController < ApplicationController
 
   def create
     @destination = Destination.new(params_destination)
+    authorize @destination
     @destination.user = current_user
     @destination.save
     redirect_to destinations_path(@destination)
   end
 
   def edit
-    # authorize @experience
+    authorize @destination
   end
 
   def update
-    # authorize @destination
+    authorize @destination
     if @destination.update(destination_params)
     redirect_to destination_path(@destination)
     else
