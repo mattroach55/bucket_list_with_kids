@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # has_many :destinations
-  # has_many :accommodations
+  has_many :destinations
+  has_many :accommodations
   has_many :experiences
-  has_many :reviews, through: :accommodations
-  has_many :reviews, through: :experiences
+  has_many :accomodation_reviews, through: :accommodations, class_name: 'Review'
+  has_many :experience_reviews, through: :experiences, class_name: 'Review'
   has_many :bucket_list_items
 
   mount_uploader :photo, PhotoUploader

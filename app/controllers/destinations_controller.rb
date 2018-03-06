@@ -27,11 +27,9 @@ class DestinationsController < ApplicationController
     end
   end
 
-
   def mix
     #future code
   end
-
 
   def show
     authorize @destination
