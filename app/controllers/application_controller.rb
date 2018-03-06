@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   def authenticate_admin!
     authenticate_user!
     redirect_to(root_path) unless current_user.admin?
+  end
 
 # CODE FROM AUTHENTICATION SLIDES FOR ADDING CUSTOM FIELDS TO DEVISE LOGIN (SLIDE 5-3)
 
