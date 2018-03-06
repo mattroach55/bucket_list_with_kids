@@ -1,0 +1,7 @@
+<h1>My list of accommodations</h1>
+<% @accommodations.each do |accommodation| %>
+  <h2><%= accommodation.name %></h2>
+  <%= cl_image_tag accommodation.photo, :class => "card-background-image" %>
+  <p><%= accommodation.description %></p>
+  <p><%= accommodation.address %></p>
+<% end %>
