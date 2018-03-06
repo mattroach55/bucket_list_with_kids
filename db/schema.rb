@@ -17,90 +17,131 @@ ActiveRecord::Schema.define(version: 20180305163747) do
 
   create_table "accommodations", force: :cascade do |t|
     t.string "name"
+    t.string "entity"
+    t.boolean "show"
     t.string "description"
     t.string "street_number"
-    t.string "address"
+    t.string "street"
     t.string "locality"
     t.string "country"
     t.string "region"
     t.float "latitude"
     t.float "longitude"
     t.string "photo"
-    t.string "type"
     t.string "holiday_type"
     t.string "theme"
     t.integer "kids_age_from"
     t.integer "kids_age_to"
     t.integer "duration"
     t.float "price"
+    t.boolean "kids_club"
+    t.boolean "kids_menu"
+    t.boolean "connecting_rooms"
+    t.boolean "pool"
+    t.boolean "beach"
     t.integer "bucket_list_count"
     t.integer "average_review_score"
+    t.string "booking_link"
+    t.bigint "destination_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["destination_id"], name: "index_accommodations_on_destination_id"
+    t.index ["user_id"], name: "index_accommodations_on_user_id"
   end
 
   create_table "bucket_list_items", force: :cascade do |t|
+    t.bigint "accommodation_id"
+    t.bigint "experience_id"
+    t.bigint "user_id"
+    t.bigint "destination_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["accommodation_id"], name: "index_bucket_list_items_on_accommodation_id"
+    t.index ["destination_id"], name: "index_bucket_list_items_on_destination_id"
+    t.index ["experience_id"], name: "index_bucket_list_items_on_experience_id"
+    t.index ["user_id"], name: "index_bucket_list_items_on_user_id"
   end
 
   create_table "destinations", force: :cascade do |t|
     t.string "name"
+    t.string "entity"
+    t.boolean "show"
     t.string "description"
     t.string "street_number"
-    t.string "address"
+    t.string "street"
     t.string "locality"
     t.string "country"
     t.string "region"
     t.float "latitude"
     t.float "longitude"
     t.string "photo"
-    t.string "type"
     t.string "holiday_type"
     t.string "theme"
     t.integer "kids_age_from"
     t.integer "kids_age_to"
     t.integer "duration"
     t.float "price"
+    t.boolean "kids_club"
+    t.boolean "kids_menu"
+    t.boolean "connecting_rooms"
+    t.boolean "pool"
+    t.boolean "beach"
     t.integer "bucket_list_count"
     t.integer "average_review_score"
+    t.string "booking_link"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
   create_table "experiences", force: :cascade do |t|
     t.string "name"
+    t.string "entity"
+    t.boolean "show"
     t.string "description"
     t.string "street_number"
-    t.string "address"
+    t.string "street"
     t.string "locality"
     t.string "country"
     t.string "region"
     t.float "latitude"
     t.float "longitude"
     t.string "photo"
-    t.string "type"
     t.string "holiday_type"
     t.string "theme"
     t.integer "kids_age_from"
     t.integer "kids_age_to"
     t.integer "duration"
     t.float "price"
+    t.boolean "kids_club"
+    t.boolean "kids_menu"
+    t.boolean "connecting_rooms"
+    t.boolean "pool"
+    t.boolean "beach"
     t.integer "bucket_list_count"
     t.integer "average_review_score"
+    t.string "booking_link"
+    t.bigint "destination_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.index ["destination_id"], name: "index_experiences_on_destination_id"
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
     t.string "description"
     t.integer "rating"
+    t.bigint "accommodation_id"
+    t.bigint "experience_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["accommodation_id"], name: "index_reviews_on_accommodation_id"
+    t.index ["experience_id"], name: "index_reviews_on_experience_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -122,6 +163,16 @@ ActiveRecord::Schema.define(version: 20180305163747) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accommodations", "destinations"
+  add_foreign_key "accommodations", "users"
+  add_foreign_key "bucket_list_items", "accommodations"
+  add_foreign_key "bucket_list_items", "destinations"
+  add_foreign_key "bucket_list_items", "experiences"
+  add_foreign_key "bucket_list_items", "users"
   add_foreign_key "destinations", "users"
+  add_foreign_key "experiences", "destinations"
   add_foreign_key "experiences", "users"
+  add_foreign_key "reviews", "accommodations"
+  add_foreign_key "reviews", "experiences"
+  add_foreign_key "reviews", "users"
 end
