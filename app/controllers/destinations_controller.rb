@@ -15,8 +15,9 @@ class DestinationsController < ApplicationController
 
   def create
     @destination = Destination.new(params_destination)
+    @destination.user = current_user
     @destination.save
-    redirect_to destinations_path
+    redirect_to destinations_path(@destination)
   end
 
   def edit

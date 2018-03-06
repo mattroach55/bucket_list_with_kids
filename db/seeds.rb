@@ -13,3 +13,24 @@ experience = Experience.create(name: 'Test', description: 'Lorem ipsum dolor sit
 puts experience.valid?
 
 puts 'Finished....'
+ user = User.create(email: 'test2@test.com', password: 'password')
+ destination = Destination.create(name: 'Test', street_number: '123' address: 'main' country: 'United States' region: 'California' description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et pain magna aliqua, Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex and com')
+    t.string "name"
+    t.string "description"
+    t.string "street_number"
+    t.string "address"
+    t.string "locality"
+    t.string "country"
+    t.string "region"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "photo"
+    t.string "type"
+    t.string "holiday_type"
+    t.string "theme"
+    t.integer "kids_age_from"
+    t.integer "kids_age_to"
+    t.integer "duration"
+    t.float "price"
+    t.integer "bucket_list_count"
+    t.integer "average_review_score"
