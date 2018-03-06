@@ -47,12 +47,15 @@ class AccommodationsController < ApplicationController
     redirect_to accommodations_path
   end
   private
+
   def set_destination
     @destination = Destination.find(params[:destination_id])
   end
+
   def set_accommodation
     @accommodation = Accommodation.find(params[:id])
   end
+
   def params_accommodation
     params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :kids_club, :kids_menu, :connecting_rooms, :pool, :beach, :bucket_list_count, :average_review_score, :booking_link, :destination_id, :user_id)
   end
