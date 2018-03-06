@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20180306110213) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
   create_table "experiences", force: :cascade do |t|
@@ -87,5 +89,6 @@ ActiveRecord::Schema.define(version: 20180306110213) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "destinations", "users"
   add_foreign_key "experiences", "users"
 end
