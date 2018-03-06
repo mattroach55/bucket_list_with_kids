@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 ">
+        <hr>
+          <% @experiences.each do |experience| %>
+            <div class="myexperience">
+              <div class="image">
+              <%= cl_image_tag(experience.photo, width: 200, class:" product-image hidden-xs")%>
+              </div>
+                <div class="info">
+
+                <!-- Should has the same info as homepage only with a counter? -->
+
+                </div>
+              <div class="link-to-see-experience">
+              <%= link_to "go to experience", experience_path(experience),   class:"btn btn-default btn-sm"  %>
+              </div>
+            </div>
+          <hr>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
