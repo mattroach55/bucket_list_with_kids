@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :destinations do
     resources :experiences, only: [:create]
-    resources :accommodations, only: [:create]
+    resources :accommodations, only: [:new, :create]
   end
   resources :experiences, only: [:index, :show, :edit, :destroy] do
    resources :reviews, only: [:create]
