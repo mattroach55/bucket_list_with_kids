@@ -1,27 +1,42 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
+  <!-- Bucketlist logo -->
   <a href="/" class="navbar-wagon-brand">
     <img src="images/logo.png" alt="logo">
   </a>
-
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Host</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Trips</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Messages</a>
-
-    <!-- Profile picture with dropdown list -->
+    <%= link_to "See your Bucketlist", new_experience_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <!-- Navbar if user is signed in -->
+    <% if user_signed_in? %>
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Bucketlist</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul>
+      <!-- Uploaded profile picture from current_user only if user is signed in -->
+      <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <!-- Dropdown appearing only if user is signed in -->
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li>
+              <%= link_to profile_path do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to bucketlist_path do %>
+                <i class="fab fa-bitbucket"> </i> <%= t(".settings", default: "Bucketlist") %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="far fa-sign-out-alt"></i> <%= t(".signout", default: "Sign out") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <!-- Navbar without a user signed in -->
+      <%= link_to "Sign up", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Login", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
   </div>
 
   <!-- Dropdown appearing on mobile only -->
@@ -29,9 +44,26 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Bucketlist</a></li>
-        <li><a href="#">Log Out</a></li>
+        <li>
+          <%= link_to profile_path do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Dashboard") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to bucketlist_path do %>
+            <i class="fab fa-bitbucket"> </i><%= t(".settings", default: "Bucketlist") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <%= t(".signout", default: "Sign out") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="far fa-sign-out-alt"></i> <%= t(".signout", default: "Sign out") %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
