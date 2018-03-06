@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :accommodations, only: [:create]
   end
   resources :experiences, only: [:index, :show, :edit, :destroy] do
-   resources :reviews, only: [:create]
+   resources :reviews, only: [:new, :create]
  end
   resources :accommodations, only: [:index, :show, :edit, :destroy] do
    resources :reviews, only: [:create]
