@@ -4,6 +4,7 @@ class AccommodationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    policy_scope(Accommodation)
     if params[:query].present?
       @accommodations = Accommodation.search_by_name_description(params[:query])
     else
@@ -17,16 +18,15 @@ class AccommodationsController < ApplicationController
 
   def new
     @accommodations = Accommodation.new
-    # authorize @accommodations
+    authorize @accommodations
   end
 
   def create
 
     @accommodation = Accommodation.new(params_accommodation)
-    @accomodation.destination = @destination
+    @accommodation.destination = @destination
     @accommodation.user = current_user
-    # authorize @accommodation
-     raise
+    authorize @accommodation
     if @accommodation.save
       redirect_to accommodation_path(@accommodation)
     else
@@ -39,7 +39,7 @@ class AccommodationsController < ApplicationController
   end
 
   def edit
-    # authorize @accommodation
+    authorize @accommodation
   end
 
   def update
