@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @accommodations = current_user.accommodations
     @destinations = current_user.destinations
     @user = current_user
-    authorize @user
+    # authorize @user
   end
 
 end
