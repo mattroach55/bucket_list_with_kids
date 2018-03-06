@@ -22,7 +22,9 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="#">Profile</a></li>
           <li><a href="#">Bucketlist</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= t(".signout", default: "Log out") %>
+              <% end %></li>
         </ul>
       </div>
     </div>
@@ -35,7 +37,11 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><a href="#">Profile</a></li>
         <li><a href="#">Bucketlist</a></li>
-        <li><a href="#">Log Out</a></li>
+        <li> <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= t(".signout", default: "Log out") %>
+              <% end %>
+
+        </li>
       </ul>
     </div>
   </div>
