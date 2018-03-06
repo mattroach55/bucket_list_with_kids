@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :destinations
-  has_many :accommodations
+  # has_many :destinations
+  # has_many :accommodations
   has_many :experiences
   has_many :reviews, through: :accommodations
   has_many :reviews, through: :experiences
