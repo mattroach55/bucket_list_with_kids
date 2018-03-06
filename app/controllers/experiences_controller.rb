@@ -1,6 +1,7 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :edit, :photo]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
   def index
     policy_scope(Experience)
@@ -24,8 +25,7 @@ class ExperiencesController < ApplicationController
   end
 
   def show
-    @experience = Experience.find(params[:id])
-    # authorize @experience
+    authorize @experience
     @markers = [{ lat: @experience.latitude, lng: @experience.longitude }]
     @review = Review.new
   end
@@ -55,7 +55,6 @@ class ExperiencesController < ApplicationController
   end
 
   def update
-    @experience = Experience.find(params[:id])
     authorize @experience
     if @experience.update(params_experience)
       redirect_to experience_path(@experience)
@@ -65,7 +64,6 @@ class ExperiencesController < ApplicationController
   end
 
   def destroy
-    @experience = Experience.find(params[:id])
     authorize @experience
     @experience.destroy
     redirect_to experiences_path
