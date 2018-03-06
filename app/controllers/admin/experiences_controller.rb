@@ -1,5 +1,5 @@
-class Admin::RestaurantsController < ApplicationController
+class Admin::ExperiencesController < ApplicationController
   def index
-    @experience = current_user.experience
+    @experiences = current_user.experiences
   end
 end

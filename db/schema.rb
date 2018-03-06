@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305161530) do
+ActiveRecord::Schema.define(version: 20180306110213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,23 +18,11 @@ ActiveRecord::Schema.define(version: 20180305161530) do
   create_table "accommodations", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "street_number"
     t.string "address"
-    t.string "locality"
-    t.string "country"
-    t.string "region"
     t.float "latitude"
     t.float "longitude"
     t.string "photo"
     t.string "type"
-    t.string "holiday_type"
-    t.string "theme"
-    t.integer "kids_age_from"
-    t.integer "kids_age_to"
-    t.integer "duration"
-    t.float "price"
-    t.integer "bucket_list_count"
-    t.integer "average_review_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,23 +35,10 @@ ActiveRecord::Schema.define(version: 20180305161530) do
   create_table "destinations", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "street_number"
     t.string "address"
-    t.string "locality"
-    t.string "country"
-    t.string "region"
     t.float "latitude"
     t.float "longitude"
-    t.string "photo"
     t.string "type"
-    t.string "holiday_type"
-    t.string "theme"
-    t.integer "kids_age_from"
-    t.integer "kids_age_to"
-    t.integer "duration"
-    t.float "price"
-    t.integer "bucket_list_count"
-    t.integer "average_review_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,23 +46,14 @@ ActiveRecord::Schema.define(version: 20180305161530) do
   create_table "experiences", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "street_number"
     t.string "address"
-    t.string "locality"
-    t.string "country"
-    t.string "region"
     t.float "latitude"
     t.float "longitude"
     t.string "photo"
-    t.string "type"
-    t.string "holiday_type"
-    t.string "theme"
-    t.integer "kids_age_from"
-    t.integer "kids_age_to"
     t.integer "duration"
-    t.float "price"
     t.integer "bucket_list_count"
     t.integer "average_review_score"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -116,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180305161530) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
