@@ -1,7 +1,0 @@
-<h1>My list of experiences</h1>
-<% @experiences.each do |experience| %>
-  <h2><%= experience.name %></h2>
-  <%= cl_image_tag experience.photo, :class => "card-background-image" %>
-  <p><%= experience.description %></p>
-  <p><%= experience.address %></p>
-<% end %>
