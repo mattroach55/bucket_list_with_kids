@@ -61,7 +61,7 @@ private
   end
 
   def params_destination
-    params.require(:destination).permit(:name, :description, :street_number, :address, :locality, :country, :region, :latitude, :longitude, :photo, :type, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :bucket_list_count, :average_review_score)
+    params.require(:destination).permit(:name, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :entity, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :bucket_list_count, :average_review_score)
   end
 end
 
