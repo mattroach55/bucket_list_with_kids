@@ -1,0 +1,39 @@
+// SCCS FOR TESTING TABS ON BUCKETLISTPAGE
+// Coded without seeing the page used ugly color to locate them faster
+
+.tabs {
+  display: flex;
+  color: white;
+  margin-top: 0px;
+  // padding: 10px 10px 0 10px;
+}
+.tabs a {
+  color: black;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.tabs h3 {
+  font-size: 17px;
+  font-weight: bold;
+  color: yellow;
+  margin-bottom: 20px;
+}
+.tab {
+  background: #246D9B;
+  border: 1px solid;
+  flex: 0 0 25%;
+  text-align: center;
+  padding: 0px 0;
+  color: white;
+  border-color: green;
+}
+.tab.active {
+  background-color: red;
+  color: black;
+  h3 {
+  color: white;
+  }
+}
