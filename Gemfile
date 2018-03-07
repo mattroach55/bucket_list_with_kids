@@ -4,6 +4,7 @@ ruby '2.4.3'
 gem 'cloudinary' # PHOTO_UPLOAD
 gem 'country_select' #SIMPLE FORM COUNTRY
 gem 'carrierwave', '~> 1.2' # PHOTO_UPLOAD
+gem 'acts_as_votable' #UPVOTE
 gem 'devise'
 gem 'figaro' # SECURITY
 gem 'geocoder'

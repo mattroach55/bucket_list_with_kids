@@ -28,6 +28,20 @@ class DestinationsController < ApplicationController
     end
   end
 
+  # TESTING A UPVOTE ACTION
+  def upvote
+    @destination = Destination.find(params[:id])
+    authorize @destination
+    @destination.upvote_by(current_user)
+    redirect_to destinations_path
+    # redirect_to destination_path(@destination)
+  end
+
+  # def downvote
+  #   @destination.upvote_by(current_user)
+  #   redirect_to destination_path(@destination)
+  # end
+
   def mix
     #future code
   end
