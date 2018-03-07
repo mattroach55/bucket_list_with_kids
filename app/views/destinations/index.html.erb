@@ -1,11 +1,10 @@
 <h1>All destinations<h1>
 <% @destinations.each do |destination| %>
 <%= destination.name %><br>
-<%= destination.locality %><br>
-<%= destination.country %><br>
-<%= destination.region %><br>
+<%= cl_image_tag destination.photo %>
 <% end %>
 
+<%= link_to "New", new_destination_path(@destination) %>
 
 <!-- MAP -->
 <div
