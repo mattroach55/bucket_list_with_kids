@@ -1,3 +1,15 @@
+<div class="banner-content">
+  <h1>Explore the world, make new friends</h1>
+  <p>Bucket list experiences, crafted by locals</p>
+  <%= form_tag experiences_path, method: :get do %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+      placeholder: "Search for experience eg. 'Rome'" %>
+  <% end %>
+</div>
+
+
 <div class="container">
   <div class="row">
     <h1>All destinations<h1>

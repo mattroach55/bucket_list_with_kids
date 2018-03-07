@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'algoliasearch-rails'
 gem 'cloudinary' # PHOTO_UPLOAD
 gem 'country_select' #SIMPLE FORM COUNTRY
 gem 'carrierwave', '~> 1.2' # PHOTO_UPLOAD
