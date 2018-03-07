@@ -1,10 +1,14 @@
-<li data-review-id="<%= review.id %>" class="list-inline-item">
-  <% review.rating.times do |n| %>
+<ul class="list-inline">
+  <li data-review-id="<%= review.id %>" class="list-inline-item">
+    <% number_of_reviews = review.rating || 0 %>
+    <% number_of_reviews.times do |n| %>
     <i class="fa fa-star"></i>
-  <% end %>
-  <p><%= review.description %></p>
-  <% if policy(review).destroy? %>
+    <% end %>
+    <p><%= review.description %></p>
+    <% if policy(review).destroy? %>
     <%= link_to 'Delete Review', review,
-        method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "btn btn-primary" %>
-  <% end %>
-</li>
+    method: :delete, data: { confirm: 'Are you sure?' }, remote: true, class: "btn btn-primary" %>
+    <% end %>
+  </li>
+</ul>
+
