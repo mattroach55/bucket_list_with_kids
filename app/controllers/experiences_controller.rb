@@ -15,8 +15,8 @@ class ExperiencesController < ApplicationController
   def show
     authorize @experience
     # MAP CODE BELOW
-    @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: @experience.name }}]
-    # @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: @experience }) } }]
+    # @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: @experience.name }}]
+    @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: @experience }) } }]
 
     # MAP CODE ABOVE
     @review = Review.new

@@ -2,6 +2,9 @@ class Experience < ApplicationRecord
   has_many :reviews
   belongs_to :user
   belongs_to :destination
+  validates :name, presence: true
+  validates :description, presence: true
+  # validates :show, default: true
   mount_uploader :photo, PhotoUploader
 
 # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE
