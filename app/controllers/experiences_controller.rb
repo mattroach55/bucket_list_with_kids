@@ -71,6 +71,10 @@ class ExperiencesController < ApplicationController
 
   private
 
+  def set_destination
+    @destination = Destination.find(params[:destination_id])
+  end
+
   def set_experience
     @experience = Experience.find(params[:id])
   end

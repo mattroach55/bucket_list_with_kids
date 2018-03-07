@@ -86,6 +86,7 @@ CSV.foreach(filepath, csv_options) do |row|
   else
     new_experience = Experience.new(user_id: user.id)
     new_experience.destination = Destination.all.sample
+
     new_experience.name = row.first.last
     new_experience.entity = row['entity']
     new_experience.show = row['show']

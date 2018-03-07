@@ -8,9 +8,9 @@
         <h3><%= @experience.name %></h3>
         <p><%= @experience.description %></p>
         <p><strong>Location of <%= @experience.name %>'s experience</strong>
-        <p><%= @destination.locality %></p>
-        <p><%= @destination.country %></p>
-        <p><%= @destination.region %></p>
+        <p><%#= @destination.locality %></p>
+        <p><%#= @destination.country %></p>
+        <p><%#= @destination.region %></p>
     </div>
     <div class="col-xs-6">
         <h3>You also like:</h3>
@@ -199,10 +199,22 @@
     </div>
   </div>
 </div>
-<div class="container other-accomodation">
+<div class="container reviews">
   <div class="row">
     <div class="col-xs-10">
-      <h1>Reviews</h1>
+      <h3>
+        <%= pluralize @experience.reviews.size, "review" %>
+      </h3>
+      <div id="reviews">
+        <% if @experience.reviews.blank? %>
+          Be the first to leave a review for <%= @experience.name %>
+        <% else %>
+          <% @experience.reviews.each do |review| %>
+            <%= render 'reviews/show', review: review %>
+          <% end %>
+        <% end %>
+        <%= render 'reviews/form', experience: @experience, review: @review %>
+      </div>
     </div>
   </div>
 </div>
