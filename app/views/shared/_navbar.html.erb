@@ -15,14 +15,18 @@
           <!-- Dropdown appearing only if user is signed in -->
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
+            <%= link_to profile_path do %>
+            <i class="fa fa-user-circle"> </i><%= t(".settings", default: " Profile") %>
+          <% end %>
+        </li>
         <li>
           <%= link_to bucketlist_path do %>
-            <i class="fab fa-bitbucket"> </i><%= t(".settings", default: "Bucketlist") %>
+            <i class="fa fa-bitbucket"> </i><%= t(".settings", default: " Bucketlist") %>
           <% end %>
         </li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="far fa-sign-out-alt"></i> <%= t(".signout", default: "Sign out") %>
+            <i class="fa fa-sign-out"></i> <%= t(".signout", default: " Sign out") %>
           <% end %>
         </li>
           </ul>
@@ -40,13 +44,18 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
+          <%= link_to profile_path do %>
+            <i class="fa fa-user-circle"> </i><%= t(".settings", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
           <%= link_to bucketlist_path do %>
-            <i class="fab fa-bitbucket"> </i><%= t(".settings", default: "Bucketlist") %>
+            <i class="fa fa-bitbucket"> </i><%= t(".settings", default: "My bucketlist") %>
           <% end %>
         </li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="far fa-sign-out-alt"></i> <%= t(".signout", default: "Sign out") %>
+            <i class="fa fa-sign-out"></i> <%= t(".signout", default: "Sign out") %>
           <% end %>
         </li>
       </ul>
