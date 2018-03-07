@@ -9,7 +9,7 @@ class DestinationPolicy < ApplicationPolicy
     true
   end
 
-  def show
+  def show?
     true
   end
 

@@ -37,7 +37,8 @@ class DestinationsController < ApplicationController
   end
 
   def new
-    @destinations = Destination.new
+    @destination = Destination.new
+    authorize @destination
   end
 
   def create
@@ -45,7 +46,7 @@ class DestinationsController < ApplicationController
     authorize @destination
     @destination.user = current_user
     @destination.save
-    redirect_to destinations_path(@destination)
+    redirect_to destination_path(@destination)
   end
 
   def edit
@@ -54,7 +55,7 @@ class DestinationsController < ApplicationController
 
   def update
     authorize @destination
-    if @destination.update(destination_params)
+    if @destination.update(params_destination)
     redirect_to destination_path(@destination)
     else
     render :new

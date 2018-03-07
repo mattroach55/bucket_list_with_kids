@@ -1,1 +1,4 @@
-<%= render 'form' %>
+<%= simple_form_for([@destination, @accommodation]) do |f| %>
+<%= f.input :name, placeholder: "Enter accommodation title" %>
+<%= f.submit %>
+<% end %>

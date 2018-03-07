@@ -15,21 +15,24 @@ class AccommodationsController < ApplicationController
 
   def show
     @review = Review.new
+    authorize @accommodation
   end
 
   def new
-    @accommodations = Accommodation.new
-    authorize @accommodations
+    @accommodation = Accommodation.new
+    authorize @accommodation
   end
 
   def create
     @accommodation = Accommodation.new(params_accommodation)
+    @destination = Destination.find(params[:destination_id])
     @accommodation.destination = @destination
     @accommodation.user = current_user
     authorize @accommodation
     if @accommodation.save
       redirect_to accommodation_path(@accommodation)
     else
+      raise
       render :new
     end
   end

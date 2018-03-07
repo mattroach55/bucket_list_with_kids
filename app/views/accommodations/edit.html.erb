@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<%= render 'form' %>
-=======
-<!-- shared form for new and edit -->
->>>>>>> master
+<%= simple_form_for(@accommodation) do |f| %>
+<%= f.input :name, placeholder: "Enter destination title" %>
+<%= f.submit %>
+<% end %>
