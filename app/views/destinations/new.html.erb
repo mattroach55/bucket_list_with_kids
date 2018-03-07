@@ -1,1 +1,9 @@
-<%= render 'form', destination: @destination %>
+
+<%= simple_form_for(@destination) do |f| %>
+<%= f.input :name, placeholder: "Enter destination name" %>
+<%= f.input :description, placeholder: "Enter destination synopsis" %>
+<%= f.input :locality, placeholder: "Enter locality" %>
+<%= f.input :country, placeholder: "Enter country" %>
+<%= f.input :region, placeholder: "Enter region" %>
+<%= f.submit %>
+<% end %>

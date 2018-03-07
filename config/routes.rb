@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :destinations do
+
     resources :experiences, only: [:new, :create]
+
     resources :accommodations, only: [:new, :create]
   end
   resources :experiences, only: [:index, :show, :edit, :destroy] do
