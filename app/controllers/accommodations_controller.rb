@@ -5,12 +5,23 @@ class AccommodationsController < ApplicationController
 
   def index
     policy_scope(Accommodation)
-
+    
     if params[:query].present?
       @accommodations = Accommodation.search_by_name_description(params[:query])
     else
       @accommodations = Accommodation.all
     end
+    # MAP CODE
+    @accommodations = @accommodationss.where.not(latitude: nil, longitude: nil)
+
+    @markers = @accommodations.map do |accommodation|
+      {
+        lat: accommodation.latitude,
+        lng: accommodation.longitude,
+        infoWindow: { content: accommodation.name }
+      }
+    end
+    # MAP CODE
   end
 
   def show
@@ -25,10 +36,12 @@ class AccommodationsController < ApplicationController
 
   def create
     @accommodation = Accommodation.new(params_accommodation)
+
     @destination = Destination.find(params[:destination_id])
     @accommodation.destination = @destination
     @accommodation.user = current_user
     authorize @accommodation
+    
     if @accommodation.save
       redirect_to accommodation_path(@accommodation)
     else
