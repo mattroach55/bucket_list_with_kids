@@ -1,18 +1,100 @@
-<h1>All destinations<h1>
-<% @destinations.each do |destination| %>
-<%= destination.name %><br>
-<%= destination.locality %><br>
-<%= destination.country %><br>
-<%= destination.region %><br>
-<% end %>
+<!-- <h1>All destinations<h1>
+<%# @destinations.each do |destination| %>
+<%#= destination.name %><br>
+<%#= destination.locality %><br>
+<%#= destination.country %><br>
+<%#= destination.region %><br>
+<%# end %>
+<div> -->
+
+<!--  -->
+<div class="big-flex">
+    <div>
+      <ul class="left-column">
+        <% @destinations.each do |destination| %>
+          <%= link_to destination_path(destination) do %>
+            <li class="left-column-element">
+              <div class="card">
+                <h1 class="title"><%= destination.name %></h1>
+                <h1 class="locality"></h1>
+                <!-- <h1 class="stars"><%# destination.reviews.each do |review| %>
+                  <%# review.rating.times do |n| %>
+                  <i class="fa fa-star"></i>
+                  <%# end %> -->
+                <!-- <img class="avatar user-image"> -->
+                <%= cl_image_tag destination.photo, class = "card-background-image" %>
+                  <%#= user.photo %>
+                  <%# end %>
+                </h1>
+                <%= image_tag("venice.jpg", :class => "card-background-image") %>
+              </div>
+            </li>
+            <% end %>
+          <% end %>
+      </ul>
+    </div>
+  </div>
+                <!-- <h1 class="price">$  --><%#= destination.price %><!-- </h1> -->
+                <!-- <!<! <h1 class="stars"> --><%# destination.reviews.each do |review| %> -->
+                  <%# review.rating.times do |n| %>
+                  <!-- <i class="fa fa-star"></i> -->
+                  <%# end %>
+               <!--  <img class="avatar user-image"> -->
+                <%# cl_image_tag destination.user.photo, class:'avatar user-image' %>
+                  <%#= user.photo %>
+                  <%# end %>
+       <!--          </h1> -->
+
+
+
+            <!--   </div>
+            </li> -->
+            <%# end %>
+          <%# end %>
+  <!--     </ul>
+    </div>
+  </div> -->
+
+    <div class="right-column">
+      <p><strong>TYPE</strong></p>
+      <p><%= check_box_tag(:destination) %>
+      <%= label_tag(:destination, "destination") %></p>
+      <p><%= check_box_tag(:Accomodation) %>
+      <%= label_tag(:Accomodation, "Accomodation") %></p>
+      <p><%= check_box_tag(:Destination) %>
+      <%= label_tag(:Destination, "Destination") %></p>
+      <br>
+      <p><strong>KID'S AGE</strong></p>
+      <p><%= check_box_tag(:Age_group_one) %>
+      <%= label_tag(:Age_group_one, "5-7") %></p>
+      <p><%= check_box_tag(:Age_group_two) %>
+      <%= label_tag(:Age_group_two, "8-10") %></p>
+      <p><%= check_box_tag(:Age_group_three) %>
+      <%= label_tag(:Age_group_three, "11-12") %></p>
+      <br>
+      <p><strong>THEME</strong></p>
+      <p><%= check_box_tag(:Adventure) %>
+      <%= label_tag(:Adventure, "Adventure & Sport") %></p>
+      <p><%= check_box_tag(:Art) %>
+      <%= label_tag(:Art, "Art & Culture") %></p>
+      <p><%= check_box_tag(:Wellness) %>
+      <%= label_tag(:Wellness, "Body & Mind") %></p>
+      <p><%= check_box_tag(:Entertainment) %>
+      <%= label_tag(:Entertainment, "Entertainment") %></p>
+      <p><%= check_box_tag(:Food) %>
+      <%= label_tag(:Food, "Food & Drink") %></p>
+      <p><%= check_box_tag(:Science) %>
+      <%= label_tag(:Science, "Science & Nature") %></p>
+      <p><%= check_box_tag(:Shopping) %>
+      <%= label_tag(:Shopping, "Shopping") %></p>
 
 
 <!-- MAP -->
-<div
+<!-- <div
   id="map"
-  style="width: 100%;
+  style="width: 100%; position: absolute; bottom: 0px;
   height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-></div>
+  data-markers="<%#= @markers.to_json %>"
+></div> -->
 
 

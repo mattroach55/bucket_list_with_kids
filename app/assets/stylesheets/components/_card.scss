@@ -1,0 +1,75 @@
+.card {
+  position: relative;
+  width: 350px;
+  height: 300px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  box-shadow: .5px .5px .5px rgba(1, 1, 1, 0.4);
+  margin: 0 auto;
+  content-align: center;
+  margin-bottom: 30px;
+}
+// .card-background-image {
+//   position: absolute;
+//   background-size: cover !important;
+//   top: 0px;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   // width: 350px;
+//   // height: 210px;
+//   border-radius: 3px;
+//   background-color: rgba(1,1,1,0.8);
+//   margin: 0 auto;
+// }
+
+.locality {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+  text-align: center;
+  margin: 0;
+  font-weight: lighter;
+  color: rgb(40,40,40);
+  font-size: 16px;
+}
+
+.title {
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  text-align: center;
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+  color: rgb(40,40,40);
+}
+
+.user-image {
+  // position: absolute;
+  border-radius: 50%;
+  height: 50px;
+  top: 10px;
+  right: 10px;
+}
+
+.stars {
+  position: absolute;
+  color: gray;
+  font-size: 20px;
+  bottom: 35px;
+  left: 10px;
+}
+
+.show-link a {
+  position: absolute;
+  margin: auto 0;
+  color: rbga(255, 255, 255, .9);
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-left: 0;
+  }
+
+
