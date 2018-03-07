@@ -1,0 +1,10 @@
+<li data-id="<%= review.id %>">
+  <% review.rating.times do |n| %>
+    <i class="fa fa-star"></i>
+  <% end %>
+  <p><%= review.description %></p>
+  <% if policy(review).destroy? %>
+    <%= link_to 'Delete Review', review_path(review),
+        method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+  <% end %>
+</li>
