@@ -11,22 +11,14 @@ class ExperiencesController < ApplicationController
     else
       @experiences = Experience.all
     end
-
-    @experiences = @experiences.where.not(latitude: nil, longitude: nil)
-
-
-    @markers = @experiences.map do |experience|
-      {
-        lat: experience.latitude,
-        lng: experience.longitude,
-        infoWindow: { content: experience.name }
-      }
-    end
   end
-
   def show
     authorize @experience
-    @markers = [{ lat: @experience.latitude, lng: @experience.longitude }]
+    # MAP CODE BELOW
+    @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: @experience.name }}]
+    # @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: @experience }) } }]
+
+    # MAP CODE ABOVE
     @review = Review.new
   end
 
