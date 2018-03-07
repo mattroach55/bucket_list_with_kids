@@ -8,6 +8,17 @@ class AccommodationsController < ApplicationController
     else
       @accommodations = Accommodation.all
     end
+    # MAP CODE
+    @accommodations = @accommodationss.where.not(latitude: nil, longitude: nil)
+
+    @markers = @accommodations.map do |accommodation|
+      {
+        lat: accommodation.latitude,
+        lng: accommodation.longitude,
+        infoWindow: { content: accommodation.name }
+      }
+    end
+    # MAP CODE
   end
   def show
     @review = Review.new

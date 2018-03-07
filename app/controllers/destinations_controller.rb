@@ -21,8 +21,9 @@ class DestinationsController < ApplicationController
     @markers = @all_entities.map do |entity|
       {
         lat: entity.latitude,
-        lng: entity.longitude ,
+        lng: entity.longitude,
         infoWindow: { content: entity.name }
+        # infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: entity }) }
       }
     end
   end
