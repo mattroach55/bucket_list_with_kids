@@ -4,6 +4,18 @@
   display: inline-block;
 }
 
+.search-bar {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 30px;
+  padding: 10px;
+}
+
 .big-flex {
   margin: 30px 70px;
   display: flex;
@@ -36,8 +48,8 @@
     height: 1000px;
     background-color: #FFF;
     position: absolute;
-    right: 50px;
-    top: 125px;
+    right: 0;
+    top: 15px;
     flex-direction: column;
     padding: 20px;
     border-radius: 5px;
