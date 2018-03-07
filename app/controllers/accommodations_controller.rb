@@ -30,7 +30,7 @@ class AccommodationsController < ApplicationController
   end
 
   def new
-    @accommodations = Accommodation.new
+    @accommodation = Accommodation.new
     authorize @accommodation
   end
 
