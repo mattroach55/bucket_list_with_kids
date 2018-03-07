@@ -15,17 +15,25 @@
 
 <!-- Filter tabs -->
 <div class="tabs">
+    <a class="tab" data-target="#">
+    <p>Total</p>
+    <h3>865</h3>
+  </a>
   <a class="tab" data-target="#myaccommodations">
     <p>accommodations</p>
-    <h3>350</h3>
+    <h3><%= @accommodations.count %></h3>
   </a>
   <a class="tab" data-target="#mydestinations">
     <p>destinations</p>
-    <h3>456</h3>
+    <h3><%= @destinations.count %></h3>
   </a>
   <a class="tab" data-target="#myexperiences">
     <p>experiences</p>
-    <h3>13</h3>
+    <h3><%= @experiences.count %></h3>
+  </a>
+    <a class="tab" data-target="#">
+    <p>Experienced</p>
+    <h3>33/2354</h3>
   </a>
 </div>
 <!-- Should be a iteration over all three? -->
