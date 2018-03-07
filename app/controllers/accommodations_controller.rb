@@ -32,7 +32,6 @@ class AccommodationsController < ApplicationController
     if @accommodation.save
       redirect_to accommodation_path(@accommodation)
     else
-      raise
       render :new
     end
   end
