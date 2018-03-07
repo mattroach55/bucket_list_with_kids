@@ -1,32 +1,38 @@
 <div class="container">
   <div class="row">
-  <h1>All destinations<h1>
-  <% @destinations.each do |destination| %>
-  <div class="col-xs-12 col-sm-4">
-  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
-    <div class="card-category"><%= destination.name %></div>
-      <div class="card-description">
-        <p><%= destination.locality %></p>
-        <p><%= destination.country %></p>
-       <p><%= destination.region %></p>
-      </div>
+    <h1>All destinations<h1>
+    <% @destinations.each do |destination| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
+        <div class="card-category">
+          <%= destination.name %>
+        </div>
+        <div class="card-description">
+          <p><%= destination.locality %></p>
+          <p><%= destination.country %></p>
+         <p><%= destination.region %></p>
+        </div>
         <img class="card-user" src="">
-          <%= link_to bucket_count_destination_path(destination), method: :put do %>
-            <i class="fa fa-bitbucket right"> </i>
-          <% end %>
+        <%= link_to bucket_count_destination_path(destination), method: :put do %>
+          <i class="fa fa-bitbucket right"> </i>
+        <% end %>
       </div>
-          <h6>this destination has been added <%= destination.get_upvotes.count %> times</h6>
+      <h6>this destination has been added <%= destination.get_upvotes.count %> times</h6>
     </div>
     <% end %>
   </div>
 </div>
-</div>
 
 
-<!-- MAP -->
-<div
+
+<div class="container">
+  <div
   id="map"
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
 ></div>
+</div>
+<!-- MAP -->
+
+
