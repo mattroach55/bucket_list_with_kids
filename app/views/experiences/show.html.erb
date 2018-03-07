@@ -202,17 +202,19 @@
 <div class="container reviews">
   <div class="row">
     <div class="col-xs-6">
+      <%= render 'reviews/form', experience: @experience, review: @review %>
       <h3>
         <%= pluralize @experience.reviews.size, "review" %>
       </h3>
       <div id="reviews">
-        <%= render 'reviews/form', experience: @experience, review: @review %>
         <% if @experience.reviews.blank? %>
           Be the first to leave a review for <%= @experience.name %>
         <% else %>
+        <ul class="list-inline">
           <% @experience.reviews.each do |review| %>
-            <%= render 'reviews/show', review: review %>
+          <%= render 'reviews/show', review: review %>
           <% end %>
+        </ul>
         <% end %>
       </div>
     </div>
