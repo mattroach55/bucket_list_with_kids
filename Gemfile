@@ -5,7 +5,6 @@ gem 'cloudinary' # PHOTO_UPLOAD
 gem 'country_select' #SIMPLE FORM COUNTRY
 gem 'carrierwave', '~> 1.2' # PHOTO_UPLOAD
 gem 'devise'
-gem 'faker'
 gem 'figaro' # SECURITY
 gem 'geocoder'
 gem "pundit"
@@ -23,6 +22,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

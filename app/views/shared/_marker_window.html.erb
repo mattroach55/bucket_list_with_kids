@@ -1,17 +1,15 @@
 <% if selection.class == Destination %>
-  <% link_to destination_path do %>
+  <%= link_to destination_path do %>
   <%= selection.name %>
   <%= selection.photo %>
   <% end %>
-
 <% elsif selection.class == Accommodation %>
-  <% link_to accommodation_path do %>
+  <%= link_to accommodation_path do %>
   <%= selection.name %>
   <%= selection.photo %>
   <% end %>
-
 <% else %>
-  <% link_to experience_path do %>
+  <%= link_to experience_path do %>
   <%= selection.name %>
   <%= selection.photo %>
   <% end %>
