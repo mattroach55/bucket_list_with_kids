@@ -2,13 +2,26 @@ class AccommodationsController < ApplicationController
   before_action :set_accommodation, only: [:show, :edit, :update, :photo, :destroy]
   before_action :set_destination, only: [:new, :create]
   skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     policy_scope(Accommodation)
+
     if params[:query].present?
       @accommodations = Accommodation.search_by_name_description(params[:query])
     else
       @accommodations = Accommodation.all
     end
+    # MAP CODE
+    @accommodations = @accommodationss.where.not(latitude: nil, longitude: nil)
+
+    @markers = @accommodations.map do |accommodation|
+      {
+        lat: accommodation.latitude,
+        lng: accommodation.longitude,
+        infoWindow: { content: accommodation.name }
+      }
+    end
+    # MAP CODE
   end
 
   def show
@@ -19,23 +32,27 @@ class AccommodationsController < ApplicationController
   def new
     authorize @experience
     @accommodations = Accommodation.new
-    authorize @accommodation
+
   end
 
   def create
     @accommodation = Accommodation.new(params_accommodation)
-    @accomodation.destination = @destination
+
+    @destination = Destination.find(params[:destination_id])
+    @accommodation.destination = @destination
     @accommodation.user = current_user
     authorize @accommodation
-     raise
+
     if @accommodation.save
       redirect_to accommodation_path(@accommodation)
     else
       render :new
     end
   end
+
   def photo
   end
+
   def edit
     authorize @accommodation
   end
@@ -68,4 +85,6 @@ class AccommodationsController < ApplicationController
   def params_accommodation
     params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :kids_club, :kids_menu, :connecting_rooms, :pool, :beach, :bucket_list_count, :average_review_score, :booking_link, :destination_id, :user_id)
   end
+
 end
+
