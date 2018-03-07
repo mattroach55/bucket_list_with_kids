@@ -31,7 +31,7 @@ class AccommodationsController < ApplicationController
 
   def new
     @accommodations = Accommodation.new
-    authorize @experience
+    authorize @accommodation
   end
 
   def create
