@@ -11,8 +11,8 @@ function addReview(reviewHTML) {
 }
 
 <% if @review.errors.any? %>
-  refreshForm('<%= j render "reviews/form", experience: @experience, review: @review %>');
+  refreshForm('<%= j render "reviews/form", type_review: @accommodation, review: @review %>');
 <% else %>
   addReview('<%= j render "reviews/show", review: @review %>');
-  refreshForm('<%= j render "reviews/form", experience: @experience, review: Review.new %>');
+  refreshForm('<%= j render "reviews/form", type_review: @accommodation, review: Review.new %>');
 <% end %>

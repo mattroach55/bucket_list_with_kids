@@ -5,7 +5,7 @@ class AccommodationsController < ApplicationController
 
   def index
     policy_scope(Accommodation)
-    
+
     if params[:query].present?
       @accommodations = Accommodation.search_by_name_description(params[:query])
     else
@@ -41,7 +41,7 @@ class AccommodationsController < ApplicationController
     @accommodation.destination = @destination
     @accommodation.user = current_user
     authorize @accommodation
-    
+
     if @accommodation.save
       redirect_to accommodation_path(@accommodation)
     else
@@ -71,7 +71,7 @@ class AccommodationsController < ApplicationController
     redirect_to accommodations_path
   end
 
-private
+  private
 
   def set_destination
     @destination = Destination.find(params[:destination_id])

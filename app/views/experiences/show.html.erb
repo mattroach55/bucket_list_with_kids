@@ -201,7 +201,8 @@
 </div>
 <div class="container reviews">
   <div class="row">
-    <div class="col-xs-10">
+    <div class="col-xs-6">
+      <%= render 'reviews/form', type_review: @experience, review: @review %>
       <h3>
         <%= pluralize @experience.reviews.size, "review" %>
       </h3>
@@ -210,10 +211,9 @@
           Be the first to leave a review for <%= @experience.name %>
         <% else %>
           <% @experience.reviews.each do |review| %>
-            <%= render 'reviews/show', review: review %>
+          <%= render 'reviews/show', review: review %>
           <% end %>
         <% end %>
-        <%= render 'reviews/form', experience: @experience, review: @review %>
       </div>
     </div>
   </div>
