@@ -11,7 +11,7 @@ $(function(){
     $(".tab-content").addClass("hidden");
 
     // SHOW TAB
-    let id = $(".active").data("target");
+    var id = $(".active").data("target");
     $(id).removeClass("hidden");
   });
 });
