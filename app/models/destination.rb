@@ -10,6 +10,8 @@ class Destination < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_street?
 
+  acts_as_votable
+
   def full_address
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
   end
