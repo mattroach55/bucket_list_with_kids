@@ -1,4 +1,4 @@
-class DestinationPolicy < ApplicationPolicy
+class AccommodationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope
@@ -9,7 +9,7 @@ class DestinationPolicy < ApplicationPolicy
     true
   end
 
-  def show?
+  def show
     true
   end
 
@@ -18,10 +18,6 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
-  end
-
-  def upvote?
     true
   end
 

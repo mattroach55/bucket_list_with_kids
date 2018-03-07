@@ -2,8 +2,8 @@ class Destination < ApplicationRecord
   has_many :accommodations
   has_many :experiences
   belongs_to :user
-  # validates :name, presence: true
-  # # validates :show, default: true
+  validates :name, presence: true
+  # validates :show, default: true
   mount_uploader :photo, PhotoUploader
 
 # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE

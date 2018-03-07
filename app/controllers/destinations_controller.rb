@@ -18,12 +18,12 @@ class DestinationsController < ApplicationController
     @experiences = Experience.where.not(latitude: nil, longitude: nil)
     @all_entities = @destinations + @experiences + @accommodations
 
-    @markers = @all_entities.map do |entity|
+    @markers = @all_entities.map do |e|
       {
-        lat: entity.latitude,
-        lng: entity.longitude,
-        infoWindow: { content: entity.name }
-        # infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: entity }) }
+        lat: e.latitude,
+        lng: e.longitude,
+        # infoWindow: { content: entity.name }
+        infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: e }) }
       }
     end
   end
@@ -52,7 +52,8 @@ class DestinationsController < ApplicationController
   end
 
   def new
-    @destinations = Destination.new
+    @destination = Destination.new
+    authorize @destination
   end
 
   def create
@@ -60,7 +61,7 @@ class DestinationsController < ApplicationController
     authorize @destination
     @destination.user = current_user
     @destination.save
-    redirect_to destinations_path(@destination)
+    redirect_to destination_path(@destination)
   end
 
   def edit
@@ -69,7 +70,7 @@ class DestinationsController < ApplicationController
 
   def update
     authorize @destination
-    if @destination.update(destination_params)
+    if @destination.update(params_destination)
     redirect_to destination_path(@destination)
     else
     render :new
