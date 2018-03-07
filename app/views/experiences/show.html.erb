@@ -8,9 +8,10 @@
         <h3><%= @experience.name %></h3>
         <p><%= @experience.description %></p>
         <p><strong>Location of <%= @experience.name %>'s experience</strong>
-        <p><%#= @destination.locality %></p>
-        <p><%#= @destination.country %></p>
-        <p><%#= @destination.region %></p>
+        <p><%= @experience.locality %></p>
+        <p><%= @experience.country %></p>
+        <p><%= @experience.region %></p>
+        <p><%= @experience.bucket_list_count %></p>
     </div>
     <div class="col-xs-6">
         <h3>You also like:</h3>
@@ -49,7 +50,7 @@
           <p>Amazing views</p>
         </div>
         <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
+          <li><a href=""><i class="fa fa-bitbucket"></i></a></li>
           <li><a href=""><i class="fa fa-share"></i></a></li>
           <li><a href=""><i class="fa fa-star"></i></a></li>
         </ul>
