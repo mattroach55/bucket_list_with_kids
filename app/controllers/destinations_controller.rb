@@ -18,12 +18,12 @@ class DestinationsController < ApplicationController
     @experiences = Experience.where.not(latitude: nil, longitude: nil)
     @all_entities = @destinations + @experiences + @accommodations
 
-    @markers = @all_entities.map do |entity|
+    @markers = @all_entities.map do |e|
       {
-        lat: entity.latitude,
-        lng: entity.longitude,
-        infoWindow: { content: entity.name }
-        # infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: entity }) }
+        lat: e.latitude,
+        lng: e.longitude,
+        # infoWindow: { content: entity.name }
+        infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: e }) }
       }
     end
   end

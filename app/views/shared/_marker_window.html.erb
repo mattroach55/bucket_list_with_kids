@@ -1,12 +1,18 @@
+<% if selection.class == Destination %>
+  <% link_to destination_path do %>
+  <%= selection.name %>
+  <%= selection.photo %>
+  <% end %>
 
-<% link_to experience_path do %>
-<%= entity.name %>
-<%= entity.photo %>
+<% elsif selection.class == Accommodation %>
+  <% link_to accommodation_path do %>
+  <%= selection.name %>
+  <%= selection.photo %>
+  <% end %>
+
+<% else %>
+  <% link_to experience_path do %>
+  <%= selection.name %>
+  <%= selection.photo %>
+  <% end %>
 <% end %>
-
-<!-- MORE COMPLICATED - FOR 3 ENTITIES:
-
-<% link_to entity.entity_path do %>
-<%= entity.name %>
-<%= entity.photo %>
-<% end %> -->
