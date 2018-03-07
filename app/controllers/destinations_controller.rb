@@ -18,15 +18,29 @@ class DestinationsController < ApplicationController
     @experiences = Experience.where.not(latitude: nil, longitude: nil)
     @all_entities = @destinations + @experiences + @accommodations
 
-    @markers = @all_entities.map do |entity|
+    @markers = @all_entities.map do |e|
       {
-        lat: entity.latitude,
-        lng: entity.longitude,
-        infoWindow: { content: entity.name }
-        # infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: entity }) }
+        lat: e.latitude,
+        lng: e.longitude,
+        # infoWindow: { content: entity.name }
+        infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: e }) }
       }
     end
   end
+
+  # TESTING A UPVOTE ACTION
+  def upvote
+    @destination = Destination.find(params[:id])
+    authorize @destination
+    @destination.upvote_by(current_user)
+    redirect_to destinations_path
+    # redirect_to destination_path(@destination)
+  end
+
+  # def downvote
+  #   @destination.upvote_by(current_user)
+  #   redirect_to destination_path(@destination)
+  # end
 
   def mix
     #future code

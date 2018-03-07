@@ -29,4 +29,3 @@ class AccommodationPolicy < ApplicationPolicy
     record.user == user
   end
 end
-

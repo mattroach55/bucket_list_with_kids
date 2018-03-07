@@ -5,27 +5,20 @@ class AccommodationsController < ApplicationController
 
   def index
     policy_scope(Accommodation)
-    
+
     if params[:query].present?
       @accommodations = Accommodation.search_by_name_description(params[:query])
     else
       @accommodations = Accommodation.all
     end
-    # MAP CODE
-    @accommodations = @accommodationss.where.not(latitude: nil, longitude: nil)
-
-    @markers = @accommodations.map do |accommodation|
-      {
-        lat: accommodation.latitude,
-        lng: accommodation.longitude,
-        infoWindow: { content: accommodation.name }
-      }
-    end
-    # MAP CODE
   end
 
   def show
     @review = Review.new
+    # MAP CODE BELOW
+    @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: @accommodation.name }}]
+    # @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: @accommodation }) } }]
+    # MAP CODE ABOVE
     authorize @accommodation
   end
 
@@ -41,7 +34,7 @@ class AccommodationsController < ApplicationController
     @accommodation.destination = @destination
     @accommodation.user = current_user
     authorize @accommodation
-    
+
     if @accommodation.save
       redirect_to accommodation_path(@accommodation)
     else
@@ -71,7 +64,7 @@ class AccommodationsController < ApplicationController
     redirect_to accommodations_path
   end
 
-private
+  private
 
   def set_destination
     @destination = Destination.find(params[:destination_id])
