@@ -6,13 +6,15 @@ Rails.application.routes.draw do
   get '/bucketlist', to: 'users#bucketlist', as: :bucketlist
 
   # PROFILE PAGE (DASHBOARD STYLE)
-  get '/profile', to: "users#profile", as: :profile
+  get '/profile', to: 'users#profile', as: :profile
 
   # RESOURCES
   devise_for :users
 
   resources :destinations do
-
+    member do
+      put :bucket_count, to: 'destinations#upvote'
+    end
     resources :experiences, only: [:new, :create]
 
     resources :accommodations, only: [:new, :create]
