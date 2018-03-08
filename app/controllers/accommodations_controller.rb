@@ -1,5 +1,5 @@
 class AccommodationsController < ApplicationController
-  before_action :set_accommodation, only: [:show, :edit, :update, :photo, :destroy]
+  before_action :set_accommodation, only: [:new, :create, :show, :edit, :update, :photo, :destroy]
   before_action :set_destination, only: [:new, :create]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
@@ -29,14 +29,13 @@ class AccommodationsController < ApplicationController
 
   def create
     @accommodation = Accommodation.new(params_accommodation)
-
     @destination = Destination.find(params[:destination_id])
     @accommodation.destination = @destination
     @accommodation.user = current_user
     authorize @accommodation
 
     if @accommodation.save
-      redirect_to accommodation_path(@accommodation)
+      redirect_to destinations/destination_id/accommodations(@accommodation)
     else
       render :new
     end
