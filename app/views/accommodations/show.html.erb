@@ -11,6 +11,11 @@
         <p><%#= @destination.locality %></p>
         <p><%#= @destination.country %></p>
         <p><%#= @destination.region %></p>
+        <%= link_to "Edit", edit_accommodation_path(@accommodation) %>
+        <br>
+        <%= link_to "Delete", accommodation_path(@accommodation),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
     </div>
     <div class="col-xs-6">
         <h3>You also like:</h3>

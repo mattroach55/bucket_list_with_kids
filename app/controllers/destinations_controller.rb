@@ -5,27 +5,39 @@ class DestinationsController < ApplicationController
 
   def index
     policy_scope(Destination)
+
+    # CODE TO IMPLEMENT SEARCH RESULTS BELOW
     if params[:query].present?
-      @experiences = Experience.search_by_name_description(params[:query])
+      PgSearch::Multisearch.rebuild(Destination)
+      PgSearch::Multisearch.rebuild(Experience)
+      PgSearch::Multisearch.rebuild(Accommodation)
+      results = PgSearch.multisearch(params[:query])
+
+      @all_entities = []
+      results.each do |result|
+        @all_entities << result.searchable
+        # end
+      end
+
+    # CODE TO IMPLEMENT SEARCH RESULTS ABOVE
     else
-    @destinations = Destination.all
-    #future code to mix destination, accomdation and experiences
+        #code to mix destination, accomdation and experiences. iterate on show page over @all_entities
+        @destinations = Destination.where.not(latitude: nil, longitude: nil)
+        @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
+        @experiences = Experience.where.not(latitude: nil, longitude: nil)
+        @all_entities = @destinations + @experiences + @accommodations
     end
 
-# CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES
-    @destinations = Destination.where.not(latitude: nil, longitude: nil)
-    @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
-    @experiences = Experience.where.not(latitude: nil, longitude: nil)
-    @all_entities = @destinations + @experiences + @accommodations
-
+    # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
     @markers = @all_entities.map do |e|
       {
         lat: e.latitude,
         lng: e.longitude,
-        # infoWindow: { content: entity.name }
-        infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: e }) }
-      }
-    end
+            # infoWindow: { content: entity.name }
+            infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: e }) }
+          }
+        end
+    # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES
   end
 
   # TESTING A UPVOTE ACTION
@@ -33,6 +45,12 @@ class DestinationsController < ApplicationController
     @destination = Destination.find(params[:id])
     authorize @destination
     @destination.upvote_by(current_user)
+    if current_user.bucket_list_items.where(destination: @destination).empty?
+      @bucket = BucketListItem.new
+      @bucket.user = current_user
+      @bucket.destination = @destination
+      @bucket.save
+    end
     redirect_to destinations_path
     # redirect_to destination_path(@destination)
   end
@@ -71,19 +89,19 @@ class DestinationsController < ApplicationController
   def update
     authorize @destination
     if @destination.update(params_destination)
-    redirect_to destination_path(@destination)
+      redirect_to destination_path(@destination)
     else
-    render :new
+      render :new
+    end
   end
- end
 
- def destroy
+  def destroy
     authorize @destination
     @destination.destroy
     redirect_to experiences_path
   end
 
-private
+  private
 
   def set_destination
     @destination = Destination.find(params[:id])

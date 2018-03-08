@@ -2,17 +2,18 @@
   <div class="banner-content">
     <h1>Make great memories</h1>
     <p>Amazing holiday experiences, handpicked just for families</p>
-    <%= form_tag experiences_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "search-bar form-control",
-      placeholder: "Search for experience eg. 'Rome'" %>
+    <div>
+      <%= form_tag destinations_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
+        <button type="submit" class="btn btn-primary">Search</button>
       <% end %>
-    </div>
+     </div>
   </div>
+</div>
+
 <div class="big-flex">
   <div class= "content">
-      <ul class="left-column">
+     <ul class="left-column">
         <% @destinations.each do |destination| %>
           <%= link_to destination_path(destination) do %>
             <li class="left-column-element">
@@ -29,7 +30,7 @@
             <% end %>
           <% end %>
       </ul>
-
+    
     <div class="right-column">
       <p><strong>TYPE</strong></p>
       <p><%= check_box_tag(:destination) %>
@@ -63,23 +64,19 @@
       <p><%= check_box_tag(:Shopping) %>
       <%= label_tag(:Shopping, "Shopping") %></p>
     </div>
-</div>
+  </div>
 </div>
 
 <div class = "full-page-column">
 <%= link_to "New", new_destination_path(@destination) %>
 </div>
 
-<div
+<!-- MAP -->
+<div class="container">
+ <div
   id="map"
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
-></div>
+ ></div>
 </div>
-
-
-
-
-
-
