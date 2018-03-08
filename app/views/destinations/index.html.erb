@@ -1,32 +1,33 @@
+<div>
+    <%= form_tag destinations_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
+      <button type="submit" class="btn btn-primary">Search</button>
+    <% end %>
+</div>
 
 <div class="container">
   <div class="row">
-    <h1>All destinations<h1>
-    <% @destinations.each do |destination| %>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(image_tag ');">
-        <div class="card-category">
-          <%= destination.name %>
+    <h1>Our recommendations<h1>
+    <% @all_entities.each do |entity| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
+          <div class="card-category">
+            <%= entity.name %>
+          </div>
+          <div class="card-description">
+            <p><%= entity.locality %></p>
+          </div>
+          <img class="card-user" src="">
+   <!--   alfie to insert code for the mix of entities adding to bucket list -->
         </div>
-        <div class="card-description">
-          <p><%= destination.locality %></p>
-          <p><%= destination.photo %></p>
-        </div>
-        <img class="card-user" src="">
-        <%= link_to bucket_count_destination_path(destination), method: :put do %>
-          <i class="fa fa-bitbucket right"> </i>
-        <% end %>
       </div>
-      <h6>this destination has been added <%= destination.get_upvotes.count %> times</h6>
-    </div>
     <% end %>
   </div>
 </div>
 
-
 <%= link_to "New", new_destination_path(@destination) %>
 
-
+<!-- MAP -->
 <div class="container">
   <div
   id="map"
@@ -34,7 +35,7 @@
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
 ></div>
-</div>
-<!-- MAP -->
+
+
 
 

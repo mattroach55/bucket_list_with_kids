@@ -16,8 +16,7 @@ class AccommodationsController < ApplicationController
   def show
     @review = Review.new
     # MAP CODE BELOW
-    @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: @accommodation.name }}]
-    # @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: @accommodation }) } }]
+    @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { entity: @accommodation }) } }]
     # MAP CODE ABOVE
     authorize @accommodation
   end
