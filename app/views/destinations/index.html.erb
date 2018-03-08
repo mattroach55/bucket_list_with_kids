@@ -1,12 +1,41 @@
 <div class="banner-content">
   <h1>Explore the world, make new friends</h1>
   <p>Bucket list experiences, crafted by locals</p>
-  <%= form_tag experiences_path, method: :get do %>
-    <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-      placeholder: "Search for experience eg. 'Rome'" %>
-  <% end %>
+
+  <div class="ais-search-box">
+    <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="Search for products" role="textbox" spellcheck="false" type="text" value="" class="ais-search-box--input">
+    <span>
+      <div class="ais-search-box--powered-by">
+        Search by
+        <a class="ais-search-box--powered-by-link" href="https://www.algolia.com/?utm_source=instantsearch.js&amp;utm_medium=website&amp;utm_content=community.algolia.com&amp;utm_campaign=poweredby" target="_blank">
+          Algolia
+        </a>
+      </div>
+    </span>
+  </div>
+  <div id="current-refined-values">
+  <!-- CurrentRefinedValues widget will appear here -->
+  </div>
+
+  <div id="clear-all">
+    <!-- ClearAll widget will appear here -->
+  </div>
+
+  <div id="search-box">
+  <!-- SearchBox widget will appear here -->
+  </div>
+
+  <div id="refinement-list">
+  <!-- RefinementList widget will appear here -->
+  </div>
+
+  <div id="hits">
+  <!-- Hits widget will appear here -->
+  </div>
+
+  <div id="pagination">
+  <!-- Pagination widget will appear here -->
+  </div>
 </div>
 
 <div class="container">

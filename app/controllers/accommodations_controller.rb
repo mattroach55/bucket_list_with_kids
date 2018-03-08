@@ -1,4 +1,5 @@
 class AccommodationsController < ApplicationController
+
   before_action :set_accommodation, only: [:show, :edit, :update, :photo, :destroy]
   before_action :set_destination, only: [:new, :create]
   skip_before_action :authenticate_user!, only: [:index, :show]

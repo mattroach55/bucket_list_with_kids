@@ -15,4 +15,14 @@ class Experience < ApplicationRecord
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
   end
 
+  include AlgoliaSearch
+  algoliasearch do
+    attributes :name, :entity, :description, :street, :locality, :region,
+    :country, :holiday_type, :theme, :bucket_list_count, :average_review_score
+
+    searchableAttributes ['name', 'entity', 'unordered(description)']
+
+    customRanking ['desc(bucket_list_count)']
+  end
+
 end

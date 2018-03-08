@@ -1,29 +1,7 @@
 class DestinationsController < ApplicationController
-  include AlgoliaSearch
-
   before_action :set_destination, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
-
-
-  algoliasearch per_environment: true, disable_indexing: Rails.env.test? do
-  end
-
-  algoliasearch do
-    # list of attribute used to build an Algolia record
-    attributes :name, :entity, :description, :street, :locality, :region,
-    :holiday_type, :theme, :bucket_list_count, :average_review_score
-
-    # the `searchableAttributes` (formerly known as attributesToIndex) setting defines the attributes
-    # you want to search in: here `title`, `subtitle` & `description`.
-    # You need to list them by order of importance. `description` is tagged as
-    # `unordered` to avoid taking the position of a match into account in that attribute.
-    searchableAttributes ['name', 'entity', 'unordered(description)']
-
-     # the `customRanking` setting defines the ranking criteria use to compare two matching
-    # records in case their text-relevance is equal. It should reflect your record popularity.
-    customRanking ['desc(bucket_list_count)']
-  end
 
   def index
     policy_scope(Destination)
