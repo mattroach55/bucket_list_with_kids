@@ -35,7 +35,7 @@ class AccommodationsController < ApplicationController
     authorize @accommodation
 
     if @accommodation.save
-      redirect_to accommodation_path(@accommodation)
+      redirect_to destinations/destination_id/accommodations(@accommodation)
     else
       render :new
     end
@@ -51,7 +51,7 @@ class AccommodationsController < ApplicationController
   def update
     authorize @accommodation
     if @accommodation.update(params_accommodation)
-      redirect_to accommodation_path(@accommodation)
+      redirect_to destinations/destination_id/accommodations(@accommodation)
     else
       render :new
     end
