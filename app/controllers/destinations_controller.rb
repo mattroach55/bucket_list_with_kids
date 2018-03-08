@@ -16,9 +16,7 @@ class DestinationsController < ApplicationController
       @all_entities = []
       results.each do |result|
         @all_entities << result.searchable
-        # end
       end
-
     # CODE TO IMPLEMENT SEARCH RESULTS ABOVE
     else
         #code to mix destination, accomdation and experiences. iterate on show page over @all_entities
