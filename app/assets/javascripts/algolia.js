@@ -5,7 +5,12 @@
 // if you are using AMD module loader, algoliasearch will not be defined in window,
 // but in the AMD modules of the page
 
-var client = algoliasearch('CHZ1QFQS3L', '2adac3ef18692463940451b5deb1f2c2');
+var applicationID = 'CHZ1QFQS3L';
+var apiKey = '2adac3ef18692463940451b5deb1f2c2';
+var indexName = 'dev_BUCKETKIDS';
+
+var client = algoliasearch(applicationID, apiKey);
+var index = client.initIndex(indexName);
 
 const search = instantsearch({
   appId: 'CHZ1QFQS3L',
@@ -15,63 +20,71 @@ const search = instantsearch({
 });
 
 // initialize currentRefinedValues
-search.addWidget(
-  instantsearch.widgets.currentRefinedValues({
-    container: '#current-refined-values',
-    // This widget can also contain a clear all link to remove all filters,
-    // we disable it in this example since we use `clearAll` widget on its own.
-    clearAll: false
-  })
-);
+// search.addWidget(
+//   instantsearch.widgets.currentRefinedValues({
+//     container: '#current-refined-values',
+//     // This widget can also contain a clear all link to remove all filters,
+//     // we disable it in this example since we use `clearAll` widget on its own.
+//     clearAll: false
+//   })
+// );
 
-      // initialize clearAll
-search.addWidget(
-  instantsearch.widgets.clearAll({
-    container: '#clear-all',
-    templates: {
-      link: 'Reset everything'
-    },
-    autoHideContainer: false
-  })
-);
+// // initialize pagination
+// search.addWidget(
+//   instantsearch.widgets.pagination({
+//     container: '#pagination',
+//     maxPages: 20,
+//     // default is to scroll to 'body', here we disable this behavior
+//     scrollTo: false
+//   })
+// );
 
-      // initialize pagination
-search.addWidget(
-  instantsearch.widgets.pagination({
-    container: '#pagination',
-    maxPages: 20,
-    // default is to scroll to 'body', here we disable this behavior
-    scrollTo: false
-  })
-);
-
-// initialize RefinementList
-search.addWidget(
-  instantsearch.widgets.refinementList({
-    container: '#refinement-list',
-    attributeName: 'category'
-  })
-);
+// // initialize RefinementList
+// search.addWidget(
+//   instantsearch.widgets.refinementList({
+//     container: '#refinement-list',
+//     attributeName: 'category'
+//   })
+// );
 
 // initialize SearchBox
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search-box',
-    placeholder: 'Search for products'
+    placeholder: 'Search for destinations',
   })
 );
+
 
 // initialize hits widget
 search.addWidget(
   instantsearch.widgets.hits({
     container: '#hits',
-    placeholder: 'Search for destinations',
     autofocus: false,
     poweredBy: true,
     reset: true,
-    loadingIndicator: false
+    loadingIndicator: false,
+    templates: {
+        empty: '<p class="info">No results were found with your current filters. <br/> <a class="button" href=".">Clear all the filters</a></p>',
+        item: '<div class="container-result"><a href="{{_highlightResult.entity.value}}s/{{objectID}}">{{{_highlightResult.name.value}}}</a></div>'
+      }
     })
 );
+
+
+// search.addWidget(
+//   instantsearch.widgets.toggle({
+//     container: '#free-shipping',
+//     attributeName: 'entity',
+//     label: 'Destination',
+//     values: {
+//       on: "destination",
+//     },
+//     templates: {
+//       header: 'Shipping'
+//     }
+//   })
+// );
 
 search.start();
 

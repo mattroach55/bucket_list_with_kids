@@ -16,6 +16,10 @@ class Destination < ApplicationRecord
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
   end
 
+  def algolia_id
+    "destination_#{id}" # ensure the teacher & student IDs are not conflicting
+  end
+
   include AlgoliaSearch
   algoliasearch index_name: 'dev_BUCKETKIDS' do
     attributes :name, :entity, :description, :street, :locality, :region,
