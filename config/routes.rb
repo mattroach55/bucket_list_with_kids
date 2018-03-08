@@ -25,10 +25,10 @@ end
 
     resources :accommodations, only: [:new, :create]
   end
-  resources :experiences, only: [:index, :show, :edit, :destroy] do
+  resources :experiences, only: [:index, :show, :edit, :destroy, :update] do
    resources :reviews, only: [:new, :create]
  end
-  resources :accommodations, only: [:index, :show, :edit, :destroy] do
+  resources :accommodations, only: [:index, :show, :edit, :destroy, :update] do
    resources :reviews, only: [:create]
  end
   resources :reviews, only: [:destroy]
