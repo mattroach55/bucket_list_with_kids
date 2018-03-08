@@ -17,7 +17,6 @@
         <% @destinations.each do |destination| %>
           <%= link_to destination_path(destination) do %>
             <li class="left-column-element">
-              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
               <div class="card-index">
                 <h1 class="title"><%= destination.name %></h1>
                 <h1 class="locality"><%= destination.country %></h1>
@@ -30,7 +29,8 @@
             <% end %>
           <% end %>
       </ul>
-    
+    </div>
+
     <div class="right-column">
       <p><strong>TYPE</strong></p>
       <p><%= check_box_tag(:destination) %>
@@ -63,7 +63,6 @@
       <%= label_tag(:Science, "Science & Nature") %></p>
       <p><%= check_box_tag(:Shopping) %>
       <%= label_tag(:Shopping, "Shopping") %></p>
-    </div>
   </div>
 </div>
 
