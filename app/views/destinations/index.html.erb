@@ -24,73 +24,11 @@
                 <%= link_to bucket_count_destination_path(destination), method: :put do %>
                   <i class="fa fa-bitbucket right"> </i>
                 <% end %>
-                <!-- !<h1 class="stars"> --><%# destination.reviews.each do |review| %>
-                  <%# review.rating.times do |n| %>
-                 <!--  <i class="fa fa-star"></i> -->
-                  <%# end %>
-                <!-- <!<img class="avatar user-image"> -->
-                <%#= image_tag "venice.jpg", class: "card-background-image" %>
-                <%#= cl_image_tag destination.photo, :class => "card-background-image" %>
-                  <%#= user.photo %>
-               <%# end %>
               </div>
             </li>
             <% end %>
           <% end %>
       </ul>
-
-
-           <!--  <h6>this destination has been added <%#= destination.get_upvotes.count %> times</h6> -->
-
-    <!-- <div>
-      <ul class="left-column">
-        <%# @destinations.each do |destination| %>
-          <%#= link_to destination_path(destination) do %>
-            <li class="left-column-element">
-              <div class="card-index">
-                <h1 class="title"><%#= destination.name %></h1>
-                <h1 class="locality"><%#= destination.country %></h1>
-                <img class="card-user" src="">
-                <%#= link_to bucket_count_destination_path(destination), method: :put do %>
-                  <i class="fa fa-bitbucket right"> </i>
-                <%# end %>
-                <!<h1 class="stars"><%# destination.reviews.each do |review| %>
-                  <%# review.rating.times do |n| %>
-                  <i class="fa fa-star"></i>
-                  <%# end %>
-                <!<img class="avatar user-image">
-                <%#= image_tag "venice.jpg", class: "card-background-image" %>
-                <%#= cl_image_tag destination.photo, :class => "card-background-image" %>
-                  <%#= user.photo %>
-                  <%# end %>
-              </div>
-            </li>
-            <%# end %>
-          <%# #end %> -->
-  <!--     </ul>
-    </div> -->
-
-
-                <!-- <h1 class="price">$  --><%#= destination.price %><!-- </h1> -->
-                <!-- <!<! <h1 class="stars"> --><%# destination.reviews.each do |review| %> -->
-                  <%# review.rating.times do |n| %>
-                  <!-- <i class="fa fa-star"></i> -->
-                  <%# end %>
-               <!--  <img class="avatar user-image"> -->
-                <%# cl_image_tag destination.user.photo, class:'avatar user-image' %>
-                  <%#= user.photo %>
-                  <%# end %>
-       <!--          </h1> -->
-
-
-
-            <!--   </div>
-            </li> -->
-            <%# end %>
-          <%# end %>
-  <!--     </ul>
-    </div>
-  </div> -->
 
     <div class="right-column">
       <p><strong>TYPE</strong></p>
@@ -127,36 +65,10 @@
     </div>
 </div>
 </div>
-<!-- <div right-column> -->
-<!-- <div class="container">
-  <div class="row">
-    <h1>All destinations</h1>
-    <%# @destinations.each do |destination| %>
-    <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
-        <div class="card-category">
-          <%#= destination.name %>
-        </div>
-        <div class="card-description">
-          <p><%#= destination.locality %></p>
-          <p><%#= destination.country %></p>
-         <p><%#= destination.region %></p>
-        </div>
-        <img class="card-user" src="">
-        <%#= link_to bucket_count_destination_path(destination), method: :put do %>
-          <i class="fa fa-bitbucket right"> </i>
-        <%# end %>
-      <!</div>
-      <!<h6>this destination has been added <%#= destination.get_upvotes.count %> times</h6> -->
-   <!--  </div> --> -->
-    <%# end %>
-  <!-- </div>
-</div> -->
 
 <div class = "full-page-column">
 <%= link_to "New", new_destination_path(@destination) %>
 </div>
-
 
 <div
   id="map"
