@@ -25,6 +25,9 @@
   </div>
 </div>
 
+<%= link_to "New", new_destination_path(@destination) %>
+
+<!-- MAP -->
 <div class="container">
   <div
   id="map"
@@ -33,6 +36,6 @@
   data-markers="<%= @markers.to_json %>"
 ></div>
 
-<!-- MAP -->
 
-<%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
+
+

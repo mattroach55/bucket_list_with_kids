@@ -28,7 +28,6 @@ class AccommodationsController < ApplicationController
 
   def create
     @accommodation = Accommodation.new(params_accommodation)
-
     @destination = Destination.find(params[:destination_id])
     @accommodation.destination = @destination
     @accommodation.user = current_user

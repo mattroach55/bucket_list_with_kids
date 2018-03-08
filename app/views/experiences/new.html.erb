@@ -1,4 +1,4 @@
-<%= simple_form_for(@experience) do |f| %>
+<%= simple_form_for([@destination, @experience]) do |f| %>
 <%= f.input :name, placeholder: "Enter experience name" %>
 <%= f.input :entity %>
 <%= f.input :show %>
