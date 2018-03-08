@@ -16,6 +16,7 @@ gem 'pg_search'
 gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
+gem 'pg_search'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

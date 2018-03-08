@@ -1,41 +1,82 @@
-<div>
-    <%= form_tag destinations_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
-      <button type="submit" class="btn btn-primary">Search</button>
-    <% end %>
-</div>
-
-<div class="container">
-  <div class="row">
-    <h1>Our recommendations<h1>
-    <% @all_entities.each do |entity| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
-          <div class="card-category">
-            <%= entity.name %>
-          </div>
-          <div class="card-description">
-            <p><%= entity.locality %></p>
-          </div>
-          <img class="card-user" src="">
-   <!--   alfie to insert code for the mix of entities adding to bucket list -->
-        </div>
-      </div>
-    <% end %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143 ,0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url(<%= image_path '12849.jpg'%>);">
+  <div class="banner-content">
+    <h1>Make great memories</h1>
+    <p>Amazing holiday experiences, handpicked just for families</p>
+    <div>
+      <%= form_tag destinations_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
+        <button type="submit" class="btn btn-primary">Search</button>
+      <% end %>
+     </div>
   </div>
 </div>
 
+<div class="big-flex">
+  <div class= "content">
+     <ul class="left-column">
+        <% @destinations.each do |destination| %>
+          <%= link_to destination_path(destination) do %>
+            <li class="left-column-element">
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
+              <div class="card-index">
+                <h1 class="title"><%= destination.name %></h1>
+                <h1 class="locality"><%= destination.country %></h1>
+                <img class="card-user" src="">
+                <%= link_to bucket_count_destination_path(destination), method: :put do %>
+                  <i class="fa fa-bitbucket right"> </i>
+                <% end %>
+              </div>
+            </li>
+            <% end %>
+          <% end %>
+      </ul>
+    
+    <div class="right-column">
+      <p><strong>TYPE</strong></p>
+      <p><%= check_box_tag(:destination) %>
+      <%= label_tag(:destination, "destination") %></p>
+      <p><%= check_box_tag(:Accomodation) %>
+      <%= label_tag(:Accomodation, "Accomodation") %></p>
+      <p><%= check_box_tag(:Destination) %>
+      <%= label_tag(:Destination, "Destination") %></p>
+      <br>
+      <p><strong>KID'S AGE</strong></p>
+      <p><%= check_box_tag(:Age_group_one) %>
+      <%= label_tag(:Age_group_one, "5-7") %></p>
+      <p><%= check_box_tag(:Age_group_two) %>
+      <%= label_tag(:Age_group_two, "8-10") %></p>
+      <p><%= check_box_tag(:Age_group_three) %>
+      <%= label_tag(:Age_group_three, "11-12") %></p>
+      <br>
+      <p><strong>THEME</strong></p>
+      <p><%= check_box_tag(:Adventure) %>
+      <%= label_tag(:Adventure, "Adventure & Sport") %></p>
+      <p><%= check_box_tag(:Art) %>
+      <%= label_tag(:Art, "Art & Culture") %></p>
+      <p><%= check_box_tag(:Wellness) %>
+      <%= label_tag(:Wellness, "Body & Mind") %></p>
+      <p><%= check_box_tag(:Entertainment) %>
+      <%= label_tag(:Entertainment, "Entertainment") %></p>
+      <p><%= check_box_tag(:Food) %>
+      <%= label_tag(:Food, "Food & Drink") %></p>
+      <p><%= check_box_tag(:Science) %>
+      <%= label_tag(:Science, "Science & Nature") %></p>
+      <p><%= check_box_tag(:Shopping) %>
+      <%= label_tag(:Shopping, "Shopping") %></p>
+    </div>
+  </div>
+</div>
+
+<div class = "full-page-column">
 <%= link_to "New", new_destination_path(@destination) %>
+</div>
 
 <!-- MAP -->
 <div class="container">
-  <div
+ <div
   id="map"
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
-></div>
-
-
-
-
+ ></div>
+</div>
