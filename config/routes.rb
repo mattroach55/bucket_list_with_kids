@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   # RESOURCES
   devise_for :users
 
+  resource :user, only: [:edit] do
+  collection do
+    patch 'update_password'
+  end
+end
+
   resources :destinations do
     member do
       put :bucket_count, to: 'destinations#upvote'
