@@ -57,7 +57,7 @@ if (window.location.pathname === '/') {
 
 
 
-  const search = instantsearch({
+  var search = instantsearch({
     appId: 'CHZ1QFQS3L',
     apiKey: '2adac3ef18692463940451b5deb1f2c2',
     indexName: 'dev_BUCKETKIDS',
