@@ -77,6 +77,32 @@
     margin-bottom: 75px;
   }
 
+  .page-info-box {
+    background-color: white;
+    width: 100%;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    padding-bottom: 85px;
+  }
+  .page-info-box  p {
+      font-family: 'Sacramento';
+      text-align: center;
+      font-size: 40px;
+      color: rgba(25,33,51,.9);
+      padding-top: 100px;
+    }
+
+  .icons {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  .icon {
+    width: 30%;
+    padding: 30px;
+  }
+
   .right-column {
     display: flex;
     width: 225px;
