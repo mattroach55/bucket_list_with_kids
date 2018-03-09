@@ -20,10 +20,16 @@
 
     <! <p><%#= @destination.name %> it a good choice for families that like <%#= @destination.holiday_type %>, and <%#= @destination.theme %></p> -->
 
-
+    <%# if policy(@experience).update? %>
     <%#= link_to "Edit", edit_destination_path(@destination) %>
+    <%# end %>
+    <%# if policy(@experience).create? %>
     <%#= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-    <%#= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+    <%# end %>
+    <%# if policy(@experience).destroy? %>
+      <%#= link_to 'Delete', experience_path(@experience),
+      method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <%# end %>
 </div>
 
 
