@@ -2,7 +2,12 @@
 .show-page-photo {
   background-image: no-repeat;
   background-size: cover !important;
-  height: 400px;
+  height: 100vh;
+  position: relative;
+}
+
+.show-container {
+  padding: 20px;
 }
 
 .right-column-show p {
@@ -18,8 +23,13 @@
  }
 
  .show-page-banner-text h1 {
-  color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, .9);
   font-family: 'Sacramento', cursive;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
  }
 
  .show-page-text h3 {
