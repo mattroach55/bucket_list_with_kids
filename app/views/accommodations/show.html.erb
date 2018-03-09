@@ -1,10 +1,10 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://picsum.photos/1200/700');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= cl_image_path(@accommodation.photo) %>');">
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-        <h1>This is the Accommodation Show Page</h1>
+        <h1 class="show-page-text">ABOUT</h1>
         <h3><%= @accommodation.name %></h3>
         <p><%= @accommodation.description %></p>
         <p><strong>Location of <%= @accommodation.name %>'s accommodation</strong>

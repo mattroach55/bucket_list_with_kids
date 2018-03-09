@@ -2,7 +2,7 @@
   <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0, 0, 0, 0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url(<%= image_path 'banner.jpg'%>);">
     <div class="banner-content">
       <%= image_tag 'logo.svg', :class => "page-logo" %>
-      <p>Unique holiday experiences, handpicked just for families</p>
+      <p>Unique holiday inspiration, handpicked just for families</p>
       <div>
         <%= form_tag destinations_path, method: :get do %>
         <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
@@ -128,11 +128,11 @@
     <div class="right-column">
       <p><strong>TYPE</strong></p>
       <p><%= check_box_tag(:destination) %>
-      <%= label_tag(:destination, "destination") %></p>
-      <p><%= check_box_tag(:Accomodation) %>
-      <%= label_tag(:Accomodation, "Accomodation") %></p>
-      <p><%= check_box_tag(:Destination) %>
-      <%= label_tag(:Destination, "Destination") %></p>
+      <%= label_tag(:destination, "Destination") %></p>
+      <p><%= check_box_tag(:experience) %>
+      <%= label_tag(:experience, "Experience") %></p>
+      <p><%= check_box_tag(:destination) %>
+      <%= label_tag(:accommodation, "Accommodation") %></p>
       <br>
       <p><strong>KID'S AGE</strong></p>
       <p><%= check_box_tag(:Age_group_one) %>
@@ -168,13 +168,15 @@
 
   <div class = "full-page-column">
     <%= link_to "New", new_destination_path(@destination) %>
-  </div>
+</div>
+</div>
 
   <!-- MAP -->
   <div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
   </div>
 </div>
-</div>
+
+
 
 
 

@@ -101,6 +101,8 @@
     padding-left: 0;
     justify-content: space-around;
     vertical-align: middle;
+    height: 100%;
+    overflow: auto;
   }
 
   .left-column-element {
@@ -117,8 +119,7 @@
   }
 
   .map-index {
-    bottom: 15px;
-    position: absolute;
+    display: inline-block;
   }
 
   .bucket-button {
