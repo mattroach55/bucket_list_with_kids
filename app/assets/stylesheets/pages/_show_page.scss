@@ -2,4 +2,12 @@
 .show-page-photo {
   background-image: no-repeat;
   background-size: cover !important;
+  height: 400px;
 }
+
+.right-column-show p {
+    padding-left: 20%;
+    font-weight: lighter;
+    color: darkgray;
+    font-size: 14px;
+   }

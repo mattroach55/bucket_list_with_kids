@@ -7,6 +7,7 @@
 .form-control {
   width: 300px;
   display: inline-block;
+  vertical-align: top;
 }
 
 .search-bar {
@@ -22,7 +23,7 @@
 }
 
 .big-flex {
-  margin: 30px 70px;
+  margin: 75px 70px;
   display: flex;
   position: relative;
 }

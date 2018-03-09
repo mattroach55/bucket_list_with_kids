@@ -3,10 +3,18 @@
   width: 400px;
   height: 280px;
   border-radius: 3px;
-  box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.4);
+  box-shadow: 2px 2px 2px rgba(.5, .5, .5, 0.4);
   margin: 0 auto;
   content-align: center;
   margin-bottom: 30px;
+}
+
+.card-index:hover {
+  opacity: 0.7;
+  width: 401px;
+  height: 281px;
+  box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.4);
+  transition: all 0.15s ease;
 }
 .card-background-image {
   position: absolute;
@@ -19,7 +27,16 @@
   border-radius: 3px;
   background-color: rgba(1,1,1,0.8);
   margin: 0 auto;
+  box-shadow: 2px 2px 2px rgba(.5, .5, .5, 0.4);
 }
+.card-background-image:hover {
+  opacity: 0.7;
+  width: 401px;
+  height: 281px;
+  box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.4);
+  transition: all 0.15s ease;
+}
+
 
 .locality {
   position: absolute;
@@ -34,15 +51,16 @@
 
 .title {
   position: absolute;
-  text-align: center;
+  text-align: left;
   font-size: 16px;
-  font-weight: normal;
-  color: rgba(255, 255, 255, .5);
+  font-weight: lighter;
+  color: rgba(255, 255, 255, .9);
   left: 5px;
   top: 5px;
   width: 200px;
-  font-family: 'Sacramento', cursive;
-  font-size: 40px;
+  font-family: 'Raleway';
+  font-size: 28px;
+  margin-top: 0;
 }
 
 .user-image {
