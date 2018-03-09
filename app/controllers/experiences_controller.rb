@@ -50,6 +50,7 @@ class ExperiencesController < ApplicationController
   end
 
   def update
+    @experience = Experience.find(params[:id])
     authorize @experience
     if @experience.update(params_experience)
       redirect_to experience_path(@experience)

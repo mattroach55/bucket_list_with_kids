@@ -23,7 +23,6 @@ if (window.location.pathname === '/') {
     }
   }
   ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-    console.log(suggestion);
     result = suggestion;
     var input = document.getElementById('search-input');
     input.value = suggestion.name;
@@ -35,9 +34,6 @@ if (window.location.pathname === '/') {
   input.addEventListener('keyup', function(e) {
     console.log(result);
     if (e.keyCode === 13) {
-      console.log('loool');
-      console.log(input.value);
-      console.log('loool');
       index.search('', {
         hitsPerPage: 1,
         facetFilters: [
@@ -46,7 +42,6 @@ if (window.location.pathname === '/') {
       }, function(err, content) {
 
         if (content.hits.length > 0) {
-          console.log(result);
           window.location.href = result._highlightResult.entity.value + "s/" + result.objectID.split("_")[1];
         }
       });
