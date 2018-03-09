@@ -1,12 +1,28 @@
 
-<%= cl_image_tag @destination.photo %>
-<h1><%= @destination.name %></h1><br>
-<p><%= @destination.description %></p><br>
-<p><%= @destination.locality %></p>
-<p><%= @destination.country %></p>
-<p><%= @destination.region %></p>
+<div class="banner-pages show-page-banner-text" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143 ,0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('<%= cl_image_path(@destination.photo) %>');">
+  <div class="show-page-photo">
+    <h1><%= @destination.name %></h1>
+  </div>
+</div>
+<div class="big-flex">
+  <div class="left-column">
+    <div class="show-container">
+      <div class="left-column-element">
+        <h3>ABOUT</h3>
+        <p><%= @destination.description %></p><br>
+      </div>
+    </div>
+  </div>
+  <%= link_to "back to results", destinations_path %>
+ <!--  <div class="right-column-show">
 
 
-<%= link_to "Edit", edit_destination_path(@destination) %>
-<%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+
+    <! <p><%#= @destination.name %> it a good choice for families that like <%= @destination.holiday_type %>, and <%#= @destination.theme %></p> -->
+
+
+    <%#= link_to "Edit", edit_destination_path(@destination) %>
+    <%#= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+    <%#= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+  </div> -->
+</div>

@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+.body {
+  position: relative;
+  background-color: rgba(152, 135, 143, .1);
+}
 .algolia-autocomplete {
   width: 100%;
 }
@@ -29,6 +33,7 @@
 .form-control {
   width: 300px;
   display: inline-block;
+  vertical-align: top;
 }
 
 .search-bar {
@@ -44,7 +49,7 @@
 }
 
 .big-flex {
-  margin: 30px 70px;
+  margin: 75px 70px;
   display: flex;
   position: relative;
 }
@@ -67,7 +72,10 @@
  //  }
 
  //temp class-remove later
-
+  .page-logo {
+    height: 150px;
+    margin-bottom: 75px;
+  }
 
   .right-column {
     display: flex;
@@ -113,12 +121,14 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 70%;
+    width: 80%;
     //temp
     height: 1000px;
     padding-left: 0;
-    justify-content: space-between;
+    justify-content: space-around;
     vertical-align: middle;
+    height: 100%;
+    overflow: auto;
   }
 
   .left-column-element {
@@ -134,7 +144,14 @@
     font-size: 70px;
   }
 
-  .content {
-    position: relative;
+  .map-index {
+    display: inline-block;
+  }
+
+  .bucket-button {
+    height: 20px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
   }
 
