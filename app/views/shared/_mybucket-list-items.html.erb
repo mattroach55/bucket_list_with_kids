@@ -6,18 +6,18 @@
    <div class="container">
      <div class="row">
        <div class="col-xs-12 text-center">
-        <h1>Hello <%= @user.username %></h1>
-        <h4>All your bucketlist items:</h4>
+        <h4>Your bucketlist items:</h4>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Filter tabs -->
+<div class = "tab-container">
 <div class="tabs">
     <a class="tab" data-target="#">
     <p>Total</p>
-    <h3>865</h3>
+    <h3>0</h3>
   </a>
   <a class="tab" data-target="#myaccommodations">
     <p>accommodations</p>
@@ -25,7 +25,7 @@
   </a>
   <a class="tab" data-target="#mydestinations">
     <p>destinations</p>
-    <h3><%= current_user.get_voted(Destination).count %></h3>
+    <!-- <h3><%#= current_user.get_voted(Destination).count %></h3> -->
   </a>
   <a class="tab" data-target="#myexperiences">
     <p>experiences</p>
@@ -49,4 +49,5 @@
   <div class="tab-content" id="myexperiences">
     <%= render 'shared/myexperiences' %>
   </div>
+</div>
 </div>

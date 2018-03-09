@@ -1,11 +1,12 @@
 <div class="navbar-wagon">
   <!-- Bucketlist logo -->
   <a href="/" class="navbar-wagon-brand">
-    <img src="images/logo.png" alt="logo">
+    <%= image_tag 'nav_bar_logo.svg' %>
   </a>
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-    <%= link_to "See your Bucketlist", bucketlist_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "BUCKET LIST", bucketlist_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <!-- Navbar if user is signed in -->
     <% if user_signed_in? %>
     <div class="navbar-wagon-item">

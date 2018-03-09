@@ -1,7 +1,7 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143 ,0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url(<%= image_path '12849.jpg'%>);">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143 ,0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('<%= image_path 'banner.jpg'%>');">
   <div class="banner-content">
-    <h1>Make great memories</h1>
-    <p>Amazing holiday experiences, handpicked just for families</p>
+    <%= image_tag 'logo.svg', :class => "page-logo" %>
+    <p>Unique holiday inspiration, handpicked just for families</p>
 
     <!-- ACTIVE ALGOLIA SEARCH -->
     <form action="#" class="form">
@@ -18,106 +18,105 @@
   </div>
 </div>
 
-<div class="big-flex">
-  <div class= "content">
-    <ul class="left-column">
-      <% @all_entities.each do |entity| %>
+  <div class="big-flex">
+    <div class= "content">
+      <ul class="left-column">
+        <% @all_entities.each do |entity| %>
 
-      <% if entity.class == Destination %>
+        <% if entity.class == Destination %>
 
-      <%= link_to destination_path(entity) do %>
-      <li class="left-column-element">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
+        <%= link_to destination_path(entity) do %>
+        <li class="left-column-element">
           <div class="card-index">
-            <h1 class="title"><%= entity.name %></h1>
-            <h1 class="locality"><%= entity.locality %></h1>
-            <img class="card-user" src="">
-            <%= link_to bucket_count_destination_path(entity), method: :put do %>
-            <i class="fa fa-bitbucket right"> </i>
-            <% end %>
+            <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
+              <div class="card-index">
+                <h1 class="title"><%= entity.name %></h1>
+                <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
+                 <%#= link_to bucket_count_destination_path(entity),method: :put do %>
+                <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
+                <%# end %>
+              </div>
+            </div>
           </div>
-        </div>
-      </li>
-      <% end %>
+        </li>
+        <% end %>
 
-      <% elsif entity.class == Experience %>
+        <% elsif entity.class == Experience %>
 
-      <%= link_to experience_path(entity) do %>
-      <li class="left-column-element">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
+        <%= link_to experience_path(entity) do %>
+        <li class="left-column-element">
           <div class="card-index">
-            <h1 class="title"><%= entity.name %></h1>
-            <h1 class="locality"><%= entity.locality %></h1>
-            <img class="card-user" src="">
+            <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
+              <div class="card-index">
+                <h1 class="title"><%= entity.name %></h1>
+                <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
+                <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
+              </div>
+            </div>
           </div>
-        </div>
-      </li>
-      <% end %>
+        </li>
+        <% end %>
 
-      <% else %>
+        <% else %>
 
-      <%= link_to accommodation_path(entity) do %>
-      <li class="left-column-element">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/300/200/city/');">
+        <%= link_to accommodation_path(entity) do %>
+        <li class="left-column-element">
           <div class="card-index">
-            <h1 class="title"><%= entity.name %></h1>
-            <h1 class="locality"><%= entity.locality %></h1>
-            <img class="card-user" src="">
+            <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
+              <div class="card-index">
+                <h1 class="title"><%= entity.name %></h1>
+                <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
+                <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
+              </div>
+            </div>
           </div>
-        </div>
-      </li>
-      <% end %>
-      <% end %>
-
-      <% end %>
-    </ul>
+        </li>
+        <% end %>
+        <% end %>
+        <% end %>
+      </ul>
+    </div>
 
     <div class="right-column">
       <p><strong>TYPE</strong></p>
       <p><%= check_box_tag(:destination) %>
-        <%= label_tag(:destination, "destination") %></p>
-        <p><%= check_box_tag(:Accomodation) %>
-          <%= label_tag(:Accomodation, "Accomodation") %></p>
-          <p><%= check_box_tag(:Destination) %>
-            <%= label_tag(:Destination, "Destination") %></p>
-            <br>
-            <p><strong>KID'S AGE</strong></p>
-            <p><%= check_box_tag(:Age_group_one) %>
-              <%= label_tag(:Age_group_one, "5-7") %></p>
-              <p><%= check_box_tag(:Age_group_two) %>
-                <%= label_tag(:Age_group_two, "8-10") %></p>
-                <p><%= check_box_tag(:Age_group_three) %>
-                  <%= label_tag(:Age_group_three, "11-12") %></p>
-                  <br>
-                  <p><strong>THEME</strong></p>
-                  <p><%= check_box_tag(:Adventure) %>
-                    <%= label_tag(:Adventure, "Adventure & Sport") %></p>
-                    <p><%= check_box_tag(:Art) %>
-                      <%= label_tag(:Art, "Art & Culture") %></p>
-                      <p><%= check_box_tag(:Wellness) %>
-                        <%= label_tag(:Wellness, "Body & Mind") %></p>
-                        <p><%= check_box_tag(:Entertainment) %>
-                          <%= label_tag(:Entertainment, "Entertainment") %></p>
-                          <p><%= check_box_tag(:Food) %>
-                            <%= label_tag(:Food, "Food & Drink") %></p>
-                            <p><%= check_box_tag(:Science) %>
-                              <%= label_tag(:Science, "Science & Nature") %></p>
-                              <p><%= check_box_tag(:Shopping) %>
-                                <%= label_tag(:Shopping, "Shopping") %></p>
-                              </div>
+      <%= label_tag(:destination, "Destination") %></p>
+      <p><%= check_box_tag(:experience) %>
+      <%= label_tag(:experience, "Experience") %></p>
+      <p><%= check_box_tag(:destination) %>
+      <%= label_tag(:accommodation, "Accommodation") %></p>
+      <br>
+      <p><strong>KID'S AGE</strong></p>
+      <p><%= check_box_tag(:Age_group_one) %>
+      <%= label_tag(:Age_group_one, "5-7") %></p>
+      <p><%= check_box_tag(:Age_group_two) %>
+      <%= label_tag(:Age_group_two, "8-10") %></p>
+      <p><%= check_box_tag(:Age_group_three) %>
+      <%= label_tag(:Age_group_three, "11-12") %></p>
+      <br>
+      <p><strong>THEME</strong></p>
+      <p><%= check_box_tag(:Adventure) %>
+      <%= label_tag(:Adventure, "Adventure & Sport") %></p>
+      <p><%= check_box_tag(:Art) %>
+      <%= label_tag(:Art, "Art & Culture") %></p>
+      <p><%= check_box_tag(:Wellness) %>
+      <%= label_tag(:Wellness, "Body & Mind") %></p>
+      <p><%= check_box_tag(:Entertainment) %>
+      <%= label_tag(:Entertainment, "Entertainment") %></p>
+      <p><%= check_box_tag(:Food) %>
+      <%= label_tag(:Food, "Food & Drink") %></p>
+      <p><%= check_box_tag(:Science) %>
+      <%= label_tag(:Science, "Science & Nature") %></p>
+      <p><%= check_box_tag(:Shopping) %>
+      <%= label_tag(:Shopping, "Shopping") %></p>
+    </div>
+</div>
+<!--   <div class = "full-page-column">
+    <%#= link_to "New", new_destination_path(@destination) %>
+</div> -->
+</div>
 
-                            </div>
-
-
-                            <div class = "full-page-column">
-                              <%= link_to "New", new_destination_path(@destination) %>
-                            </div>
-
-
-                            <!-- MAP -->
-                            <div class="container">
-                              <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-                              </div>
-                            </div>
-                          </div>
-
+  <!-- MAP -->
+  <div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+  </div>
+</div>
