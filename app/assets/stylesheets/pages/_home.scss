@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .body {
   position: relative;
-  background-color: rgba(152, 135, 143, .1)
+  background-color: rgba(152, 135, 143, .1);
 }
 
 .form-control {
@@ -119,6 +119,13 @@
   .map-index {
     bottom: 15px;
     position: absolute;
+  }
+
+  .bucket-button {
+    height: 20px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
   }
 
 

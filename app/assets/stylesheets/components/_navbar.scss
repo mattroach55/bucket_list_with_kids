@@ -13,6 +13,7 @@
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
+  display: none;
 }
 
 /* User Avatar */
@@ -42,7 +43,7 @@
   letter-spacing: 2px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: rgb(152,94,109);
   text-decoration: none;
 }
 
