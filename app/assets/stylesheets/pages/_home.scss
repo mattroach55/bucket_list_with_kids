@@ -1,35 +1,28 @@
 // Specific CSS for your home-page
-.container-result {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  font: inherit;
-  background: #fff;
-  display: inline-block;
-  border: 1px solid #d4d8e3;
-  -webkit-box-shadow: 0 1px 1px 0 rgba(85,95,110,.2);
-  box-shadow: 0 1px 1px 0 rgba(85,95,110,.2);
-  -webkit-transition: background .4s ease,-webkit-box-shadow .4s ease;
-  transition: box-shadow .4s ease,background .4s ease;
-  transition: box-shadow .4s ease,background .4s ease,-webkit-box-shadow .4s ease;
-  padding: 10px 10px 10px 35px;
-  vertical-align: middle;
-  white-space: normal;
-  width: 298px;
-  border: none;
+.algolia-autocomplete {
+  width: 100%;
+}
+.algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+  width: 100%;
+}
+.algolia-autocomplete .aa-hint {
+  color: #999;
+}
+.algolia-autocomplete .aa-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-top: none;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+  cursor: pointer;
+  padding: 5px 4px;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+  background-color: #B2D7FF;
+}
+.algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+  font-weight: bold;
+  font-style: normal;
 }
 
-.container-result a {
-  text-decoration: none;
-  color: #b8bac1;
-}
-
-.ais-search-box--input {
-  font-family: "Open Sans", "Helvetica", "sans-serif";
-}
-
-input {
-  font-family: "Open Sans", "Helvetica", "sans-serif" !important;
-  font-size: inherit;
-  line-height: inherit;
-}
