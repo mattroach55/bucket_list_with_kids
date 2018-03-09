@@ -2,12 +2,19 @@
   <div class="banner-content">
     <h1>Make great memories</h1>
     <p>Amazing holiday experiences, handpicked just for families</p>
-    <div>
-      <%= form_tag destinations_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
+
+    <!-- ACTIVE ALGOLIA SEARCH -->
+    <form action="#" class="form">
+      <input class="form-control" id="search-input" name="destinations" type="text" placeholder='Search by name' />
+    </form>
+
+    <!-- BACKUP PG SEARCH -->
+    <!-- <div>
+      <%#= form_tag destinations_path, method: :get do %>
+      <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
       <button type="submit" class="btn btn-primary">Search</button>
-      <% end %>
-    </div>
+      <%# end %>
+    </div> -->
   </div>
 </div>
 
@@ -60,12 +67,12 @@
         </div>
       </li>
       <% end %>
-            <% end %>
+      <% end %>
 
       <% end %>
     </ul>
 
-        <div class="right-column">
+    <div class="right-column">
       <p><strong>TYPE</strong></p>
       <p><%= check_box_tag(:destination) %>
         <%= label_tag(:destination, "destination") %></p>
@@ -99,20 +106,18 @@
                                 <%= label_tag(:Shopping, "Shopping") %></p>
                               </div>
 
+                            </div>
 
 
-  </div>
+                            <div class = "full-page-column">
+                              <%= link_to "New", new_destination_path(@destination) %>
+                            </div>
 
 
-  <div class = "full-page-column">
-    <%= link_to "New", new_destination_path(@destination) %>
-  </div>
-
-
-  <!-- MAP -->
-<div class="container">
-  <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-  </div>
-</div>
-</div>
+                            <!-- MAP -->
+                            <div class="container">
+                              <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+                              </div>
+                            </div>
+                          </div>
 
