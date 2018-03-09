@@ -1,4 +1,6 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://picsum.photos/1200/700');">
+<%= cl_image_tag @experience.photo %>
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%)" >
 </div>
 
 <div class="container">
@@ -12,7 +14,9 @@
         <p><%= @experience.country %></p>
         <p><%= @experience.region %></p>
         <p><%= @experience.bucket_list_count %></p>
+        <%= link_to "Edit", edit_experience_path(@experience) %>
     </div>
+
     <div class="col-xs-6">
         <h3>You also like:</h3>
         <ul>

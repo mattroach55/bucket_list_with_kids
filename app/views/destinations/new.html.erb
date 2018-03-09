@@ -1,9 +1,30 @@
-
 <%= simple_form_for(@destination) do |f| %>
 <%= f.input :name, placeholder: "Enter destination name" %>
+<%= f.input :entity %>
+<%= f.input :show %>
 <%= f.input :description, placeholder: "Enter destination synopsis" %>
+<%= f.input :street_number %>
+<%= f.input :street %>
 <%= f.input :locality, placeholder: "Enter locality" %>
 <%= f.input :country, placeholder: "Enter country" %>
 <%= f.input :region, placeholder: "Enter region" %>
+<%= f.input :latitude %>
+<%= f.input :longitude %>
+<%= f.input :photo %>
+<%= f.input :photo_cache, as: :hidden %>
+<%= f.input :holiday_type %>
+<%= f.input :theme %>
+<%= f.input :kids_age_from %>
+<%= f.input :kids_age_to %>
+<%= f.input :duration %>
+<%= f.input :price %>
+<%= f.input :kids_club %>
+<%= f.input :kids_menu %>
+<%= f.input :connecting_rooms %>
+<%= f.input :pool %>
+<%= f.input :beach %>
+<%= f.input :bucket_list_count %>
+<%= f.input :average_review_score %>
+<%= f.input :booking_link %>
 <%= f.submit %>
 <% end %>

@@ -10,7 +10,12 @@ class Destination < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_street?
 
-  acts_as_votable
+  # acts_as_votable
+
+# CODE FOR PG MUlTISEARCH
+  include PgSearch
+  multisearchable against: [ :name, :description, :locality, :country, :region, :holiday_type, :theme ]
+# CODE FOR PG MUlTISEARCH
 
   def full_address
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"

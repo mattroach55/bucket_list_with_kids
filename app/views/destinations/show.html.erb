@@ -1,7 +1,12 @@
+
+<%= cl_image_tag @destination.photo %>
 <h1><%= @destination.name %></h1><br>
 <p><%= @destination.description %></p><br>
 <p><%= @destination.locality %></p>
 <p><%= @destination.country %></p>
 <p><%= @destination.region %></p>
 
+
 <%= link_to "Edit", edit_destination_path(@destination) %>
+<%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>

@@ -1,5 +1,6 @@
 class ExperiencesController < ApplicationController
-  before_action :set_experience, only: [:show, :edit, :photo]
+  before_action :set_destination, only: [:new, :create]
+  before_action :set_experience, only: [:show, :edit, :update, :photo, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
@@ -29,6 +30,8 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(params_experience)
+    @destination = Destination.find(params[:destination_id])
+    @experience.destination = @destination
     @experience.user = current_user
     authorize @experience
     if @experience.save
