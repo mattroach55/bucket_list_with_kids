@@ -14,6 +14,27 @@
     </div>
   </div>
   <%= link_to "back to results", destinations_path %>
+  <div class="container reviews">
+  <div class="row">
+    <div class="col-xs-6">
+      <%= render 'reviews/form', type_review: @accommodation, review: @review %>
+      <h3>
+        <%= pluralize @accommodation.reviews.size, "review" %>
+      </h3>
+      <div id="reviews">
+        <% if @accommodation.reviews.blank? %>
+          Be the first to leave a review for <%= @accommodation.name %>
+        <% else %>
+        <ul class="list-inline">
+          <% @accommodation.reviews.each do |review| %>
+          <%= render 'reviews/show', review: review %>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
   <%# if policy(@experience).update? %>
     <%#= link_to "Edit", edit_destination_path(@destination) %>
     <%# end %>
@@ -244,27 +265,7 @@
     </div>
   </div>
 </div>
-<div class="container reviews">
-  <div class="row">
-    <div class="col-xs-6">
-      <%#= render 'reviews/form', type_review: @accommodation, review: @review %>
-      <h3>
-        <%#= pluralize @accommodation.reviews.size, "review" %>
-      </h3>
-      <div id="reviews">
-        <%# if @accommodation.reviews.blank? %>
-          Be the first to leave a review for <%#= @accommodation.name %>
-        <%# else %>
-        <ul class="list-inline">
-          <%# @accommodation.reviews.each do |review| %>
-          <%#= render 'reviews/show', review: review %>
-          <%# end %>
-        </ul>
-        <%# end %>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <div id="map" style="width: 100%; height: 600px;" data-markers="<%#= @markers.to_json %>">
 </div>
