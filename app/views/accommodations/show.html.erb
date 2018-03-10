@@ -1,4 +1,3 @@
-
 <div class="banner-pages show-page-banner-text" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143 ,0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('<%= cl_image_path(@accommodation.photo) %>');">
   <div class="show-page-photo">
     <h1><%= @accommodation.name %></h1>
@@ -13,49 +12,29 @@
       </div>
     </div>
   </div>
-  <%= link_to "back to results", destinations_path %>
-  <div class="container reviews">
-  <div class="row">
-    <div class="col-xs-6">
-      <%= render 'reviews/form', type_review: @accommodation, review: @review %>
-      <h3>
-        <%= pluralize @accommodation.reviews.size, "review" %>
-      </h3>
-      <div id="reviews">
-        <% if @accommodation.reviews.blank? %>
-          Be the first to leave a review for <%= @accommodation.name %>
-        <% else %>
-        <ul class="list-inline">
-          <% @accommodation.reviews.each do |review| %>
-          <%= render 'reviews/show', review: review %>
+  <%= link_to "back to results", root_path %>
+    <div class="container reviews">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= render 'reviews/form', type_review: @accommodation, review: @review %>
+        <h3>
+          <%= pluralize @accommodation.reviews.size, "review" %>
+        </h3>
+        <div id="reviews">
+          <% if @accommodation.reviews.blank? %>
+            Be the first to leave a review for <%= @accommodation.name %>
+          <% else %>
+          <ul class="list-inline">
+            <% @accommodation.reviews.each do |review| %>
+            <%= render 'reviews/show', review: review %>
+            <% end %>
+          </ul>
           <% end %>
-        </ul>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-  <%# if policy(@experience).update? %>
-    <%#= link_to "Edit", edit_destination_path(@destination) %>
-    <%# end %>
-    <%# if policy(@experience).create? %>
-    <%#= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-    <%# end %>
-    <%# if policy(@experience).destroy? %>
-      <%#= link_to 'Delete', experience_path(@experience),
-      method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-    <%# end %>
- <!--  <div class="right-column-show">
-
-
-
-    <! <p><%#= @destination.name %> it a good choice for families that like <%#= @destination.holiday_type %>, and <%#= @destination.theme %></p> -->
-
-
-    <%#= link_to "Edit", edit_destination_path(@destination) %>
-    <%#= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-    <%#= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-  </div>
 
 
 <!-- OWENS CODE, NOT READY FOR DEPLOYMENT YET -->

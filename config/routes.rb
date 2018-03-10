@@ -22,7 +22,6 @@ end
       put :bucket_count, to: 'destinations#upvote'
     end
     resources :experiences, only: [:new, :create]
-
     resources :accommodations, only: [:new, :create]
   end
   resources :experiences, only: [:index, :show, :edit, :destroy, :update] do

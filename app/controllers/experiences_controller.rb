@@ -13,6 +13,7 @@ class ExperiencesController < ApplicationController
       @experiences = Experience.all
     end
   end
+
   def show
     authorize @experience
     # MAP CODE BELOW

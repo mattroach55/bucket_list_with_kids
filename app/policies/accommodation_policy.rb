@@ -14,7 +14,7 @@ class AccommodationPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.admin
   end
 
   def edit?
@@ -27,5 +27,11 @@ class AccommodationPolicy < ApplicationPolicy
 
   def destroy?
     user.admin
+  end
+
+  private
+
+  def user_is_owner_or_admin?
+    record.user == user || user.admin
   end
 end

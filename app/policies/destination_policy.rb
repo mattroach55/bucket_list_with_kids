@@ -14,7 +14,13 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    if user == nil
+      false
+    elsif !user_is_admin?
+      user
+    else
+      user_is_admin?
+    end
   end
 
   def edit?
@@ -26,10 +32,20 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin
+    true
   end
 
   def destroy?
-    user.admin
+    true
+  end
+
+  private
+
+  def user_is_owner?
+    record.user == user
+  end
+
+  def user_is_admin?
+    user.admin == user
   end
 end
