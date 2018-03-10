@@ -52,6 +52,7 @@ CSV.foreach(filepath, csv_options) do |row|
     new_destination.bucket_list_count = row['bucket_list_count']
     new_destination.average_review_score = row['average_review_score']
     new_destination.booking_link = row['booking_link']
+    new_destination.remote_photo_url = "https://images.unsplash.com/photo-1484141786627-edbd5b982628?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=710&h=400&fit=crop&s=8f82100091c81cadcc210bf8329d7696"
     new_destination.save!
   elsif row['entity'] == 'accommodation'
     new_accommodation = Accommodation.new(user_id: user.id)
@@ -82,6 +83,8 @@ CSV.foreach(filepath, csv_options) do |row|
     new_accommodation.bucket_list_count = row['bucket_list_count']
     new_accommodation.average_review_score = row['average_review_score']
     new_accommodation.booking_link = row['booking_link']
+    new_accommodation.remote_photo_url = "https://images.unsplash.com/photo-1484141786627-edbd5b982628?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=710&h=400&fit=crop&s=8f82100091c81cadcc210bf8329d7696"
+
     new_accommodation.save!
   else
     new_experience = Experience.new(user_id: user.id)
@@ -113,6 +116,8 @@ CSV.foreach(filepath, csv_options) do |row|
     new_experience.bucket_list_count = row['bucket_list_count']
     new_experience.average_review_score = row['average_review_score']
     new_experience.booking_link = row['booking_link']
+    new_experience.remote_photo_url = "https://images.unsplash.com/photo-1484141786627-edbd5b982628?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=710&h=400&fit=crop&s=8f82100091c81cadcc210bf8329d7696"
+
     new_experience.save!
   end
 end

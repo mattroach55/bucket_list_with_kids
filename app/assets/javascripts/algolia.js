@@ -14,7 +14,7 @@ if (window.location.pathname === '/') {
   //initialize autocomplete on search input (ID selector must match)
   autocomplete('#search-input', { autoselect: true }, [
   {
-    source: autocomplete.sources.hits(index, { hitsPerPage: 500 }),
+    source: autocomplete.sources.hits(index, { hitsPerPage: 6 }),
     displayKey: 'my_attribute',
     templates: {
       suggestion: function(suggestion) {
@@ -52,7 +52,7 @@ if (window.location.pathname === '/') {
 
 
 
-  const search = instantsearch({
+  var search = instantsearch({
     appId: 'CHZ1QFQS3L',
     apiKey: '2adac3ef18692463940451b5deb1f2c2',
     indexName: 'dev_BUCKETKIDS',
