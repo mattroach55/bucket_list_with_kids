@@ -3,37 +3,82 @@
   position: relative;
   background-color: rgba(152, 135, 143, .1);
 }
+
+.search-container {
+  width: 100%;
+  display: inline-block;
+  margin: 50px 0;
+  text-align: center;
+}
+
 .algolia-autocomplete {
-  width: 100%;
+  display: inline-block;
 }
+
 .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-  width: 100%;
+  width: 500px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .algolia-autocomplete .aa-hint {
   color: #999;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .algolia-autocomplete .aa-dropdown-menu {
-  width: 100%;
   background-color: #fff;
   border: 1px solid #999;
   border-top: none;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
   cursor: pointer;
   padding: 5px 4px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
   background-color: #B2D7FF;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
   font-weight: bold;
   font-style: normal;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-bar-button {
+  width: 150px !important;
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px !important;
 }
 
 .form-control {
-  width: 300px;
+  width: 100%;
   display: inline-block;
   vertical-align: top;
+  margin: 0 !important;
 }
 
 .search-bar {
@@ -54,27 +99,9 @@
   position: relative;
 }
 
- // ul {
- //  display: flex;
- //    flex-direction: row;
- //    flex-wrap: wrap;
- //    width: 100%;
- //    padding-left: 0;
- //    justify-content: space-between;
-
- //  }
-
- //  li {
- //    list-style: none;
- //    display: inline-block;
- //    flex: flex-wrap;
- //    margin: 0 auto;
- //  }
-
- //temp class-remove later
   .page-logo {
     height: 150px;
-    margin-bottom: 75px;
+    margin-bottom: 30px;
   }
 
   .page-info-box {
@@ -83,6 +110,7 @@
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
     padding-bottom: 85px;
   }
+
   .page-info-box  p {
       font-family: 'Sacramento';
       text-align: center;
@@ -93,14 +121,20 @@
 
   .icons {
     display: flex;
-    justify-content: space-around;
-    width: 60%;
+    justify-content: center;
+    width: 80%;
     margin: 0 auto;
   }
 
   .icon {
-    width: 30%;
-    padding: 30px;
+    width: 20%;
+    padding-top: 70px;
+    padding-bottom: 50px;
+
+  }
+
+  .icon:nth-child(2) {
+    margin: 0 50px;
   }
 
   .right-column {
@@ -116,6 +150,7 @@
     position: absolute;
     right: 0;
     top: 0;
+    margin-top: 80px;
 }
    .right-column p {
     padding-left: 20%;
@@ -155,6 +190,7 @@
     vertical-align: middle;
     height: 100%;
     overflow: auto;
+    margin-top: 80px;
   }
 
   .left-column-element {
