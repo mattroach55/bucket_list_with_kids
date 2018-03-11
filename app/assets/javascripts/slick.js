@@ -1,17 +1,96 @@
-$(function() {
-$('.slider-for').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-  fade: true,
-  asNavFor: '.slider-nav'
+var $slider = $('.slider');
+
+var $slickTrack = $('.slick-track');
+var $slickCurrent = $('.slick-current');
+
+var slideDuration = 900;
+
+//RESET ANIMATIONS
+// On init slide change
+$slider.on('init', function(slick){
+  TweenMax.to($('.slick-track'), 0.9, {
+    marginLeft: 0
+  });
+  TweenMax.to($('.slick-active'), 0.9, {
+    x: 0,
+    zIndex: 2
+  });
 });
-$('.slider-nav').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  asNavFor: '.slider-for',
+// On before slide change
+$slider.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  TweenMax.to($('.slick-track'), 0.9, {
+    marginLeft: 0
+  });
+  TweenMax.to($('.slick-active'), 0.9, {
+    x: 0
+  });
+});
+
+// On after slide change
+$slider.on('afterChange', function(event, slick, currentSlide){
+  TweenMax.to($('.slick-track'), 0.9, {
+    marginLeft: 0
+  });
+  $('.slick-slide').css('z-index','1');
+  TweenMax.to($('.slick-active'), 0.9, {
+    x: 0,
+    zIndex: 2
+  });
+});
+
+//SLICK INIT
+$slider.slick({
+  speed: slideDuration,
   dots: true,
-  centerMode: true,
-  focusOnSelect: true
-});
-});
+  waitForAnimate: true,
+  useTransform: true,
+  cssEase: 'cubic-bezier(0.455, 0.030, 0.130, 1.000)'
+})
+
+//PREV
+$('.slick-prev').on('mouseenter', function(){
+                TweenMax.to($('.slick-track'), 0.6, {
+                  marginLeft: "180px",
+                  ease: Quad.easeOut
+                });
+                TweenMax.to($('.slick-current'), 0.6, {
+                  x: -100,
+                  ease: Quad.easeOut
+                });
+            });
+
+$('.slick-prev').on('mouseleave', function(){
+                TweenMax.to($('.slick-track'), 0.4, {
+                  marginLeft: 0,
+                  ease: Sine.easeInOut
+                });
+                TweenMax.to($('.slick-current'), 0.4, {
+                  x: 0,
+                  ease: Sine.easeInOut
+                });
+            });
+
+//NEXT
+$('.slick-next').on('mouseenter', function(){
+
+                TweenMax.to($('.slick-track'), 0.6, {
+                  marginLeft: "-180px",
+                  ease: Quad.easeOut
+                });
+                TweenMax.to($('.slick-current'), 0.6, {
+                  x: 100,
+                  ease: Quad.easeOut
+                });
+            });
+
+$('.slick-next').on('mouseleave', function(){
+                TweenMax.to($('.slick-track'), 0.4, {
+                  marginLeft: 0,
+                  ease: Quad.easeInOut
+                });
+                TweenMax.to($('.slick-current'), 0.4, {
+                  x: 0,
+                  ease: Quad.easeInOut
+                });
+            });
+
