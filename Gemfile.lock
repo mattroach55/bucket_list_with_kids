@@ -101,6 +101,7 @@ GEM
     geocoder (1.4.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    greensock-rails (1.20.3.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
@@ -269,6 +270,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass (~> 4.7)
   geocoder
+  greensock-rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-slick-rails

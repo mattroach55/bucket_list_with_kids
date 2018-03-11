@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'greensock-rails'
 gem 'algoliasearch-rails'
 gem 'cloudinary' # PHOTO_UPLOAD
 gem 'country_select' #SIMPLE FORM COUNTRY
