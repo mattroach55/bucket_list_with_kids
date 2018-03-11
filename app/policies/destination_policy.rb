@@ -6,7 +6,7 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin
+    true
   end
 
   def show?
@@ -14,14 +14,13 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin
-    # if user == nil
-    #   false
-    # elsif !user_is_admin?
-    #   user
-    # else
-    #   user_is_admin?
-    # end
+    if user == nil
+      false
+    elsif !user_is_admin?
+      user
+    else
+      user_is_admin?
+    end
   end
 
   def edit?
