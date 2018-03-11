@@ -40,11 +40,12 @@
         <% if entity.class == Destination %>
 
         <%= link_to destination_path(entity) do %>
-        <h1>Destination</h1> <!-- FOR TESTING -->
+         <!-- FOR TESTING -->
         <li class="left-column-element">
           <div class="card-index">
             <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
               <div class="card-index">
+                <%= image_tag 'card_dest_icon.svg', :class => "icon-card" %>
                 <h1 class="title"><%= entity.name %></h1>
                 <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
                  <%#= link_to bucket_count_destination_path(entity),method: :put do %>
@@ -61,11 +62,12 @@
 
 
         <%= link_to experience_path(entity) do %>
-        <h1>Experience</h1> <!-- FOR TESTING -->
+        <!-- FOR TESTING -->
         <li class="left-column-element">
           <div class="card-index">
             <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
               <div class="card-index">
+                <%= image_tag 'card_exper_icon.svg', :class => "icon-card" %>
                 <h1 class="title"><%= entity.name %></h1>
                 <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
                 <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
@@ -78,11 +80,12 @@
         <% else %>
 
         <%= link_to accommodation_path(entity) do %>
-        <h1>Accommodation</h1> <!-- FOR TESTING -->
+        <!-- FOR TESTING -->
         <li class="left-column-element">
           <div class="card-index">
             <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
               <div class="card-index">
+                <%= image_tag 'card_accomm_icon.svg', :class => "icon-card" %>
                 <h1 class="title"><%= entity.name %></h1>
                 <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
                 <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
