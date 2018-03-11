@@ -92,6 +92,16 @@
 <!-- ');">  -->
  <!-- <div class="show-page-photo">
     <h1><%#= @destination.name %></h1>
+ -->
+
+<%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+
+<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+
+<%= link_to "Edit", edit_destination_path(@destination) %>
+
+    <h1><%= @destination.name %></h1>
+<!--
   </div>
 </div>
 <div class="big-flex">
@@ -103,13 +113,12 @@
       </div>
     </div>
   </div>
-  <%#= link_to "back to results", destinations_path %>
- <! <div class="right-column-show">
+-->
+  <%= link_to "back to results", root_path %>
 
 
 
-    <%#= link_to "Edit", edit_destination_path(@destination) %>
-    <%#= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-    <%#= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-<!  </div>
-</div> -->
+
+
+</div>
+</div>
