@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308113722) do
+ActiveRecord::Schema.define(version: 20180311185723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,20 @@ ActiveRecord::Schema.define(version: 20180308113722) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "destination_id"
+    t.bigint "experience_id"
+    t.bigint "accommodation_id"
+    t.index ["accommodation_id"], name: "index_photos_on_accommodation_id"
+    t.index ["destination_id"], name: "index_photos_on_destination_id"
+    t.index ["experience_id"], name: "index_photos_on_experience_id"
+    t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "description"
     t.integer "rating", default: 0, null: false
@@ -196,6 +210,10 @@ ActiveRecord::Schema.define(version: 20180308113722) do
   add_foreign_key "destinations", "users"
   add_foreign_key "experiences", "destinations"
   add_foreign_key "experiences", "users"
+  add_foreign_key "photos", "accommodations"
+  add_foreign_key "photos", "destinations"
+  add_foreign_key "photos", "experiences"
+  add_foreign_key "photos", "users"
   add_foreign_key "reviews", "accommodations"
   add_foreign_key "reviews", "experiences"
   add_foreign_key "reviews", "users"
