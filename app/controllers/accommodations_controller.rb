@@ -1,7 +1,8 @@
 class AccommodationsController < ApplicationController
-  before_action :set_accommodation, only: [:new, :create, :show, :edit, :update, :photo, :destroy]
   before_action :set_destination, only: [:new, :create]
+  before_action :set_accommodation, only: [:show, :edit, :update, :photo, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
   def index
     policy_scope(Accommodation)
@@ -34,7 +35,7 @@ class AccommodationsController < ApplicationController
     authorize @accommodation
 
     if @accommodation.save
-      redirect_to destinations/destination_id/accommodations(@accommodation)
+      redirect_to accommodation_path(@accommodation)
     else
       render :new
     end
@@ -73,7 +74,7 @@ class AccommodationsController < ApplicationController
   end
 
   def params_accommodation
-    params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :kids_club, :kids_menu, :connecting_rooms, :pool, :beach, :bucket_list_count, :average_review_score, :booking_link, :destination_id, :user_id)
+    params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :kids_club, :kids_menu, :connecting_rooms, :pool, :beach, :bucket_list_count, :average_review_score, :booking_link)
   end
 
 end

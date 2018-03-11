@@ -18,6 +18,7 @@ gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
 gem 'pg_search'
+gem "jquery-slick-rails"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

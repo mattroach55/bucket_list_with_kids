@@ -13,6 +13,7 @@ class ExperiencesController < ApplicationController
       @experiences = Experience.all
     end
   end
+
   def show
     authorize @experience
     # MAP CODE BELOW
@@ -50,6 +51,7 @@ class ExperiencesController < ApplicationController
   end
 
   def update
+    @experience = Experience.find(params[:id])
     authorize @experience
     if @experience.update(params_experience)
       redirect_to experience_path(@experience)
