@@ -1,4 +1,4 @@
-class AccommodationPolicy < ApplicationPolicy
+class PhotoPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope
@@ -14,11 +14,11 @@ class AccommodationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin
+    true
   end
 
   def edit?
-    true
+    user.admin
   end
 
   def update?
@@ -28,7 +28,4 @@ class AccommodationPolicy < ApplicationPolicy
   def destroy?
     user.admin
   end
-
-  private
-
 end
