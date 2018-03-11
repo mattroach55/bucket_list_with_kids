@@ -1,0 +1,218 @@
+// .body {
+//   position: relative;
+//   background-color: rgba(152, 135, 143, .1);
+// }
+
+// .search-container {
+//   width: 100%;
+//   display: inline-block;
+//   margin: 50px 0;
+//   text-align: center;
+// }
+
+// .algolia-autocomplete {
+//   display: inline-block;
+// }
+
+// .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+//   width: 500px;
+//   left: 0;
+//   right: 0;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+// .algolia-autocomplete .aa-hint {
+//   color: #999;
+//   // left: 0;
+//   // right: 0;
+//   // margin-left: auto;
+//   // margin-right: auto;
+// }
+
+// .algolia-autocomplete .aa-dropdown-menu {
+//   background-color: #fff;
+//   border: 1px solid #999;
+//   border-top: none;
+//   // left: 0;
+//   // right: 0;
+//   // margin-left: auto;
+//   // margin-right: auto;
+// }
+
+// .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+//   cursor: pointer;
+//   padding: 5px 4px;
+//   // left: 0;
+//   // right: 0;
+//   // margin-left: auto;
+//   // margin-right: auto;
+// }
+
+// .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+//   background-color: #B2D7FF;
+//   // left: 0;
+//   // right: 0;
+//   // margin-left: auto;
+//   // margin-right: auto;
+// }
+
+// .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+//   font-weight: bold;
+//   font-style: normal;
+//   // left: 0;
+//   // right: 0;
+//   // margin-left: auto;
+//   // margin-right: auto;
+// }
+
+// .search-bar-button {
+//   width: 150px !important;
+//   display: inline-block;
+//   vertical-align: top;
+//   padding: 10px !important;
+// }
+
+// .form-control {
+//   width: 100%;
+//   display: inline-block;
+//   vertical-align: top;
+//   margin: 0 !important;
+// }
+
+// .search-bar {
+//   position: absolute;
+//   bottom: -15px;
+//   // left: 0;
+//   // right: 0;
+//   // margin-left: auto;
+//   // margin-right: auto;
+//   width: 300px;
+//   height: 30px;
+//   padding: 10px;
+// }
+
+// .big-flex {
+//   margin: 75px 70px;
+//   display: flex;
+//   position: relative;
+// }
+
+//   .page-logo {
+//     height: 150px;
+//     margin-bottom: 30px;
+//   }
+
+//   .page-info-box {
+//     background-color: white;
+//     width: 100%;
+//     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+//     padding-bottom: 85px;
+//   }
+
+//   .page-info-box  p {
+//       font-family: 'Sacramento';
+//       text-align: center;
+//       font-size: 40px;
+//       color: rgba(25,33,51,.9);
+//       padding-top: 100px;
+//     }
+
+//   .icons {
+//     display: flex;
+//     justify-content: center;
+//     width: 80%;
+//     margin: 0 auto;
+//   }
+
+//   .icon {
+//     width: 20%;
+//     padding-top: 70px;
+//     padding-bottom: 50px;
+
+//   }
+
+//   .icon:nth-child(2) {
+//     margin: 0 50px;
+//   }
+
+//   .right-column {
+//     display: flex;
+//     width: 225px;
+//     height: 1000px;
+//     background-color: #FFF;
+//     right: 0;
+//     flex-direction: column;
+//     padding: 20px;
+//     border-radius: 5px;
+//     box-shadow: .5px .5px .5px rgba(1, 1, 1, 0.4);
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     margin-top: 80px;
+// }
+//    .right-column p {
+//     padding-left: 20%;
+//     font-weight: lighter;
+//     color: darkgray;
+//     font-size: 14px;
+//    }
+// .right-column input {
+//   box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .3);
+//   -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .3);
+//   -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .3);
+//   -o-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .3);
+//   border-radius: 2px;
+// }
+// .right-column input:hover {
+//   color: rgba(0, 0, 0, .8);
+// }
+
+// .right-column label {
+//   font-family: 'Open Sans', sans-serif;
+//   font-weight: 100;
+//   // height: 15px;
+//   // width: 15px;
+//   margin: 0 5px 5px 0;
+// }
+
+//   .left-column {
+//     list-style: none;
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     width: 80%;
+//     //temp
+//     height: 1000px;
+//     padding-left: 0;
+//     justify-content: space-around;
+//     vertical-align: middle;
+//     height: 100%;
+//     overflow: auto;
+//     margin-top: 80px;
+//   }
+
+//   .left-column-element {
+//     list-style: none;
+//     display: inline-block;
+//     flex: flex-wrap;
+//     margin: 0 auto;
+//     margin-top: 0;
+//   }
+
+//   .banner-content h1 {
+//     font-family: 'Sacramento', cursive;
+//     font-size: 70px;
+//   }
+
+//   .map-index {
+//     display: inline-block;
+//   }
+
+//   .bucket-button {
+//     height: 20px;
+//     position: absolute;
+//     top: 15px;
+//     right: 15px;
+//   }
+

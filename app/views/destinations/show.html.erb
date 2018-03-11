@@ -1,7 +1,97 @@
+<div class="show-large-container">
 
-<div class="banner-pages show-page-banner-text" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143 ,0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('<%= cl_image_path(@destination.photo) %>');">
-  <div class="show-page-photo">
-    <h1><%= @destination.name %></h1>
+  <div class="med-container-inline-flex">
+    <%= image_tag 'destinations.svg', :class => "show-icon" %>
+    <div>
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.description %></p>
+    </div>
+  </div>
+<!-- end of box 1, next is a div for the photo carousel -->
+<div class="med-container-inline-flex">
+    <p>photo</p>
+  </div>
+<!-- next is header for the "experiences in this destination" cards -->
+
+<%= image_tag 'experiences.svg', :class => "show-icon" %>
+<div class="page-text">
+  <h1> Bucket list experiences in <%= @destination.name %></h1>
+</div>
+
+<!-- next "experiences in this destination" cards -->
+<div class="container-right">
+        <% @destination.experiences.each do |experience| %>
+
+        <% link_to experience_path(experience) do %>
+        <p><%= experience.name %></p><br>
+
+        <% end %>
+        <% end %>
+      </div>
+
+  <!-- <div class="med-container-inline-flex">
+    <div class="thumbnail-container thumbnail" style="background-image: url(<%#= @destination.experience.photo %>)">
+    </div> -->
+      <!-- <div class="thumbnail-container">
+        <%#= image_tag 'banner2.jpg', :class => "portrait thumbnail" %>
+        <img src="portrait-img.jpg" class="portrait" alt="Image" />
+      </div> -->
+      <div>
+        <%= @destination.name %>
+        <%= @destination.locality %>
+      </div>
+    </div>
+
+
+
+    </div>
+
+
+  <div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+  </div>
+
+ <div class="med-container-inline-flex">
+    <%= image_tag 'destinations.svg', :class => "show-icon" %>
+    <div>
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.description %></p>
+    </div>
+  </div>
+
+
+
+<div class="med-cont-vertical-flex">
+  <%= image_tag 'accommodations.svg', :class => "show-icon" %>
+  <div>
+    <div class="right-column-show">
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.full_address %></p>
+    </div>
+    <div class="right-column-show">
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.full_address %></p>
+    </div>
+  </div>
+  <div class="right-column-show">
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.full_address %></p>
+    </div>
+  </div>
+
+  <div class="med-cont-vertical-flex">
+    <p>other accom.</p>
+  </div>
+
+
+</div>
+
+
+<!-- class="banner-pages show-page-banner-text" style="
+/*background-image: linear-gradient(-225deg, rgba(152, 135, 143 ,0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('*/ -->
+<%#= cl_image_path(@destination.photo) %>
+<!-- ');">  -->
+ <!-- <div class="show-page-photo">
+    <h1><%#= @destination.name %></h1>
   </div>
 </div>
 <div class="big-flex">
@@ -9,20 +99,17 @@
     <div class="show-container">
       <div class="left-column-element">
         <h3>ABOUT</h3>
-        <p><%= @destination.description %></p><br>
+        <p><%#= @destination.description %></p><br>
       </div>
     </div>
   </div>
-  <%= link_to "back to results", destinations_path %>
- <!--  <div class="right-column-show">
+  <%#= link_to "back to results", destinations_path %>
+ <! <div class="right-column-show">
 
 
 
-    <! <p><%#= @destination.name %> it a good choice for families that like <%#= @destination.holiday_type %>, and <%#= @destination.theme %></p> -->
-
-
-    <%= link_to "Edit", edit_destination_path(@destination) %>
-    <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-    <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-  </div>
-</div>
+    <%#= link_to "Edit", edit_destination_path(@destination) %>
+    <%#= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+    <%#= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+<!  </div>
+</div> -->

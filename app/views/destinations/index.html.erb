@@ -1,8 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('<%= image_path 'banner2.jpg'%>');">
   <div class="banner-content">
     <%= image_tag 'logo.svg', :class => "page-logo" %><br>
-    <button class="banner-button"><%= link_to "Get Started", :anchor => "anchor" %></button>
-
+   <button class="banner-button"><%= link_to "Get Started", :anchor => "page-link" %></button>
     <!-- BACKUP PG SEARCH -->
     <!-- <div>
       <%#= form_tag destinations_path, method: :get do %>
@@ -12,22 +11,21 @@
     </div> -->
   </div>
 </div>
-<div class="page-info-box">
-  <p id="anchor">Unique holiday inspiration, handpicked just for families</p>
+<div class="page-info-box" id="page-link">
+  <p>Unique holiday inspiration, handpicked just for families</p>
 <div class="icons">
   <%= image_tag 'destinations.svg', :class => "icon" %>
   <%= image_tag 'experiences.svg', :class => "icon" %>
   <%= image_tag 'accommodations.svg', :class => "icon" %>
 </div>
 <!-- ACTIVE ALGOLIA SEARCH -->
-
-  <form action="#" class="form">
-     <div class="search-container">
-      <input class="form-control" id="search-input" name="destinations" type="text" placeholder="Search for experience eg. 'Rome'" />
+<div class="search-container">
+    <form action="#" class="form">
+     <input class="form-control" id="search-input" name="destinations" type="text" placeholder="Search for experience eg. 'Rome'" />
       <button type="submit" class="search-bar-button">Search</button>
-    </div>
+      <!-- TO DO: Put internal link to start of indexed results after search is completed -->
     </form>
-
+</div>
 </div>
   <div class="big-flex">
     <div class= "content">
