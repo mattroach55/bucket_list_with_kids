@@ -31,5 +31,4 @@ class AccommodationPolicy < ApplicationPolicy
 
   private
 
-  end
 end

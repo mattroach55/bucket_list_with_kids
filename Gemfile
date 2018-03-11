@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'greensock-rails'
 gem 'algoliasearch-rails'
 gem 'cloudinary' # PHOTO_UPLOAD
 gem 'country_select' #SIMPLE FORM COUNTRY
@@ -18,7 +19,7 @@ gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
 gem 'pg_search'
-gem 'jquery-slick-rails'
+gem "jquery-slick-rails"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
