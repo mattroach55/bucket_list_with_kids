@@ -41,6 +41,7 @@ $slider.on('afterChange', function(event, slick, currentSlide){
 //SLICK INIT
 $slider.slick({
   speed: slideDuration,
+  autoplay: true,
   dots: true,
   waitForAnimate: true,
   useTransform: true,
