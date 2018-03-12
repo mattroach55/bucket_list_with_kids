@@ -1,3 +1,4 @@
+
 <div class="slider-wrapper">
   <div class="slider">
     <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
@@ -13,7 +14,10 @@
 </div>
 
 <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
 
+
+<div class="show-large-container">
 
   <div class="med-container-inline-flex">
     <%#= image_tag 'destinations.svg', :class => "show-icon" %>
@@ -79,26 +83,41 @@ accomm. and destination
 
  <!-- div for bucket list accommodations to go here / show-page-cards -->
 
-<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
 
 
 
 
-<div class="big-flex">
-  <div class="left-column">
-    <div class="show-container">
-      <div class="left-column-element">
-        <h3>ABOUT</h3>
-        <p><%= @destination.description %></p><br>
-      </div>
+<!-- div for stacked display for other recommended accommodations -->
+<div class="med-cont-vertical-flex">
+  <%= image_tag 'accommodations.svg', :class => "show-icon" %>
+  <div>
+    <div class="right-column-show">
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.full_address %></p>
+    </div>
+    <div class="right-column-show">
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.full_address %></p>
     </div>
   </div>
-  <%= link_to "back to results", root_path %>
-    <!-- <p><%#= @destination.name %> it a good choice for families that like <%#= @destination.holiday_type %>, and <%#= @destination.theme %></p> -->
-
-
-    <%#= link_to "Edit", edit_destination_path(@destination) %>
-    <%#= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-    <%#= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+  <div class="right-column-show">
+    <h1><%= @destination.name %></h1>
+    <p><%= @destination.full_address %></p>
   </div>
 </div>
+
+  <div class="med-cont-vertical-flex">
+    <p>other accom.</p>
+  </div>
+</div>
+        <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+
+        <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+
+        <%= link_to "Edit", edit_destination_path(@destination) %>
+
+        <%= link_to "back to results", root_path %>
+
+    </div>
+  </div>
+</div

@@ -1,26 +1,106 @@
+.page-text {
+  display: block;
+  margin: 0 auto;
+}
 
-.show-page-photo {
-  background-image: no-repeat;
-  background-size: cover !important;
-  height: 100vh;
+.show-large-container {
+  margin: 30px 125px;
+  display: flex;
+  flex-direction: column;
+}
+
+.show-large-container h1 {
+  font-family: 'Sacramento', 'cursive';
+  color: #192231;
+  padding: 30px 15px;
+  margin: 0;
+  display: inline-block;
+}
+
+.show-large-container p {
+   color: gray;
+   padding: 15px 30px;
+   display: inline-block;
+}
+
+.med-container-inline-flex {
+  width: 100%;
+  background-color: white;
+  margin: 30px 0;
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-around;
+  height: auto;
+  padding: 30px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
   position: relative;
+}
+
+.show-little-container {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  flex-wrap: nowrap;
+}
+
+.right-column-show {
+  width: 100%;
+  padding-left: 200px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.med-cont-vertical-flex {
+  width: 100%;
+  background-color: white;
+  height: auto;
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  flex-direction: column;
+}
+
+.med-container-inline-flex h1 {
+  font-family: 'Sacramento', 'cursive';
+  color: #192231;
+  padding: 30px 30px;
+  margin: 0;
+}
+
+.med-container-inline-flex p {
+   color: gray;
+   padding: 15px 30px;
+}
+
+.show-icon {
+  width: 150px;
+  // vertical-align: top;
+  // display: block;
+  // margin: 0 auto;
+  position: absolute;
+  top: -60px;
 }
 
 .show-container {
   padding: 20px;
 }
 
-.right-column-show p {
-    padding-left: 20%;
+.show-container {
+
+}
+
+.container-right p {
     font-weight: lighter;
-    color: gray;
+    color: darkgray;
     font-size: 14px;
     padding: 30px;
-   }
+    width: 60%;
+}
 
  .left-column-show h1 {
   color: gray;
- }
+}
 
  .show-page-banner-text h1 {
   color: rgba(255, 255, 255, .9);

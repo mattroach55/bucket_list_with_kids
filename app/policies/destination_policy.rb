@@ -24,7 +24,7 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def edit?
-    true
+    user.admin
   end
 
   def upvote?
