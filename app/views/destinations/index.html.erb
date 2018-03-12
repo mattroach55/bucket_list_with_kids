@@ -5,7 +5,7 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('<%= image_path 'banner2.jpg'%>');">
 
   <div class="banner-content">
-    <%= image_tag 'logo.svg', :class => "page-logo" %><br>
+  <%= image_tag 'logo.svg', :class => "page-logo" %><br>
    <button class="banner-button"><%= link_to "Get Started", :anchor => "page-link" %></button>
     <!-- BACKUP PG SEARCH -->
     <!-- <div>
@@ -26,8 +26,10 @@
 <!-- ACTIVE ALGOLIA SEARCH -->
 <div class="search-container">
     <form action="#" class="form">
-     <input class="form-control" id="search-input" name="destinations" type="text" placeholder="Search for experience eg. 'Rome'" />
-      <button type="submit" class="search-bar-button">Search</button>
+      <input class="form-control" id="search-input" name="destinations" type="text" placeholder="Search for experience eg. 'Rome'" />
+      <button type="submit" class="search-bar-button">Search</button><br>
+      <input type="checkbox" name="theme" value="nature"> Nature
+      <input type="checkbox" name="theme" value="adventure"> Adventure<br>
       <!-- TO DO: Put internal link to start of indexed results after search is completed -->
     </form>
 </div>

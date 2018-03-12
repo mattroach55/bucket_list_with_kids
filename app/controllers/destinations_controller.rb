@@ -8,24 +8,30 @@ class DestinationsController < ApplicationController
     policy_scope(Destination)
 
     # CODE TO IMPLEMENT SEARCH RESULTS BELOW
-    if params[:query].present?
-      PgSearch::Multisearch.rebuild(Destination)
-      PgSearch::Multisearch.rebuild(Experience)
-      PgSearch::Multisearch.rebuild(Accommodation)
-      results = PgSearch.multisearch(params[:query])
+    # if params[:query].present?
+    #   PgSearch::Multisearch.rebuild(Destination)
+    #   PgSearch::Multisearch.rebuild(Experience)
+    #   PgSearch::Multisearch.rebuild(Accommodation)
+    #   results = PgSearch.multisearch(params[:query])
 
-      @all_entities = []
-      results.each do |result|
-        @all_entities << result.searchable
-      end
-    # CODE TO IMPLEMENT SEARCH RESULTS ABOVE
-    else
-        #code to mix destination, accomdation and experiences. iterate on show page over @all_entities
-        @destinations = Destination.where.not(latitude: nil, longitude: nil)
-        @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
-        @experiences = Experience.where.not(latitude: nil, longitude: nil)
-        @all_entities = @destinations + @experiences + @accommodations
-    end
+    #   @all_entities = []
+    #   results.each do |result|
+    #     @all_entities << result.searchable
+    #   end
+
+    # else
+    #     #code to mix destination, accomdation and experiences. iterate on show page over @all_entities
+    #     @destinations = Destination.where.not(latitude: nil, longitude: nil)
+    #     @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
+    #     @experiences = Experience.where.not(latitude: nil, longitude: nil)
+    #     @all_entities = @destinations + @experiences + @accommodations
+    # end
+    # CODE TO IMPLEMENT PS SEARCH RESULTS ABOVE
+
+    @destinations = Destination.where.not(latitude: nil, longitude: nil)
+    @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
+    @experiences = Experience.where.not(latitude: nil, longitude: nil)
+    @all_entities = @destinations + @experiences + @accommodations
 
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
     @markers = @all_entities.map do |e|
