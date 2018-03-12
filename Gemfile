@@ -18,7 +18,6 @@ gem 'pg_search'
 gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
-gem 'pg_search'
 gem 'jquery-slick-rails'
 
 gem 'autoprefixer-rails'
