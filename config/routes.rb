@@ -23,12 +23,15 @@ end
     end
     resources :experiences, only: [:new, :create]
     resources :accommodations, only: [:new, :create]
+    resources :photos, only: [:index, :show, :edit, :destroy, :update]
   end
   resources :experiences, only: [:index, :show, :edit, :destroy, :update] do
    resources :reviews, only: [:new, :create]
+   resources :photos, only: [:index, :show, :edit, :destroy, :update]
  end
   resources :accommodations, only: [:index, :show, :edit, :destroy, :update] do
    resources :reviews, only: [:create]
+   resources :photos, only: [:index, :show, :edit, :destroy, :update]
  end
   resources :reviews, only: [:destroy]
 end

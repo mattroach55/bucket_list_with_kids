@@ -1,6 +1,75 @@
 <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
 
+
+  <div class="med-container-inline-flex">
+    <%= image_tag 'destinations.svg', :class => "show-icon" %>
+    <div>
+      <h1><%= @destination.name %></h1>
+      <p><%= @destination.description %></p>
+    </div>
+  </div>
+  <!-- end of box 1, next is a div for the photo carousel -->
+
+
+  <!-- next is header for the "experiences in this destination" cards -->
+
+  <div class="page-text">
+    <h1> Bucket list experiences in <%= @destination.name %></h1>
+  </div>
+
+<!-- next "experiences in this destination" cards
+  *This code does not create an error, but doesn't display anything either
+  ____________________________________________________________________________-->
+<!-- <div class="container-right">
+        <%# @destination.experiences.each do |experience| %>
+        <%# link_to experience_path(experience) do %>
+        <p><%#= experience.name %></p><br>
+        <%# end %>
+        <%# end %>
+      </div> -->
+
+<!-- Creating code to take a photo and turn it into an undistorted thumbnail (for show page card) in progress
+  ________________________________________________________________________________________________
+  <! <div class="med-container-inline-flex">
+    <div class="thumbnail-container thumbnail" style="background-image: url(<%#= @destination.experience.photo %>)">
+    </div> -->
+      <!-- <div class="thumbnail-container">
+        <%#= image_tag 'banner2.jpg', :class => "portrait thumbnail" %>
+        <img src="portrait-img.jpg" class="portrait" alt="Image" />
+
+<div class="slider-wrapper">
+  <div class="slider">
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
+    </div>
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
+    </div>
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
+
+    </div>
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
+    </div>
+  </div>
+</div>
+
+<div class="big-flex">
+  <div class="left-column">
+    <div class="show-container">
+      <div class="left-column-element">
+        <h3>ABOUT</h3>
+        <p><%= @destination.description %></p><br>
+accomm. and destination
+      </div>
+ ___________________________________________________________________________________________________ -->
+
+<!-- map code -->
+
+ <div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+ </div>
+
+ <!-- div for bucket list accommodations to go here / show-page-cards -->
+
 <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+
 
 <div class="slider-wrapper">
   <div class="slider">
