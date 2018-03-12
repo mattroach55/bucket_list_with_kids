@@ -6,7 +6,7 @@ class AccommodationPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    user.admin
   end
 
   def show
