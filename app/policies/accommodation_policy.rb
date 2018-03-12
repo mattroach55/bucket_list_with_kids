@@ -29,7 +29,4 @@ class AccommodationPolicy < ApplicationPolicy
     user.admin
   end
 
-  private
-
-  end
 end
