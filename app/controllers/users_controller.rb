@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def bucketlist
     @user = current_user
-    # @all_entities = @experiences + @accommodations + @destinations
     authorize @user
     @bucket = @user.bucket_list_items
     @experiences = @bucket.where.not(experience: nil)
