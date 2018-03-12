@@ -2,18 +2,16 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def bucketlist
-    @experiences = current_user.bucket_list_items.where("experience_id is not null")
-    @accommodations = current_user.bucket_list_items.where("accommodation_id is not null")
-    @destinations = current_user.bucket_list_items.where(accommodation: nil, experience: nil)
     @user = current_user
-    @bucket = current_user.bucket_list_items
+    # @all_entities = @experiences + @accommodations + @destinations
     authorize @user
+    @bucket = @user.bucket_list_items
+    @experiences = @bucket.where.not(experience: nil)
+    @accommodations = @bucket.where.not(accommodation: nil)
+    @destinations = @bucket.where.not(accommodation: nil, experience: nil)
   end
 
   def profile
-    @experiences = current_user.experiences
-    @accommodations = current_user.accommodations
-    @destinations = current_user.destinations
     @user = current_user
     authorize @user
   end
