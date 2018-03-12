@@ -1,8 +1,22 @@
+<div class="slider-wrapper">
+  <div class="slider">
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
+    </div>
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
+    </div>
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
+
+    </div>
+    <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
+    </div>
+  </div>
+</div>
+
 <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
 
 
   <div class="med-container-inline-flex">
-    <%= image_tag 'destinations.svg', :class => "show-icon" %>
+    <%#= image_tag 'destinations.svg', :class => "show-icon" %>
     <div>
       <h1><%= @destination.name %></h1>
       <p><%= @destination.description %></p>
@@ -17,16 +31,13 @@
     <h1> Bucket list experiences in <%= @destination.name %></h1>
   </div>
 
-<!-- next "experiences in this destination" cards
-  *This code does not create an error, but doesn't display anything either
-  ____________________________________________________________________________-->
-<!-- <div class="container-right">
-        <%# @destination.experiences.each do |experience| %>
-        <%# link_to experience_path(experience) do %>
-        <p><%#= experience.name %></p><br>
-        <%# end %>
-        <%# end %>
-      </div> -->
+ <div class="container-right">
+    <% @destination.experiences.each do |experience| %>
+    <%= link_to experience_path(experience) do %>
+    <p><%= experience.name %></p><br>
+    <% end %>
+    <% end %>
+  </div>
 
 <!-- Creating code to take a photo and turn it into an undistorted thumbnail (for show page card) in progress
   ________________________________________________________________________________________________
@@ -71,19 +82,7 @@ accomm. and destination
 <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
 
 
-<div class="slider-wrapper">
-  <div class="slider">
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
 
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
-    </div>
-  </div>
-</div>
 
 <div class="big-flex">
   <div class="left-column">
