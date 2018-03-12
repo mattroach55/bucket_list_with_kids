@@ -27,6 +27,8 @@ class DestinationsController < ApplicationController
         @all_entities = @destinations + @experiences + @accommodations
     end
 
+    @all_entities = @all_entities.shuffle
+
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
     @markers = @all_entities.map do |e|
       {

@@ -1,7 +1,7 @@
 <div class="big-flex">
   <div class= "content">
     <ul class="left-column">
-      <% @accommodations.each do |bucket_item| %>
+      <% @bucket.each do |bucket_item| %>
       <!-- itteration over destinations -->
       <li class="left-column-element">
         <div class="card-index">
@@ -10,19 +10,18 @@
          <!-- line above should be replaced later -->
             <div class="card-index">
               <%= image_tag 'card_dest_icon.svg', :class => "icon-card" %>
-              <h1 class="title"><%= bucket_item.accommodation.name %></h1>
-              <h1 class="locality"><%= bucket_item.accommodation.locality %>, <%= bucket_item.accommodation.country %></h1>
-              <%= link_to bucket_count_accommodation_path(bucket_item),method: :put do %>
+              <h1 class="title"><%= bucket_item.destination.name %></h1>
+              <h1 class="locality"><%= bucket_item.destination.locality %>, <%= bucket_item.destination.country %></h1>
+              <%= link_to bucket_count_experience_path(bucket_item),method: :put do %>
               <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
               <% end %>
             </div>
           </div>
         </div>
         </li>
-        <h6>this accommodation has been added <%= bucket_item.accommodation.get_upvotes.count %> times</h6>
+        <h6>this accommodation has been added <%= bucket_item.destination.get_upvotes.count %> times</h6>
       </li>
       <% end %>
-    </ul>
     </div>
   </div>
 </div>

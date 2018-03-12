@@ -9,6 +9,9 @@ class Accommodation < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_street?
   # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE
 
+  # CODE FOR VOTE FUNCTION
+  acts_as_votable
+
   # CODE FOR PG MUlTISEARCH
   include PgSearch
   multisearchable against: [ :name, :description, :locality, :country, :region, :holiday_type, :theme ]

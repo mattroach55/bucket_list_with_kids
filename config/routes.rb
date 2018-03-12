@@ -20,16 +20,23 @@ end
   resources :destinations do
     member do
       put :bucket_count, to: 'destinations#upvote'
+      put :bucket_count_down, to: 'destinations#downvote'
     end
     resources :experiences, only: [:new, :create]
     resources :accommodations, only: [:new, :create]
     resources :photos, only: [:index, :show, :edit, :destroy, :update]
   end
   resources :experiences, only: [:index, :show, :edit, :destroy, :update] do
+    member do
+      put :bucket_count, to: 'experiences#upvote'
+    end
    resources :reviews, only: [:new, :create]
    resources :photos, only: [:index, :show, :edit, :destroy, :update]
  end
   resources :accommodations, only: [:index, :show, :edit, :destroy, :update] do
+    member do
+      put :bucket_count, to: 'accommodations#upvote'
+    end
    resources :reviews, only: [:create]
    resources :photos, only: [:index, :show, :edit, :destroy, :update]
  end

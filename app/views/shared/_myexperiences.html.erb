@@ -1,25 +1,27 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 ">
-        <hr>
-          <% @experiences.each do |experience| %>
-            <div class="myexperience">
-              <div class="image">
-              <%= cl_image_tag(experience.photo, width: 200, class:" product-image hidden-xs")%>
-              </div>
-                <div class="info">
-
-                <!-- Should has the same info as homepage only with a counter? -->
-
-                </div>
-              <div class="link-to-see-experience">
-              <%= link_to "go to experience", experience_path(experience),   class:"btn btn-default btn-sm"  %>
-              </div>
+<div class="big-flex">
+  <div class= "content">
+    <ul class="left-column">
+      <% @experiences.each do |bucket_item| %>
+      <!-- itteration over destinations -->
+      <li class="left-column-element">
+        <div class="card-index">
+          <!-- used another photo div so I could go one with my coding -->
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/600/400/city/');">
+         <!-- line above should be replaced later -->
+            <div class="card-index">
+              <%= image_tag 'card_dest_icon.svg', :class => "icon-card" %>
+              <h1 class="title"><%= bucket_item.experience.name %></h1>
+              <h1 class="locality"><%= bucket_item.experience.locality %>, <%= bucket_item.experience.country %></h1>
+              <%= link_to bucket_count_experience_path(bucket_item),method: :put do %>
+              <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
+              <% end %>
             </div>
-          <hr>
-        <% end %>
-      </div>
+          </div>
+        </div>
+        </li>
+        <h6>this experience has been added <%= bucket_item.experience.get_upvotes.count %> times</h6>
+      </li>
+      <% end %>
     </div>
   </div>
 </div>

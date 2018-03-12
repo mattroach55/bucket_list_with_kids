@@ -1,13 +1,9 @@
 <!-- render for the bucket-list-items -->
 
 <!-- Simple dashboard setup -->
-<div class="dashboard-page">
-  <div class="wrapper" style="margin-top: 20px;">
-   <div class="container">
-     <div class="row">
-       <div class="col-xs-12 text-center">
-        <h4>Your bucketlist items:</h4>
-      </div>
+<!-- <div class="dashboard-page">
+ --><div class="big-flex">
+  <div class= "content">
     </div>
   </div>
 </div>
@@ -15,38 +11,40 @@
 <!-- Filter tabs -->
 <div class = "tab-container">
 <div class="tabs">
-    <a class="tab" data-target="#">
+  <a class="tab active" data-target="#mytotal">
     <p>Total</p>
-    <h3>0</h3>
+    <h3><%= @bucket.count %></h3>
   </a>
   <a class="tab" data-target="#myaccommodations">
     <p>accommodations</p>
-    <h3><%= @accommodations.count %></h3>
+    <h3><%= current_user.get_voted(Accommodation).count %></h3>
   </a>
   <a class="tab" data-target="#mydestinations">
     <p>destinations</p>
-    <!-- <h3><%#= current_user.get_voted(Destination).count %></h3> -->
+    <h3><%= current_user.get_voted(Destination).count %></h3>
   </a>
   <a class="tab" data-target="#myexperiences">
     <p>experiences</p>
-    <h3><%= @experiences.count %></h3>
+    <h3><%= current_user.get_voted(Experience).count %></h3>
   </a>
-    <a class="tab" data-target="#">
+<!--     <a class="tab" data-target="#">
     <p>Experienced</p>
-    <h3>33/2354</h3>
-  </a>
+    <h3>0/<%= @bucket.count %></h3>
+  </a> -->
 </div>
-<!-- Should be a iteration over all three? -->
 
 <!-- All bucketlist items, will filter with pressed tabs -->
 <div class="container text-center">
-  <div class="tab-content" id="mydestinations">
+  <div class="tab-content active" id="mytotal">
+    <%= render 'shared/mytotal' %>
+  </div>
+  <div class="tab-content hidden" id="mydestinations">
     <%= render 'shared/mydestinations' %>
   </div>
-  <div class="tab-content" id="myaccomodations">
+  <div class="tab-content hidden" id="myaccommodations">
     <%= render 'shared/myaccommodations' %>
   </div>
-  <div class="tab-content" id="myexperiences">
+  <div class="tab-content hidden" id="myexperiences">
     <%= render 'shared/myexperiences' %>
   </div>
 </div>

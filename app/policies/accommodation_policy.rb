@@ -17,6 +17,10 @@ class AccommodationPolicy < ApplicationPolicy
     user.admin
   end
 
+  def upvote?
+    true
+  end
+
   def edit?
     true
   end
@@ -31,5 +35,4 @@ class AccommodationPolicy < ApplicationPolicy
 
   private
 
-  end
 end
