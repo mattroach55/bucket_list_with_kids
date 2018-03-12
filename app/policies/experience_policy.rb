@@ -6,7 +6,7 @@ class ExperiencePolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    user.admin
   end
 
   def show
