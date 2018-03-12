@@ -13,8 +13,16 @@
   </div>
 </div>
 
-<%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+
+<% if policy(Destination).new? %>
+  <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
+<% end %>
+<% if policy(Experience).new? %>
+  <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+<% end %>
+<% if policy(Accommodation).new? %>
+  <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+<% end %>
 
 
 <div class="show-large-container">
