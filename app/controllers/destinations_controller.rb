@@ -26,12 +26,16 @@ class DestinationsController < ApplicationController
     end
     # # CODE TO IMPLEMENT PS SEARCH RESULTS ABOVE
 
-    @show_entities = []
-    @all_entities.each do |entity|
-      if entity.show == true
-        @show_entities << entity
-      end
-    end
+      # @entity = params[:entity]
+      # @holiday_type = params[:holiday_type]
+      # @theme = params[:theme]
+
+      # @filtered_entities = []
+      # @search_entities.each do |entity|
+      #   if @entity == entity || entity.holiday_type == @holiday_type || entity.theme == @theme
+      #     @filtered_entities << entity
+      #   end
+      # end
 
     @show_entities = []
     @all_entities.each do |entity|

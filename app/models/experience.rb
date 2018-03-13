@@ -2,8 +2,6 @@ class Experience < ApplicationRecord
   has_many :reviews
   belongs_to :user, optional: true
   belongs_to :destination
-  validates :name, presence: true
-  validates :description, presence: true
   has_many :photos, dependent: :destroy
   # mount_uploader :photo, PhotoUploader
 

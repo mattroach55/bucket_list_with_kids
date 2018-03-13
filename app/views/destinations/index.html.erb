@@ -12,8 +12,8 @@
       <%= form_tag destinations_path, method: :get do %>
       <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
       <button type="submit" class="btn btn-primary">Search</button>
-      <input type="checkbox" name="theme" value="nature"> Nature
-      <input type="checkbox" name="theme" value="adventure"> Adventure<br>
+      <input type="checkbox" name="nature" value="true"> Nature
+      <input type="checkbox" name="adventure" value="true"> Adventure<br>
       <% end %>
     </div>
   </div>

@@ -5,7 +5,6 @@ class Accommodation < ApplicationRecord
   has_many :photos, dependent: :destroy
   # mount_uploader :photo, PhotoUploader
 
-
   # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_street?
@@ -22,5 +21,4 @@ class Accommodation < ApplicationRecord
   def full_address
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
   end
-
 end
