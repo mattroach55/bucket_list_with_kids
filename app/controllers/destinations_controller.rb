@@ -73,6 +73,7 @@ class DestinationsController < ApplicationController
   end
 
   def show
+    @destinations = Destination.all
     experiences = @destination.experiences
     authorize @destination
     @markers = [{ lat: @destination.latitude, lng: @destination.longitude }]

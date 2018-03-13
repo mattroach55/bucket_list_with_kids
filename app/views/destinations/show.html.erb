@@ -10,8 +10,8 @@
     </div>
   </div>
 </div>
-
-<div class="show-large-container">
+<div class="page-wrapper">
+<div class="show-large-container-left">
 
 
   <div class="med-container-inline-flex">
@@ -23,7 +23,7 @@
   </div>
 
   <!-- end of box 1, next is a div for the photo carousel -->
-<div class="show-map-index", id="map" style="width: 70%; height: 600px;" data-markers="<%= @markers.to_json %>">
+<div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
 </div>
 
 
@@ -103,7 +103,7 @@ accomm. and destination
   <div class="med-cont-vertical-flex">
     <p>other accom.</p>
   </div>
-</div>
+  <div>
         <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
 
         <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
@@ -111,9 +111,21 @@ accomm. and destination
         <%= link_to "Edit", edit_destination_path(@destination) %>
 
         <%= link_to "back to results", root_path %>
+     </div>
+</div>
+<div class="show-large-container-right">
+  <p> You may also like </p>
 
-    </div>
+    <% @destinations.each do |destination| %>
+    <%= link_to destination_path(destination) do %>
+    <p><%= destination.name %></p>
+    <% end %>
+    <% end %>
   </div>
 </div>
+</div>
+</div>
+
+
 
 

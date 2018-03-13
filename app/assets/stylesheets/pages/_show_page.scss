@@ -1,3 +1,10 @@
+.page-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 30px 75px;
+  position: relative;
+}
+
 .banner-show-text {
   font-family: 'Sacramento', 'cursive';
   color: white;
@@ -23,10 +30,11 @@
   margin: 0 auto;
 }
 
-.show-large-container {
-  margin: 30px 125px;
+.show-large-container-left {
   display: flex;
   flex-direction: column;
+  flex: 1 0 70%;
+  margin-right: 30px;
 }
 
 .show-large-container h1 {
@@ -43,10 +51,20 @@
    display: inline-block;
 }
 
-.med-container-inline-flex {
-  width: 70%;
+.show-large-container-right {
+  background-color: lightgray;
+  width: 300px;
+  height: 1000px;
   background-color: white;
-  margin: 30px 0;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  min-width: 250px;
+  padding: 15px;
+}
+
+.med-container-inline-flex {
+  width: 100%;
+  background-color: white;
   display: flex;
   justify-content: space-around;
   height: auto;
@@ -106,7 +124,7 @@
 
 .show-map-index {
   display: inline-block;
-  width: 70%;
+  width: 100%;
   height: auto;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
