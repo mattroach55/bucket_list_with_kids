@@ -6,7 +6,7 @@ class AccommodationPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin
+    true
   end
 
   def show
@@ -14,7 +14,7 @@ class AccommodationPolicy < ApplicationPolicy
   end
 
   def create?
-    user.admin
+   true
   end
 
   def edit?
@@ -22,11 +22,11 @@ class AccommodationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin
+    true
   end
 
   def destroy?
-    user.admin
+    true
   end
 
 end

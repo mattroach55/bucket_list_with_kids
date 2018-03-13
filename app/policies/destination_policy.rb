@@ -6,7 +6,7 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin
+    true
   end
 
   def show?
@@ -18,7 +18,7 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin
+    true
   end
 
   def upvote?
@@ -26,11 +26,11 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin
+    true
   end
 
   def destroy?
-    user.admin
+    true
   end
 
 end

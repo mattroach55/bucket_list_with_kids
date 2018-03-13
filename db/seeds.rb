@@ -5,13 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+require 'cloudinary'
+include CloudinaryHelper
 require 'csv'
 
 puts "Cleaning our database..."
 Experience.destroy_all
 Accommodation.destroy_all
 Destination.destroy_all
+Photo.destroy_all
 User.destroy_all
 puts "Database cleaned"
 
@@ -37,7 +39,6 @@ CSV.foreach(filepath, csv_options) do |row|
     new_destination.region = row['region']
     new_destination.latitude = row['latitude']
     new_destination.longitude = row['longitude']
-    new_destination.photo = row['photo']
     new_destination.holiday_type = row['holiday_type']
     new_destination.theme = row['theme']
     new_destination.allowed_age_0_4 = row['allowed_age_0_4']
@@ -55,8 +56,17 @@ CSV.foreach(filepath, csv_options) do |row|
     new_destination.bucket_list_count = row['bucket_list_count']
     new_destination.average_review_score = row['average_review_score']
     new_destination.booking_link = row['booking_link']
-    new_destination.remote_photo_url = "https://images.unsplash.com/photo-1484141786627-edbd5b982628?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=710&h=400&fit=crop&s=8f82100091c81cadcc210bf8329d7696"
     new_destination.save!
+    new_destination.photos.create([
+        {
+          remote_photo_url: row['photo1']
+        },
+        {
+          remote_photo_url: row['photo2']
+        }
+      ]
+    )
+
   elsif row['entity'] == 'accommodation'
     new_accommodation = Accommodation.new(user_id: user.id)
     new_accommodation.destination = Destination.all.sample
@@ -71,7 +81,6 @@ CSV.foreach(filepath, csv_options) do |row|
     new_accommodation.region = row['region']
     new_accommodation.latitude = row['latitude']
     new_accommodation.longitude = row['longitude']
-    new_accommodation.photo = row['photo']
     new_accommodation.holiday_type = row['holiday_type']
     new_accommodation.theme = row['theme']
     new_accommodation.allowed_age_0_4 = row['allowed_age_0_4']
@@ -89,13 +98,20 @@ CSV.foreach(filepath, csv_options) do |row|
     new_accommodation.bucket_list_count = row['bucket_list_count']
     new_accommodation.average_review_score = row['average_review_score']
     new_accommodation.booking_link = row['booking_link']
-    new_accommodation.remote_photo_url = "https://images.unsplash.com/photo-1484141786627-edbd5b982628?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=710&h=400&fit=crop&s=8f82100091c81cadcc210bf8329d7696"
-
     new_accommodation.save!
+    new_accommodation.photos.create([
+        {
+          remote_photo_url: row['photo1']
+        },
+        {
+          remote_photo_url: row['photo2']
+        }
+      ]
+    )
+
   else
     new_experience = Experience.new(user_id: user.id)
     new_experience.destination = Destination.all.sample
-
     new_experience.name = row.first.last
     new_experience.entity = row['entity']
     new_experience.show = row['show']
@@ -107,7 +123,6 @@ CSV.foreach(filepath, csv_options) do |row|
     new_experience.region = row['region']
     new_experience.latitude = row['latitude']
     new_experience.longitude = row['longitude']
-    new_experience.photo = row['photo']
     new_experience.holiday_type = row['holiday_type']
     new_experience.theme = row['theme']
     new_experience.allowed_age_0_4 = row['allowed_age_0_4']
@@ -125,9 +140,17 @@ CSV.foreach(filepath, csv_options) do |row|
     new_experience.bucket_list_count = row['bucket_list_count']
     new_experience.average_review_score = row['average_review_score']
     new_experience.booking_link = row['booking_link']
-    new_experience.remote_photo_url = "https://images.unsplash.com/photo-1484141786627-edbd5b982628?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=710&h=400&fit=crop&s=8f82100091c81cadcc210bf8329d7696"
-
     new_experience.save!
+    new_experience.photos.create([
+        {
+          remote_photo_url: row['photo1']
+        },
+        {
+          remote_photo_url: row['photo2']
+        }
+      ]
+    )
+
   end
 end
 puts "Finished seeding process..."
