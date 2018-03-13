@@ -1,11 +1,11 @@
 <% if entity.class.name == "Destination" %>
-  <% proper_path = link_to destination_path(entity) %>
+  <% proper_path = destination_path(entity) %>
   <% icon_name = 'card_dest_icon.svg' %>
 <% elsif entity.class.name == "Experience" %>
-  <% proper_path = link_to experience_path(entity) %>
+  <% proper_path = experience_path(entity) %>
   <% icon_name = 'card_exper_icon.svg' %>
 <% elsif entity.class.name == "Accommodation" %>
-  <% proper_path = link_to accommodation_path(entity) %>
+  <% proper_path = accommodation_path(entity) %>
   <% icon_name = 'card_accomm_icon.svg' %>
 <% end %>
 
