@@ -6,14 +6,16 @@
 
   <div class="banner-content">
   <%= image_tag 'logo.svg', :class => "page-logo" %><br>
-   <button class="banner-button"><%= link_to "Get Started", :anchor => "page-link" %></button>
-    <!-- BACKUP PG SEARCH -->
-    <!-- <div>
-      <%#= form_tag destinations_path, method: :get do %>
-      <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
+<!--    <button class="banner-button"><%= link_to "Get Started", :anchor => "page-link" %></button> -->
+
+    <div>
+      <%= form_tag destinations_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
       <button type="submit" class="btn btn-primary">Search</button>
-      <%# end %>
-    </div> -->
+      <input type="checkbox" name="theme" value="nature"> Nature
+      <input type="checkbox" name="theme" value="adventure"> Adventure<br>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="page-info-box" id="page-link">
@@ -22,16 +24,6 @@
   <%= image_tag 'destinations.svg', :class => "icon" %>
   <%= image_tag 'experiences.svg', :class => "icon" %>
   <%= image_tag 'accommodations.svg', :class => "icon" %>
-</div>
-<!-- ACTIVE ALGOLIA SEARCH -->
-<div class="search-container">
-    <form action="#" class="form">
-      <input class="form-control" id="search-input" name="destinations" type="text" placeholder="Search for experience eg. 'Rome'" />
-      <button type="submit" class="search-bar-button">Search</button><br>
-      <input type="checkbox" name="theme" value="nature"> Nature
-      <input type="checkbox" name="theme" value="adventure"> Adventure<br>
-      <!-- TO DO: Put internal link to start of indexed results after search is completed -->
-    </form>
 </div>
 </div>
   <div class="big-flex">
@@ -127,8 +119,8 @@
       <%= label_tag(:Entertainment, "Entertainment") %></p>
       <p><%= check_box_tag(:Food) %>
       <%= label_tag(:Food, "Food & Drink") %></p>
-      <p><%= check_box_tag(:Science) %>
-      <%= label_tag(:Science, "Science & Nature") %></p>
+      <p><%= check_box_tag(:Science, "Testvalue") %>
+      <%= label_tag(:Science, "Nature") %></p>
       <p><%= check_box_tag(:Shopping) %>
       <%= label_tag(:Shopping, "Shopping") %></p>
     </div>

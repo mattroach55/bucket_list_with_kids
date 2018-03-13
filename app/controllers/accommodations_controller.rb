@@ -74,7 +74,7 @@ class AccommodationsController < ApplicationController
   end
 
   def params_accommodation
-    params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :kids_club, :kids_menu, :connecting_rooms, :pool, :beach, :bucket_list_count, :average_review_score, :booking_link)
+    params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :entity, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :booking_link)
   end
 
 end
