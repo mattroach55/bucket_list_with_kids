@@ -17,6 +17,10 @@ class AccommodationPolicy < ApplicationPolicy
    true
   end
 
+  def upvote?
+    true
+  end
+
   def edit?
     true
   end
@@ -28,5 +32,4 @@ class AccommodationPolicy < ApplicationPolicy
   def destroy?
     true
   end
-
 end

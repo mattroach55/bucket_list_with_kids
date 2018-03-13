@@ -17,6 +17,10 @@ class ExperiencePolicy < ApplicationPolicy
     true
   end
 
+  def upvote?
+    true
+  end
+
   def edit?
     true
   end
@@ -29,3 +33,5 @@ class ExperiencePolicy < ApplicationPolicy
     true
   end
 end
+
+

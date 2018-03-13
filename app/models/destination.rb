@@ -1,6 +1,7 @@
 class Destination < ApplicationRecord
   has_many :accommodations
   has_many :experiences
+  # has_many :bucket_list_items
   belongs_to :user
   validates :name, presence: true
   # validates :show, default: true
@@ -11,7 +12,7 @@ class Destination < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_street?
 
-  # acts_as_votable
+  acts_as_votable
 
 # CODE FOR PG MUlTISEARCH
   include PgSearch

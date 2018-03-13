@@ -27,6 +27,8 @@ class DestinationsController < ApplicationController
     end
     # CODE TO IMPLEMENT PS SEARCH RESULTS ABOVE
 
+    @shuffle_function = @all_entities.shuffle
+
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
     @markers = @all_entities.map do |e|
       {
@@ -39,7 +41,6 @@ class DestinationsController < ApplicationController
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES ABOVE
   end
 
-  # TESTING A UPVOTE ACTION
   def upvote
     @destination = Destination.find(params[:id])
     authorize @destination
@@ -51,12 +52,20 @@ class DestinationsController < ApplicationController
       @bucket.save
     end
     redirect_to destinations_path
-    # redirect_to destination_path(@destination)
   end
 
+  # UPVOTE WORKS, NOW TESTING DOWNVOTE
   # def downvote
-  #   @destination.upvote_by(current_user)
-  #   redirect_to destination_path(@destination)
+  #   @destination = Destination.find(params[:id])
+  #   authorize @destination
+  #   @destination.downvote_by(current_user)
+  #   if current_user.bucket_list_items.where(destination: @destination).empty?
+  #     @bucket = BucketListItem.new
+  #     @bucket.user = current_user
+  #     @bucket.destination = @destination
+  #     @bucket.save
+  #   end
+  #   redirect_to destinations_path
   # end
 
   def mix

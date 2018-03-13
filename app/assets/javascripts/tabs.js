@@ -4,14 +4,16 @@ $(function(){
 
   $(".tab").on("click", function(e){
     // CHANGE TAB
-    $(".active").removeClass('active')
+    $(".tab").removeClass('active')
     $(this).addClass('active');
 
-    // HIDE ALL WITH HIDDEN CLASS
+    // // HIDE ALL WITH HIDDEN CLASS
+    var content = $(this).data("target");
     $(".tab-content").addClass("hidden");
+    $(content).removeClass("hidden");
 
-    // SHOW TAB
-    var id = $(".active").data("target");
+    // // SHOW TAB
+    var id = $(this).data("target");
     $(id).removeClass("hidden");
   });
 });

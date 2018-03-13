@@ -14,6 +14,21 @@ class AccommodationsController < ApplicationController
     end
   end
 
+  def upvote
+    @accommodation = Accommodation.find(params[:id])
+    @destination = @accommodation.destination
+    authorize @accommodation
+    @accommodation.upvote_by(current_user)
+    if current_user.bucket_list_items.where(accommodation: @accommodation).empty?
+      @bucket = BucketListItem.new
+      @bucket.user = current_user
+      @bucket.accommodation = @accommodation
+      @bucket.destination = @destination
+      @bucket.save
+    end
+    redirect_to destinations_path
+  end
+
   def show
     @review = Review.new
     # MAP CODE BELOW
