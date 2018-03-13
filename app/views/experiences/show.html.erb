@@ -1,12 +1,15 @@
 <div class="slider-wrapper">
   <div class="slider">
     <% @experience.photos.each do |photo| %>
-      <div class="slider--item" style="background-image: url('<%= cl_image_path(photo.photo) %>')">
-      </div>
-     <% end %>
+    <div class="slider--item" style="background-image: url('<%= cl_image_path(photo.photo) %>')">
     </div>
+    <% end %>
   </div>
 </div>
+
+<% if policy(@experience).edit? %>
+  <%= link_to "Edit", edit_experience_path(@experience), class: "btn btn-primary" %>
+<% end %>
 
 <div class="container">
   <div class="row">
@@ -18,8 +21,6 @@
         <p><%= @experience.country %></p>
         <p><%= @experience.region %></p>
         <p><%= @experience.bucket_list_count %></p>
-        <%= link_to "Edit", edit_experience_path(@experience) %>
-      </div>
 
       <div class="col-xs-6">
         <h3>You may also like:</h3>
@@ -42,192 +43,51 @@
         </ul>
       </div>
     </div>
-  </div>
-  <div class="container tours">
-    <div class="row">
-      <div class="col-xs-10">
-        <h1>Recommended Tours</h1>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-bitbucket"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container accommodation">
-    <div class="row">
-      <div class="col-xs-10">
-        <h1>Bucket List Accommodation nearby</h1>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container other-accomodation">
-    <div class="row">
-      <div class="col-xs-10">
-        <h1>Other family-friendly accommodation nearby</h1>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-        <div class="product">
-          <div class='product-upvote'>
-            <div class="product-arrow"></div>
-            <div class='product-count'>95</div>
-          </div>
-          <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-          <div class='product-body'>
-            <h3>Hot air balloon ride over Cappadocia</h3>
-            <p>Amazing views</p>
-          </div>
-          <ul class="list-inline product-controls hidden-sm hidden-xs">
-            <li><a href=""><i class="fa fa-heart"></i></a></li>
-            <li><a href=""><i class="fa fa-share"></i></a></li>
-            <li><a href=""><i class="fa fa-star"></i></a></li>
-          </ul>
-        </div>
-        <div class="container reviews">
 
-              <%= render 'reviews/form', type_review: @experience, review: @review %>
-              <h3>
-                <%= pluralize @experience.reviews.size, "review" %>
-              </h3>
-              <div id="reviews">
-                <% if @experience.reviews.blank? %>
-                Be the first to leave a review for <%= @experience.name %>
-                <% else %>
-                <% @experience.reviews.each do |review| %>
-                <%= render 'reviews/show', review: review %>
-                <% end %>
-                <% end %>
-              </div>
-            </div>
+    <!-- FRONTEND FOR TOURS AT EXPERIENCE SHOW -->
+    <div class="container tours">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <h1>Recommended Tours</h1>
+          <%= render 'shared/viator' %>
+          <%= render 'shared/viator' %>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRONTEND FOR ACCOMMODATIONS AT EXPERIENCE SHOW -->
+    <div class="container other-accomodation">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <h1>Family-friendly accommodation nearby</h1>
+          <%= render 'shared/booking' %>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAST xs-12 sm-10 CLASS AROUND THE REVIEWS -->
+    <div class="container reviews">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <%= render 'reviews/form', type_review: @experience, review: @review %>
+          <h3>
+            <%= pluralize @experience.reviews.size, "review" %>
+          </h3>
+          <div id="reviews">
+            <% if @experience.reviews.blank? %>
+            Be the first to leave a review for <%= @experience.name %>
+            <% else %>
+            <% @experience.reviews.each do |review| %>
+            <%= render 'reviews/show', review: review %>
+            <% end %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-
-  <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-  </div>
+<div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+</div>
 

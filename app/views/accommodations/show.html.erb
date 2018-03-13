@@ -5,12 +5,15 @@
     <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
     </div>
     <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
-
     </div>
     <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
     </div>
   </div>
 </div>
+
+<% if policy(@accommodation).edit? %>
+  <%= link_to "Edit", edit_accommodation_path(@accommodation), class: "btn btn-primary" %>
+<% end %>
 
 <div class="big-flex">
   <div class="left-column">
@@ -44,6 +47,8 @@
     </div>
   </div>
 </div>
+
+<div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>"></div>
 
 
 <!-- OWENS CODE, NOT READY FOR DEPLOYMENT YET -->
@@ -255,8 +260,7 @@
 </div>
 
 
-<div id="map" style="width: 100%; height: 600px;" data-markers="<%#= @markers.to_json %>">
-</div>
+
 
 
 

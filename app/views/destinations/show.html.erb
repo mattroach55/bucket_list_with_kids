@@ -1,17 +1,15 @@
-
 <div class="slider-wrapper">
+  <h1 class="banner-show-text"><%= @destination.name %></h1>
+  <div>
   <div class="slider">
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
-
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
+    <% @destination.photos.each do |photo| %>
+      <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%= cl_image_path(photo.photo) %>')">
+      </div>
+     <% end %>
     </div>
   </div>
 </div>
+
 
 
 <% if policy(Destination).new? %>
@@ -23,18 +21,27 @@
 <% if policy(Accommodation).new? %>
   <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
 <% end %>
+<% if policy(@destination).edit? %>
+  <%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
+<% end %>
+
+
 
 
 <div class="show-large-container">
 
+
   <div class="med-container-inline-flex">
-    <%#= image_tag 'destinations.svg', :class => "show-icon" %>
+     <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
     <div>
-      <h1><%= @destination.name %></h1>
+      <h4><%= @destination.name %> with kids</h4>
       <p><%= @destination.description %></p>
     </div>
   </div>
+
   <!-- end of box 1, next is a div for the photo carousel -->
+<div class="show-map-index", id="map" style="width: 70%; height: 600px;" data-markers="<%= @markers.to_json %>">
+</div>
 
 
   <!-- next is header for the "experiences in this destination" cards -->
@@ -43,10 +50,14 @@
     <h1> Bucket list experiences in <%= @destination.name %></h1>
   </div>
 
- <div class="container-right">
+<!-- next "experiences in this destination" cards
+  *This code does not create an error, but doesn't display anything either
+  ____________________________________________________________________________-->
+  <div class="right-column-show">
     <% @destination.experiences.each do |experience| %>
     <%= link_to experience_path(experience) do %>
     <p><%= experience.name %></p><br>
+    <p><%= experience.description %></p>
     <% end %>
     <% end %>
   </div>
@@ -60,39 +71,31 @@
         <%#= image_tag 'banner2.jpg', :class => "portrait thumbnail" %>
         <img src="portrait-img.jpg" class="portrait" alt="Image" />
 
-<div class="slider-wrapper">
-  <div class="slider">
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
-
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
-    </div>
-  </div>
-</div>
 
 <div class="big-flex">
   <div class="left-column">
     <div class="show-container">
       <div class="left-column-element">
         <h3>ABOUT</h3>
-        <p><%= @destination.description %></p><br>
+        <p><%#= @destination.description %></p><br>
 accomm. and destination
       </div>
  ___________________________________________________________________________________________________ -->
 
 <!-- map code -->
 
- <div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
- </div>
+
 
  <!-- div for bucket list accommodations to go here / show-page-cards -->
 
-
-
+  <div class="container-right">
+    <% @destination.accommodations.each do |accommodation| %>
+    <%= link_to accommodation_path(accommodation) do %>
+    <p><%= accommodation.name %></p><br>
+    <p><%= accommodation.description %></p>
+    <% end %>
+    <% end %>
+  </div>
 
 
 <!-- div for stacked display for other recommended accommodations -->
@@ -118,14 +121,5 @@ accomm. and destination
     <p>other accom.</p>
   </div>
 </div>
-        <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-
-        <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-
-        <%= link_to "Edit", edit_destination_path(@destination) %>
-
-        <%= link_to "back to results", root_path %>
-
-    </div>
-  </div>
 </div
+
