@@ -1,9 +1,120 @@
 <div class="slider-wrapper">
+  <h1 class="banner-show-text"><%= @experience.name %></h1>
+  <div>
   <div class="slider">
     <% @experience.photos.each do |photo| %>
-      <div class="slider--item" style="background-image: url('<%= cl_image_path(photo.photo) %>')">
+      <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%= cl_image_path(photo.photo) %>')">
       </div>
      <% end %>
+    </div>
+  </div>
+</div>
+<div class="page-wrapper">
+<div class="show-large-container-left">
+
+
+  <div class="med-container-inline-flex">
+     <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
+    <div>
+      <h4><%= @experience.name %> with kids</h4>
+      <p><%= @experience.description %></p>
+    </div>
+  </div>
+
+  <!-- end of box 1, next is a div for the photo carousel -->
+<div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+</div>
+
+
+  <!-- next is header for the "experiences in this destination" cards -->
+
+  <div class="page-text">
+    <h1> Bucket list accommodations in <%= @experience.name %></h1>
+  </div>
+
+  <div class="right-column-show">
+    <% @destination.accommodations.each do |accommodation| %>
+    <%= link_to accommodation_path(accommodation) do %>
+    <p><%= accommodation.name %></p><br>
+    <p><%= accommodation.description %></p>
+    <% end %>
+    <% end %>
+  </div>
+
+<!-- Creating code to take a photo and turn it into an undistorted thumbnail (for show page card) in progress
+  ________________________________________________________________________________________________
+  <! <div class="med-container-inline-flex">
+    <div class="thumbnail-container thumbnail" style="background-image: url(<%#= @destination.experience.photo %>)">
+    </div> -->
+      <!-- <div class="thumbnail-container">
+        <%#= image_tag 'banner2.jpg', :class => "portrait thumbnail" %>
+        <img src="portrait-img.jpg" class="portrait" alt="Image" />
+
+
+UNUSED CODE FOR A STACKED CARD LOOK
+<div for stacked display for other recommended accommodations -->
+<!-- <div class="med-cont-vertical-flex">
+  <%#= image_tag 'accommodations.svg', :class => "show-icon" %>
+  <div>
+    <div class="right-column-show">
+      <h1><%#= @destination.name %></h1>
+      <p><%#= @destination.full_address %></p>
+    </div>
+    <div class="right-column-show">
+      <h1><%#= @destination.name %></h1>
+      <p><%#= @destination.full_address %></p>
+    </div>
+  </div>
+  <div class="right-column-show">
+    <h1><%#= @destination.name %></h1>
+    <p><%#= @destination.full_address %></p>
+  </div>
+</div>
+
+  <div class="med-cont-vertical-flex">
+    <p>other accom.</p>
+  </div>
+  <div> -->
+        <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+
+        <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+
+        <%= link_to "Edit", edit_destination_path(@destination) %>
+
+        <%= link_to "back to results", root_path %>
+     </div>
+
+<div class="show-large-container-right">
+  <p> You may also like </p>
+
+
+     <% @experiences.each do |experience| %>
+
+    <%= link_to experience_path(experience) do %>
+    <%= experience.name %>
+    <% end %>
+    <% end %>
+
+
+
+   <!--  <%# @destinations.each do |destination| %>
+    <p><%#= if destination.name != @destination.name %></p>
+    <%#= link_to destination_path(destination) do %>
+    <%# destination.name %>
+    <%# end %>
+    <%# end %>
+    <%# end %> -->
+</div>
+</div>
+
+
+
+<!-- <div class="slider-wrapper">
+  <div class="slider">
+    <%# @experience.photos.each do |photo| %>
+      <div class="slider--item" style="background-image: url('<%#= cl_image_path(photo.photo) %>')">
+      </div>
+     <%# end %>
     </div>
   </div>
 </div>
@@ -11,14 +122,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h3><%= @experience.name %></h3>
-      <p><%= @experience.description %></p>
-      <p><strong>Location of <%= @experience.name %>'s experience</strong>
-        <p><%= @experience.locality %></p>
-        <p><%= @experience.country %></p>
-        <p><%= @experience.region %></p>
-        <p><%= @experience.bucket_list_count %></p>
-        <%= link_to "Edit", edit_experience_path(@experience) %>
+      <h3><%#= @experience.name %></h3>
+      <p><%#= @experience.description %></p>
+      <p><strong>Location of <%#= @experience.name %>'s experience</strong>
+        <p><%#= @experience.locality %></p>
+        <p><%#= @experience.country %></p>
+        <p><%#= @experience.region %></p>
+        <p><%#= @experience.bucket_list_count %></p>
+        <%#= link_to "Edit", edit_experience_path(@experience) %>
       </div>
 
       <div class="col-xs-6">
@@ -207,18 +318,18 @@
         </div>
         <div class="container reviews">
 
-              <%= render 'reviews/form', type_review: @experience, review: @review %>
+              <%#= render 'reviews/form', type_review: @experience, review: @review %>
               <h3>
-                <%= pluralize @experience.reviews.size, "review" %>
+                <%#= pluralize @experience.reviews.size, "review" %>
               </h3>
               <div id="reviews">
-                <% if @experience.reviews.blank? %>
-                Be the first to leave a review for <%= @experience.name %>
-                <% else %>
-                <% @experience.reviews.each do |review| %>
-                <%= render 'reviews/show', review: review %>
-                <% end %>
-                <% end %>
+                <%# if @experience.reviews.blank? %>
+                Be the first to leave a review for <%#= @experience.name %>
+                <%# else %>
+                <%# @experience.reviews.each do |review| %>
+                <%#= render 'reviews/show', review: review %>
+                <%# end %>
+                <%# end %>
               </div>
             </div>
           </div>
@@ -228,6 +339,7 @@
   </div>
 
 
-  <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+  <div id="map" style="width: 100%; height: 600px;" data-markers="<%#= @markers.to_json %>">
   </div>
 
+ -->

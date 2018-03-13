@@ -30,7 +30,10 @@ class ExperiencesController < ApplicationController
   end
 
   def show
-    authorize @experience
+     @experiences = Experience.all
+     @destination = @experience.destination
+     @accommodations = @experience.accommodations
+     authorize @experience
     # MAP CODE BELOW
     # @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: @experience.name }}]
     @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: @experience }) } }]
