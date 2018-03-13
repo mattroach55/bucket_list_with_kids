@@ -1,10 +1,10 @@
-<% if type == "destination" %>
+<% if entity.class.name == "Destination" %>
   <% proper_path = link_to destination_path(entity) %>
   <% icon_name = 'card_dest_icon.svg' %>
-<% elsif type == "experience" %>
+<% elsif entity.class.name == "Experience" %>
   <% proper_path = link_to experience_path(entity) %>
   <% icon_name = 'card_exper_icon.svg' %>
-<% elsif type == "accommodation" %>
+<% elsif entity.class.name == "Accommodation" %>
   <% proper_path = link_to accommodation_path(entity) %>
   <% icon_name = 'card_accomm_icon.svg' %>
 <% end %>
@@ -18,7 +18,7 @@
           <h1 class="title"><%= entity.name %></h1>
           <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
 
-          <% count_path = "bucket_count_#{type}_path".to_sym %>
+          <% count_path = "bucket_count_#{entity.class.name.downcase}_path".to_sym %>
 
           <%= link_to method(count_path).call(entity), method: :put do %>
           <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
@@ -26,6 +26,6 @@
         </div>
       </div>
     </div>
-    <h6>This <%= "#{type}" %> has been added <%= entity.get_upvotes.count %> times</h6>
+    <h6>This <%= "#{entity.class.name.downcase}" %> has been added <%= entity.get_upvotes.count %> times</h6>
     </li>
   <% end %>
