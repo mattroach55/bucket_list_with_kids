@@ -35,7 +35,6 @@
     <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
     </ul>
   </div>
-
   <div class="right-column">
     <p><strong>TYPE</strong></p>
     <p><%= check_box_tag(:destination) %>
@@ -64,7 +63,7 @@
       <%= label_tag(:Entertainment, "Entertainment") %></p>
       <p><%= check_box_tag(:Food) %>
       <%= label_tag(:Food, "Food & Drink") %></p>
-      <p><%= check_box_tag(:Science, "Testvalue") %>
+      <p><%= check_box_tag(:Science, "Science") %>
       <%= label_tag(:Science, "Nature") %></p>
       <p><%= check_box_tag(:Shopping) %>
       <%= label_tag(:Shopping, "Shopping") %></p>

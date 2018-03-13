@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312164555) do
+ActiveRecord::Schema.define(version: 20180313102744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20180312164555) do
     t.string "region"
     t.float "latitude"
     t.float "longitude"
-    t.string "photo"
     t.string "holiday_type"
     t.string "theme"
     t.integer "duration"
@@ -49,6 +48,7 @@ ActiveRecord::Schema.define(version: 20180312164555) do
     t.boolean "allowed_age_8_11"
     t.boolean "allowed_age_12_15"
     t.boolean "allowed_age_16_18"
+    t.string "photos"
     t.index ["destination_id"], name: "index_accommodations_on_destination_id"
     t.index ["user_id"], name: "index_accommodations_on_user_id"
   end
@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20180312164555) do
     t.string "region"
     t.float "latitude"
     t.float "longitude"
-    t.string "photo"
     t.string "holiday_type"
     t.string "theme"
     t.integer "duration"
@@ -99,6 +98,7 @@ ActiveRecord::Schema.define(version: 20180312164555) do
     t.boolean "allowed_age_8_11"
     t.boolean "allowed_age_12_15"
     t.boolean "allowed_age_16_18"
+    t.string "photos"
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 20180312164555) do
     t.string "region"
     t.float "latitude"
     t.float "longitude"
-    t.string "photo"
     t.string "holiday_type"
     t.string "theme"
     t.integer "duration"
@@ -136,6 +135,7 @@ ActiveRecord::Schema.define(version: 20180312164555) do
     t.boolean "allowed_age_8_11"
     t.boolean "allowed_age_12_15"
     t.boolean "allowed_age_16_18"
+    t.string "photos"
     t.index ["destination_id"], name: "index_experiences_on_destination_id"
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end

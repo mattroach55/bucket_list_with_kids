@@ -6,7 +6,7 @@ class ExperiencePolicy < ApplicationPolicy
   end
 
   def new?
-    user.admin
+    true
   end
 
   def show
@@ -22,15 +22,15 @@ class ExperiencePolicy < ApplicationPolicy
   end
 
   def edit?
-    user.admin
+    true
   end
 
   def update?
-    user.admin
+    true
   end
 
   def destroy?
-    user.admin
+    true
   end
 end
 

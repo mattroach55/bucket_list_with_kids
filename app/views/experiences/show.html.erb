@@ -1,13 +1,9 @@
 <div class="slider-wrapper">
   <div class="slider">
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
-
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
+    <% @experience.photos.each do |photo| %>
+      <div class="slider--item" style="background-image: url('<%= cl_image_path(photo.photo) %>')">
+      </div>
+     <% end %>
     </div>
   </div>
 </div>

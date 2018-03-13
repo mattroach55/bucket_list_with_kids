@@ -1,6 +1,6 @@
 class AccommodationsController < ApplicationController
   before_action :set_destination, only: [:new, :create]
-  before_action :set_accommodation, only: [:show, :edit, :update, :photo, :destroy]
+  before_action :set_accommodation, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
@@ -50,6 +50,7 @@ class AccommodationsController < ApplicationController
     authorize @accommodation
 
     if @accommodation.save
+      store_photos
       redirect_to accommodation_path(@accommodation)
     else
       render :new
@@ -79,6 +80,10 @@ class AccommodationsController < ApplicationController
   end
 
   private
+  def store_photos
+    photos = params[:accommodation][:photos]
+    photos.each {|photo| @accommodation.photos.create(photo: photo)} if photos
+  end
 
   def set_destination
     @destination = Destination.find(params[:destination_id])
@@ -89,7 +94,7 @@ class AccommodationsController < ApplicationController
   end
 
   def params_accommodation
-    params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :entity, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :booking_link)
+    params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos, :booking_link)
   end
 
 end

@@ -2,7 +2,9 @@ class Accommodation < ApplicationRecord
   has_many :reviews
   belongs_to :user, optional: true
   belongs_to :destination
-  mount_uploader :photo, PhotoUploader
+  has_many :photos, dependent: :destroy
+  # mount_uploader :photo, PhotoUploader
+
 
   # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE
   geocoded_by :full_address
