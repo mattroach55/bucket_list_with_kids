@@ -18,14 +18,14 @@ class DestinationsController < ApplicationController
       results.each do |result|
         @all_entities << result.searchable
       end
-    # CODE TO IMPLEMENT SEARCH RESULTS ABOVE
+
     else
-        #code to mix destination, accomdation and experiences. iterate on show page over @all_entities
-        @destinations = Destination.where.not(latitude: nil, longitude: nil)
-        @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
-        @experiences = Experience.where.not(latitude: nil, longitude: nil)
-        @all_entities = @destinations + @experiences + @accommodations
+      @destinations = Destination.where.not(latitude: nil, longitude: nil)
+      @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
+      @experiences = Experience.where.not(latitude: nil, longitude: nil)
+      @all_entities = @destinations + @experiences + @accommodations
     end
+    # CODE TO IMPLEMENT PS SEARCH RESULTS ABOVE
 
     @all_entities = @all_entities.shuffle
 
@@ -34,11 +34,11 @@ class DestinationsController < ApplicationController
       {
         lat: e.latitude,
         lng: e.longitude,
-            # infoWindow: { content: entity.name }
-            infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: e }) }
-          }
-        end
-    # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES
+        # infoWindow: { content: entity.name }
+        infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: e }) }
+      }
+    end
+    # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES ABOVE
   end
 
   def upvote
@@ -117,7 +117,7 @@ class DestinationsController < ApplicationController
   end
 
   def params_destination
-    params.require(:destination).permit(:name, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :entity, :holiday_type, :theme, :kids_age_from, :kids_age_to, :duration, :price, :bucket_list_count, :average_review_score)
+    params.require(:destination).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :entity, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score)
   end
 end
 

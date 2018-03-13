@@ -6,7 +6,7 @@
 // but in the AMD modules of the page
 
 
-var client = algoliasearch('CHZ1QFQS3L', '2adac3ef18692463940451b5deb1f2c2');
+var client = algoliasearch('TVOG4H9THR', '881003d615b3f477fabc78fef9c0fe9d');
 var index = client.initIndex('dev_BUCKETKIDS');
 
 var result = '';

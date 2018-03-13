@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311185723) do
+ActiveRecord::Schema.define(version: 20180312164555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 20180311185723) do
     t.string "photo"
     t.string "holiday_type"
     t.string "theme"
-    t.integer "kids_age_from"
-    t.integer "kids_age_to"
     t.integer "duration"
     t.float "price"
     t.boolean "kids_club"
@@ -46,6 +44,11 @@ ActiveRecord::Schema.define(version: 20180311185723) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "allowed_age_0_4"
+    t.boolean "allowed_age_5_7"
+    t.boolean "allowed_age_8_11"
+    t.boolean "allowed_age_12_15"
+    t.boolean "allowed_age_16_18"
     t.index ["destination_id"], name: "index_accommodations_on_destination_id"
     t.index ["user_id"], name: "index_accommodations_on_user_id"
   end
@@ -78,8 +81,6 @@ ActiveRecord::Schema.define(version: 20180311185723) do
     t.string "photo"
     t.string "holiday_type"
     t.string "theme"
-    t.integer "kids_age_from"
-    t.integer "kids_age_to"
     t.integer "duration"
     t.float "price"
     t.boolean "kids_club"
@@ -93,6 +94,11 @@ ActiveRecord::Schema.define(version: 20180311185723) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "allowed_age_0_4"
+    t.boolean "allowed_age_5_7"
+    t.boolean "allowed_age_8_11"
+    t.boolean "allowed_age_12_15"
+    t.boolean "allowed_age_16_18"
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
@@ -111,8 +117,6 @@ ActiveRecord::Schema.define(version: 20180311185723) do
     t.string "photo"
     t.string "holiday_type"
     t.string "theme"
-    t.integer "kids_age_from"
-    t.integer "kids_age_to"
     t.integer "duration"
     t.float "price"
     t.boolean "kids_club"
@@ -127,6 +131,11 @@ ActiveRecord::Schema.define(version: 20180311185723) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "allowed_age_0_4"
+    t.boolean "allowed_age_5_7"
+    t.boolean "allowed_age_8_11"
+    t.boolean "allowed_age_12_15"
+    t.boolean "allowed_age_16_18"
     t.index ["destination_id"], name: "index_experiences_on_destination_id"
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end

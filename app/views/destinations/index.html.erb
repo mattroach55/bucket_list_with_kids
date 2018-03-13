@@ -5,32 +5,26 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0.6) 0%, rgba(73, 78, 107, 0.6) 50%), url('<%= image_path 'banner2.jpg'%>');">
 
   <div class="banner-content">
-    <%= image_tag 'logo.svg', :class => "page-logo" %><br>
-    <button class="banner-button"><%= link_to "Get Started", :anchor => "page-link" %></button>
-    <!-- BACKUP PG SEARCH -->
-    <!-- <div>
-      <%#= form_tag destinations_path, method: :get do %>
-      <%#= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
+  <%= image_tag 'logo.svg', :class => "page-logo" %><br>
+<!--    <button class="banner-button"><%= link_to "Get Started", :anchor => "page-link" %></button> -->
+
+    <div>
+      <%= form_tag destinations_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
       <button type="submit" class="btn btn-primary">Search</button>
-      <%# end %>
-    </div> -->
+      <input type="checkbox" name="theme" value="nature"> Nature
+      <input type="checkbox" name="theme" value="adventure"> Adventure<br>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="page-info-box" id="page-link">
   <p>Unique holiday inspiration, handpicked just for families</p>
-  <div class="icons">
-    <%= image_tag 'destinations.svg', :class => "icon" %>
-    <%= image_tag 'experiences.svg', :class => "icon" %>
-    <%= image_tag 'accommodations.svg', :class => "icon" %>
-  </div>
-  <!-- ACTIVE ALGOLIA SEARCH -->
-  <div class="search-container">
-    <form action="#" class="form">
-     <input class="form-control" id="search-input" name="destinations" type="text" placeholder="Search for experience eg. 'Rome'" />
-     <button type="submit" class="search-bar-button">Search</button>
-     <!-- TO DO: Put internal link to start of indexed results after search is completed -->
-   </form>
- </div>
+<div class="icons">
+  <%= image_tag 'destinations.svg', :class => "icon" %>
+  <%= image_tag 'experiences.svg', :class => "icon" %>
+  <%= image_tag 'accommodations.svg', :class => "icon" %>
+</div>
 </div>
 <div class="big-flex">
   <div class= "content">
@@ -51,35 +45,35 @@
     <p><%= check_box_tag(:destination) %>
       <%= label_tag(:destination, "Destination") %></p>
       <p><%= check_box_tag(:experience) %>
-        <%= label_tag(:experience, "Experience") %></p>
-        <p><%= check_box_tag(:destination) %>
-          <%= label_tag(:accommodation, "Accommodation") %></p>
-          <br>
-          <p><strong>KID'S AGE</strong></p>
-          <p><%= check_box_tag(:Age_group_one) %>
-            <%= label_tag(:Age_group_one, "5-7") %></p>
-            <p><%= check_box_tag(:Age_group_two) %>
-              <%= label_tag(:Age_group_two, "8-10") %></p>
-              <p><%= check_box_tag(:Age_group_three) %>
-                <%= label_tag(:Age_group_three, "11-12") %></p>
-                <br>
-                <p><strong>THEME</strong></p>
-                <p><%= check_box_tag(:Adventure) %>
-                  <%= label_tag(:Adventure, "Adventure & Sport") %></p>
-                  <p><%= check_box_tag(:Art) %>
-                    <%= label_tag(:Art, "Art & Culture") %></p>
-                    <p><%= check_box_tag(:Wellness) %>
-                      <%= label_tag(:Wellness, "Body & Mind") %></p>
-                      <p><%= check_box_tag(:Entertainment) %>
-                        <%= label_tag(:Entertainment, "Entertainment") %></p>
-                        <p><%= check_box_tag(:Food) %>
-                          <%= label_tag(:Food, "Food & Drink") %></p>
-                          <p><%= check_box_tag(:Science) %>
-                            <%= label_tag(:Science, "Science & Nature") %></p>
-                            <p><%= check_box_tag(:Shopping) %>
-                              <%= label_tag(:Shopping, "Shopping") %></p>
-                            </div>
-                          </div>
+      <%= label_tag(:experience, "Experience") %></p>
+      <p><%= check_box_tag(:destination) %>
+      <%= label_tag(:accommodation, "Accommodation") %></p>
+      <br>
+      <p><strong>KID'S AGE</strong></p>
+      <p><%= check_box_tag(:Age_group_one) %>
+      <%= label_tag(:Age_group_one, "5-7") %></p>
+      <p><%= check_box_tag(:Age_group_two) %>
+      <%= label_tag(:Age_group_two, "8-10") %></p>
+      <p><%= check_box_tag(:Age_group_three) %>
+      <%= label_tag(:Age_group_three, "11-12") %></p>
+      <br>
+      <p><strong>THEME</strong></p>
+      <p><%= check_box_tag(:Adventure) %>
+      <%= label_tag(:Adventure, "Adventure & Sport") %></p>
+      <p><%= check_box_tag(:Art) %>
+      <%= label_tag(:Art, "Art & Culture") %></p>
+      <p><%= check_box_tag(:Wellness) %>
+      <%= label_tag(:Wellness, "Body & Mind") %></p>
+      <p><%= check_box_tag(:Entertainment) %>
+      <%= label_tag(:Entertainment, "Entertainment") %></p>
+      <p><%= check_box_tag(:Food) %>
+      <%= label_tag(:Food, "Food & Drink") %></p>
+      <p><%= check_box_tag(:Science, "Testvalue") %>
+      <%= label_tag(:Science, "Nature") %></p>
+      <p><%= check_box_tag(:Shopping) %>
+      <%= label_tag(:Shopping, "Shopping") %></p>
+    </div>
+</div>
 <!--   <div class = "full-page-column">
     <%#= link_to "New", new_destination_path(@destination) %>
   </div> -->
