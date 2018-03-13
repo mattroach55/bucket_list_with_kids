@@ -33,6 +33,13 @@ class DestinationsController < ApplicationController
       end
     end
 
+    @show_entities = []
+    @all_entities.each do |entity|
+      if entity.show == true
+        @show_entities << entity
+      end
+    end
+
     @shuffled_entities = @show_entities.shuffle
 
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
