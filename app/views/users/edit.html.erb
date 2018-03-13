@@ -1,6 +1,5 @@
-<div id="form-page">
-  <div id="form">
-<%= form_for(@user, :url => { :action => "update_password" } ) do |f| %>
+<div id="form">
+  <%= form_for(@user, :url => { :action => "update_password" } ) do |f| %>
   <div class="field">
     <%= f.label :password, "Password" %><br />
     <%= f.password_field :password, :autocomplete => "off"  %>
@@ -12,7 +11,5 @@
   <div class="action_container">
     <%= f.submit %>
   </div>
-<% end %>
-
-  </div>
+  <% end %>
 </div>
