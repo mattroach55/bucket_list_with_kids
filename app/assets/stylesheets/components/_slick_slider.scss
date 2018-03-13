@@ -128,16 +128,19 @@ $zoom: all, 1s,  cubic-bezier(.55,0,.1,1);
 $zoom-slow: all, 2.4s,  cubic-bezier(.55,0,.1,1);
 
 //SLIDER STUFF
-.slider-wraper {
+.slider-wrapper {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 70px);
+  position:relative;
 }
 
 .slider--item {
   width: 100vw;
-  height: 70vh;
+  height: calc(100vh - 70px);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+
 }
 
 .slick-slide {

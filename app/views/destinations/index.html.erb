@@ -28,12 +28,16 @@
 </div>
 <div class="big-flex">
   <div class= "content">
+    <% if @shuffled_entities.empty? %>
+    <h1>Sorry - we have no recommendations matching your search. Please try again</h1>
+    <% else %>
     <ul class="left-column">
-    <%= render partial: "shared/cards", collection: @shuffle_function, as: :entity %>
+    <%= render partial: "shared/cards", collection: @shuffled_entities, as: :entity %>
     <!-- partials are off for the shuffle funtion -->
     <%#= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
     <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
     </ul>
+    <% end %>
   </div>
   <div class="right-column">
     <p><strong>TYPE</strong></p>
@@ -75,8 +79,7 @@
 </div>
 
 <!-- MAP -->
-<div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-</div>
+<div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>"></div>
 </div>
 
 <%= render 'shared/footer' %>

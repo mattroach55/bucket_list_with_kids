@@ -18,16 +18,29 @@ class DestinationsController < ApplicationController
       results.each do |result|
         @all_entities << result.searchable
       end
-
     else
       @destinations = Destination.where.not(latitude: nil, longitude: nil)
       @accommodations = Accommodation.where.not(latitude: nil, longitude: nil)
       @experiences = Experience.where.not(latitude: nil, longitude: nil)
       @all_entities = @destinations + @experiences + @accommodations
     end
-    # CODE TO IMPLEMENT PS SEARCH RESULTS ABOVE
+    # # CODE TO IMPLEMENT PS SEARCH RESULTS ABOVE
 
-    @shuffle_function = @all_entities.shuffle
+    @show_entities = []
+    @all_entities.each do |entity|
+      if entity.show == true
+        @show_entities << entity
+      end
+    end
+
+    @show_entities = []
+    @all_entities.each do |entity|
+      if entity.show == true
+        @show_entities << entity
+      end
+    end
+
+    @shuffled_entities = @show_entities.shuffle
 
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
     @markers = @all_entities.map do |e|
