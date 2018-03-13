@@ -1,4 +1,4 @@
-<%= simple_form_for([type_review, review], { remote: true }) do |f| %>
+`<%= simple_form_for([type_review, review], { remote: true }) do |f| %>
   <%= f.input :description, as: :text, input_html: { id: "content-review"} %>
   <%= f.input :rating, :collection => %w[1 2 3 4 5], input_html: { id: "rating-review"} %>
   <%= f.submit class: "btn btn-primary" %>
