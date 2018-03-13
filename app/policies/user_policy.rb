@@ -10,4 +10,8 @@ class UserPolicy < ApplicationPolicy
   def profile?
     true
   end
+
+  def edit?
+    true
+  end
 end
