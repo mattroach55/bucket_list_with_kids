@@ -1,4 +1,3 @@
-
 <div class="slider-wrapper">
   <div class="slider">
     <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
@@ -23,6 +22,10 @@
 <% if policy(Accommodation).new? %>
   <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
 <% end %>
+<% if policy(@destination).edit? %>
+  <%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
+<% end %>
+
 
 
 <div class="show-large-container">
@@ -118,14 +121,4 @@ accomm. and destination
     <p>other accom.</p>
   </div>
 </div>
-        <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-
-        <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-
-        <%= link_to "Edit", edit_destination_path(@destination) %>
-
-        <%= link_to "back to results", root_path %>
-
-    </div>
-  </div>
 </div

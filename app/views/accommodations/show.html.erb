@@ -12,6 +12,10 @@
   </div>
 </div>
 
+<% if policy(@accommodation).edit? %>
+  <%= link_to "Edit", edit_accommodation_path(@accommodation), class: "btn btn-primary" %>
+<% end %>
+
 <div class="big-flex">
   <div class="left-column">
     <div class="show-container">
