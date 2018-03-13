@@ -11,6 +11,9 @@
         <h6><strong>username:</strong>   <%= @user.username %></h6>
         <h6><strong>e-mail:</strong>   <%= @user.email %></h6>
         </div>
+
+         <%= link_to "Edit password", edit_user_path, class:"btn btn-danger btn-sm"  %>
+
         </div>
         <hr>
       </div>

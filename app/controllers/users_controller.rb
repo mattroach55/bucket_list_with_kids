@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    authorize @user
   end
 
   def update_password
