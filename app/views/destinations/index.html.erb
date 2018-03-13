@@ -29,17 +29,12 @@
 <div class="big-flex">
   <div class= "content">
     <ul class="left-column">
-      <% @all_entities.each do |entity| %>
-
-    <%= render partial: "shared/cards", collection: @destinations, as: :entity, locals: { type: "destination" } %>
-    <%= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
-    <%= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
-
-    <% end %>
-
+    <%= render partial: "shared/cards", collection: @shuffle_function, as: :entity %>
+    <!-- partials are off for the shuffle funtion -->
+    <%#= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+    <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
     </ul>
   </div>
-
   <div class="right-column">
     <p><strong>TYPE</strong></p>
     <p><%= check_box_tag(:destination) %>
@@ -68,7 +63,7 @@
       <%= label_tag(:Entertainment, "Entertainment") %></p>
       <p><%= check_box_tag(:Food) %>
       <%= label_tag(:Food, "Food & Drink") %></p>
-      <p><%= check_box_tag(:Science, "Testvalue") %>
+      <p><%= check_box_tag(:Science, "Science") %>
       <%= label_tag(:Science, "Nature") %></p>
       <p><%= check_box_tag(:Shopping) %>
       <%= label_tag(:Shopping, "Shopping") %></p>

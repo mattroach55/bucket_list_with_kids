@@ -1,6 +1,6 @@
 class ExperiencesController < ApplicationController
   before_action :set_destination, only: [:new, :create]
-  before_action :set_experience, only: [:show, :edit, :update, :photo, :destroy]
+  before_action :set_experience, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
@@ -50,14 +50,11 @@ class ExperiencesController < ApplicationController
     @experience.user = current_user
     authorize @experience
     if @experience.save
+      store_photos
       redirect_to experience_path(@experience)
     else
       render :new
     end
-  end
-
-  def photo
-
   end
 
   def edit
@@ -82,6 +79,11 @@ class ExperiencesController < ApplicationController
 
   private
 
+  def store_photos
+    photos = params[:experience][:photos]
+    photos.each {|photo| @experience.photos.create(photo: photo)} if photos
+  end
+
   def set_destination
     @destination = Destination.find(params[:destination_id])
   end
@@ -91,7 +93,7 @@ class ExperiencesController < ApplicationController
   end
 
   def params_experience
-    params.require(:experience).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :entity, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score)
+    params.require(:experience).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos)
   end
 end
 

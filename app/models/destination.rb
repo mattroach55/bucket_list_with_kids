@@ -5,7 +5,8 @@ class Destination < ApplicationRecord
   belongs_to :user
   validates :name, presence: true
   # validates :show, default: true
-  mount_uploader :photo, PhotoUploader
+  has_many :photos, dependent: :destroy
+  # mount_uploader :photo, PhotoUploader
 
 # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE
   geocoded_by :full_address

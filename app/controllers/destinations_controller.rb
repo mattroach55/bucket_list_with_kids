@@ -27,7 +27,7 @@ class DestinationsController < ApplicationController
     end
     # CODE TO IMPLEMENT PS SEARCH RESULTS ABOVE
 
-    @all_entities = @all_entities.shuffle
+    @shuffle_function = @all_entities.shuffle
 
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
     @markers = @all_entities.map do |e|
@@ -87,8 +87,12 @@ class DestinationsController < ApplicationController
     @destination = Destination.new(params_destination)
     authorize @destination
     @destination.user = current_user
-    @destination.save
-    redirect_to destination_path(@destination)
+    if @destination.save
+      store_photos
+      redirect_to destination_path(@destination)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -111,14 +115,19 @@ class DestinationsController < ApplicationController
   end
 
   private
+  def store_photos
+    photos = params[:destination][:photos]
+    photos.each {|photo| @destination.photos.create(photo: photo)} if photos
+  end
 
   def set_destination
     @destination = Destination.find(params[:id])
   end
 
   def params_destination
-    params.require(:destination).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :photo, :entity, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score)
+    params.require(:destination).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos)
   end
 end
+
 
 

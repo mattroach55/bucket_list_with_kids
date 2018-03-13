@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @destinations = @bucket.where.not(destination: nil).where(accommodation: nil, experience: nil)
   end
 
+
   def profile
     @user = current_user
     authorize @user
