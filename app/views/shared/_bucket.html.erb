@@ -12,7 +12,15 @@
   <%= link_to proper_path do %>
   <li class="left-column-element">
     <div class="card-index">
-      <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.send(type).photo.url.nil? ? "" : cl_image_path(entity.send(type).photo) %>');">
+
+
+
+
+
+    <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.send(type).photos.empty? ? "" : cl_image_path(entity.send(type).photos.first.photo) %>');">
+
+
+
         <div class="card-index">
           <%= image_tag icon_name, :class => "icon-card" %>
           <h1 class="title"><%= entity.send(type).name %></h1>
