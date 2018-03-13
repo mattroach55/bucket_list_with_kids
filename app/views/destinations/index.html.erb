@@ -29,14 +29,10 @@
 <div class="big-flex">
   <div class= "content">
     <ul class="left-column">
-      <% @all_entities.each do |entity| %>
-
-    <%= render partial: "shared/cards", collection: @destinations, as: :entity, locals: { type: "destination" } %>
-    <%= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
-    <%= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
-
-    <% end %>
-
+    <%= render partial: "shared/cards", collection: @shuffle_function, as: :entity %>
+    <!-- partials are off for the shuffle funtion -->
+    <%#= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+    <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
     </ul>
   </div>
 
