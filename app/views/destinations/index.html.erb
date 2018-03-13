@@ -26,74 +26,23 @@
   <%= image_tag 'accommodations.svg', :class => "icon" %>
 </div>
 </div>
-  <div class="big-flex">
-    <div class= "content">
-      <ul class="left-column">
-        <% @all_entities.each do |entity| %>
+<div class="big-flex">
+  <div class= "content">
+    <ul class="left-column">
+      <% @all_entities.each do |entity| %>
 
-        <% if entity.class == Destination %>
+    <%= render partial: "shared/cards", collection: @destinations, as: :entity, locals: { type: "destination" } %>
+    <%= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+    <%= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
 
-        <%= link_to destination_path(entity) do %>
-         <!-- FOR TESTING -->
-        <li class="left-column-element">
-          <div class="card-index">
-            <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
-              <div class="card-index">
-                <%= image_tag 'card_dest_icon.svg', :class => "icon-card" %>
-                <h1 class="title"><%= entity.name %></h1>
-                <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
-                 <%#= link_to bucket_count_destination_path(entity),method: :put do %>
-                <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
-                <%# end %>
-              </div>
-            </div>
-          </div>
-        </li>
-        <% end %>
+    <% end %>
 
-        <% elsif entity.class == Experience %>
+    </ul>
+  </div>
 
-        <%= link_to experience_path(entity) do %>
-        <!-- FOR TESTING -->
-        <li class="left-column-element">
-          <div class="card-index">
-            <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
-              <div class="card-index">
-                <%= image_tag 'card_exper_icon.svg', :class => "icon-card" %>
-                <h1 class="title"><%= entity.name %></h1>
-                <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
-                <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
-              </div>
-            </div>
-          </div>
-        </li>
-        <% end %>
-
-        <% else %>
-
-        <%= link_to accommodation_path(entity) do %>
-        <!-- FOR TESTING -->
-        <li class="left-column-element">
-          <div class="card-index">
-            <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photo.url.nil? ? "" : cl_image_path(entity.photo) %>');">
-              <div class="card-index">
-                <%= image_tag 'card_accomm_icon.svg', :class => "icon-card" %>
-                <h1 class="title"><%= entity.name %></h1>
-                <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
-                <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
-              </div>
-            </div>
-          </div>
-        </li>
-        <% end %>
-        <% end %>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="right-column">
-      <p><strong>TYPE</strong></p>
-      <p><%= check_box_tag(:destination) %>
+  <div class="right-column">
+    <p><strong>TYPE</strong></p>
+    <p><%= check_box_tag(:destination) %>
       <%= label_tag(:destination, "Destination") %></p>
       <p><%= check_box_tag(:experience) %>
       <%= label_tag(:experience, "Experience") %></p>
@@ -127,10 +76,10 @@
 </div>
 <!--   <div class = "full-page-column">
     <%#= link_to "New", new_destination_path(@destination) %>
-</div> -->
+  </div> -->
 </div>
 
-  <!-- MAP -->
-  <div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-  </div>
+<!-- MAP -->
+<div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+</div>
 </div>

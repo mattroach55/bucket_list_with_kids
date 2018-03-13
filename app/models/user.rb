@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :experience_reviews, through: :experiences, class_name: 'Review'
   has_many :bucket_list_items
 
-  # acts_as_voter
+  acts_as_voter
 
   mount_uploader :photo, PhotoUploader
 end

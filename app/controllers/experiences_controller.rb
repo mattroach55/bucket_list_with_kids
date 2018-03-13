@@ -14,12 +14,26 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  def upvote
+    @experience = Experience.find(params[:id])
+    @destination = @experience.destination
+    authorize @experience
+    @experience.upvote_by(current_user)
+    if current_user.bucket_list_items.where(experience: @experience).empty?
+      @bucket = BucketListItem.new
+      @bucket.user = current_user
+      @bucket.experience = @experience
+      @bucket.destination = @destination
+      @bucket.save
+    end
+    redirect_to destinations_path
+  end
+
   def show
     authorize @experience
     # MAP CODE BELOW
     # @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: @experience.name }}]
     @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: @experience }) } }]
-
     # MAP CODE ABOVE
     @review = Review.new
   end

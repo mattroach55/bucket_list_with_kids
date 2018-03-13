@@ -1,18 +1,18 @@
 // Will include function which will show (read: filter)
 // according to the tabs will we "clicked"
 // e.g. tab-content-hidden class
-$(function(){
+// $(function(){
 
-  $(".tab").on("click", function(e){
-    // CHANGE TAB
-    $(".active").removeClass('active')
-    $(this).addClass('active');
+//   $(".tab").on("click", function(e){
+//     // CHANGE TAB
+//     $(".active").removeClass('active')
+//     $(this).addClass('active');
 
-    // HIDE ALL WITH HIDDEN CLASS
-    $(".tab-content").addClass("hidden");
+//     // HIDE ALL WITH HIDDEN CLASS
+//     $(".tab-content").addClass("hidden");
 
-    // SHOW TAB
-    let id = $(".active").data("target");
-    $(id).removeClass("hidden");
-  });
-});
+//     // SHOW TAB
+//     let id = $(".active").data("target");
+//     $(id).removeClass("hidden");
+//   });
+// });

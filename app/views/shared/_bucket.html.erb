@@ -1,0 +1,31 @@
+<% if type == "destination" %>
+  <% proper_path = link_to destination_path(entity) %>
+  <% icon_name = 'card_dest_icon.svg' %>
+<% elsif type == "experience" %>
+  <% proper_path = link_to experience_path(entity) %>
+  <% icon_name = 'card_exper_icon.svg' %>
+<% elsif type == "accommodation" %>
+  <% proper_path = link_to accommodation_path(entity) %>
+  <% icon_name = 'card_accomm_icon.svg' %>
+<% end %>
+
+  <%= link_to proper_path do %>
+  <li class="left-column-element">
+    <div class="card-index">
+      <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.send(type).photo.url.nil? ? "" : cl_image_path(entity.send(type).photo) %>');">
+        <div class="card-index">
+          <%= image_tag icon_name, :class => "icon-card" %>
+          <h1 class="title"><%= entity.send(type).name %></h1>
+          <h1 class="locality"><%= entity.send(type).locality %>, <%= entity.send(type).country %></h1>
+
+          <% count_path = "bucket_count_#{type}_path".to_sym %>
+
+          <%= link_to method(count_path).call(entity.send(type)), method: :put do %>
+          <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <h6>This <%= "#{type}" %> has been added <%= entity.send(type).get_upvotes.count %> times</h6>
+    </li>
+  <% end %>
