@@ -55,18 +55,18 @@ class DestinationsController < ApplicationController
   end
 
   # UPVOTE WORKS, NOW TESTING DOWNVOTE
-  def downvote
-    @destination = Destination.find(params[:id])
-    authorize @destination
-    @destination.downvote_by(current_user)
-    if current_user.bucket_list_items.where(destination: @destination).empty?
-      @bucket = BucketListItem.new
-      @bucket.user = current_user
-      @bucket.destination = @destination
-      @bucket.save
-    end
-    redirect_to destinations_path
-  end
+  # def downvote
+  #   @destination = Destination.find(params[:id])
+  #   authorize @destination
+  #   @destination.downvote_by(current_user)
+  #   if current_user.bucket_list_items.where(destination: @destination).empty?
+  #     @bucket = BucketListItem.new
+  #     @bucket.user = current_user
+  #     @bucket.destination = @destination
+  #     @bucket.save
+  #   end
+  #   redirect_to destinations_path
+  # end
 
   def mix
     #future code

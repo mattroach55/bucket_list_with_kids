@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @bucket = @user.bucket_list_items
     @experiences = @bucket.where.not(experience: nil)
     @accommodations = @bucket.where.not(accommodation: nil)
-    @destinations = @bucket.where.not(accommodation: nil, experience: nil)
+    @destinations = @bucket.where.not(destination: nil).where(accommodation: nil, experience: nil)
   end
 
   def profile

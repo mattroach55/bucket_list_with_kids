@@ -1,29 +1,29 @@
-<!-- Will include tabs with a data target for #myaccomondations, #myexperienes (read: choosen-bucket-list-items etc. -->
-
 <!-- All bucketlist items, will filter with pressed tabs -->
+
 <!-- Filter tabs -->
 <div class = "tab-container">
-<div class="tabs">
-  <a class="tab active" data-target="#mytotal">
-    <p>Total</p>
-    <h3><%= @bucket.count %></h3>
-  </a>
-  <a class="tab" data-target="#myaccommodations">
-    <p>accommodations</p>
-    <h3><%= current_user.get_voted(Accommodation).count %></h3>
-  </a>
-  <a class="tab" data-target="#mydestinations">
-    <p>destinations</p>
-    <h3><%= current_user.get_voted(Destination).count %></h3>
-  </a>
-  <a class="tab" data-target="#myexperiences">
-    <p>experiences</p>
-    <h3><%= current_user.get_voted(Experience).count %></h3>
-  </a>
+  <div class="tabs">
+    <a class="tab active" data-target="#mytotal">
+      <p>Total</p>
+      <h3><%= @bucket.count %></h3>
+    </a>
+    <a class="tab" data-target="#myaccommodations">
+      <p>accommodations</p>
+      <h3><%= @accommodations.count %></h3>
+    </a>
+    <a class="tab" data-target="#mydestinations">
+      <p>destinations</p>
+      <h3><%= @destinations.count %></h3>
+    </a>
+    <a class="tab" data-target="#myexperiences">
+      <p>experiences</p>
+      <h3><%= @experiences.count %></h3>
+    </a>
 <!--     <a class="tab" data-target="#">
-    <p>Experienced</p>
-    <h3>0/<%= @bucket.count %></h3>
-  </a> -->
+      <p>Experienced</p>
+      <h3>0/<%= @bucket.count %></h3>
+    </a> -->
+  </div>
 </div>
 
 <!-- All bucketlist items, will filter with pressed tabs -->
@@ -31,7 +31,7 @@
   <div class="tab-content active" id="mytotal">
     <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
     <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
-     <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
+    <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
   </div>
   <div class="tab-content hidden" id="mydestinations">
     <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
@@ -43,7 +43,4 @@
     <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
   </div>
 </div>
-</div>
-
-
 
