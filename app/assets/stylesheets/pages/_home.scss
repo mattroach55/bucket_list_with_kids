@@ -2,6 +2,11 @@
 .body {
   position: relative;
   background-color: rgba(152, 135, 143, .1);
+  min-height: 1000px;
+}
+
+.content p {
+  text-align: center;
 }
 
 .icon-card {
@@ -55,7 +60,6 @@
   background-color: white;
   width: 100%;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-  padding-bottom: 85px;
 }
 
 .page-info-box  p {
@@ -155,6 +159,12 @@
 
   .map-index {
     display: inline-block;
+    bottom: 0px;
+    padding: 20px 150px;
+    margin: 0 auto;
+    box-shadow: .5px .5px .5px rgba(1, 1, 1, 0.4);
+    border-radius: 5px;
+
   }
 
 
