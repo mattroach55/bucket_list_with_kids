@@ -10,11 +10,11 @@
 }
 
 .card-index:hover {
-  opacity: 0.7;
-  width: 401px;
+  width: 400px;
   height: 360px;
-  box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.4);
+  box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.6);
   transition: all 0.15s ease;
+  opacity: .9;
 }
 .card-background-image {
   position: absolute;
@@ -27,13 +27,12 @@
   border-radius: 3px;
   background-color: rgba(1,1,1,0.8);
   margin: 0 auto;
-  box-shadow: 2px 2px 2px rgba(.5, .5, .5, 0.4);
+  // box-shadow: 2px 2px 2px rgba(.5, .5, .5, 0.4);
 }
 .card-background-image:hover {
-  opacity: 0.7;
-  width: 401px;
-  height: 281px;
-  box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.4);
+  width: 400px;
+  height: 280px;
+  // box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.4);
   transition: all 0.15s ease;
 }
 
@@ -72,14 +71,21 @@
 }
 
 .bucket-button {
-    height: 25px;
+    height: 30px;
+    width: 30px;
     position: absolute;
     top: 15px;
     right: 20px;
-  }
+    background-repeat: no-repeat;
+    &:hover {
+    transition: all 0.15s ease;
+    background-image: url("/../assets/small_bucket_liked.svg") !important;
+}
+}
 
   .bucket-button-blue {
-    height: 20px;
+    height: 25px;
+    width: 25px;
     position: absolute;
     bottom: 35px;
     right: 20px;

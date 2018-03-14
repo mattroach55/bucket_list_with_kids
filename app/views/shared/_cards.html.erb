@@ -23,7 +23,9 @@
         <% count_path = "bucket_count_#{entity.class.name.downcase}_path".to_sym %>
 
         <%= link_to method(count_path).call(entity), method: :put do %>
-        <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
+        <div class="bucket-button" style="background-image: url(<%= image_url 'small_bucket.svg' %>);">
+        </div>
+
         <% end %>
          <%= image_tag 'small_bucket_blue.svg', :class => "bucket-button-blue" %>
          <h6 class="count-text"><%= entity.get_upvotes.count %> added</h6>
