@@ -16,8 +16,6 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-
-
   # private
 
   # def subscribe_to_newsletter
