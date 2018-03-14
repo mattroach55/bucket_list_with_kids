@@ -30,6 +30,9 @@ class AccommodationsController < ApplicationController
   end
 
   def show
+    @accommodations = Accommodation.all
+    @destination = @accommodation.destination
+    @experiences = @accommodation.experiences
     @review = Review.new
     # MAP CODE BELOW
     @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: @accommodation }) } }]
