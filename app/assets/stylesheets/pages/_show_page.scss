@@ -2,7 +2,29 @@
   display: flex;
   flex-wrap: nowrap;
   margin: 30px 75px;
-  position: relative;
+}
+
+.page-info-med-container-inline-flex {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  height: auto;
+  padding: 30px 150px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+    p {
+      font-size: 14px;
+      margin: 30px;
+    }
+    h1 {
+      padding: 0;
+    }
+    h4 {
+      margin-left: 30px;
+    }
 }
 
 .banner-show-text {
@@ -33,7 +55,7 @@
 .show-large-container-left {
   display: flex;
   flex-direction: column;
-  flex: 1 0 70%;
+  flex: 1 0 60%;
   margin-right: 30px;
   margin-bottom: 30px;
 }
@@ -76,7 +98,7 @@
 }
 
 .med-container-inline-flex {
-  width: 100%;
+  width: auto;
   background-color: white;
   display: flex;
   justify-content: space-around;

@@ -120,8 +120,7 @@ accomm. and destination
      <% @destinations.each do |destination| %>
 
     <%= link_to destination_path(destination) do %>
-    <div class="like-box <%= destination.name %>">
-    </div>
+    <%= destination.name %>
     <% end %>
     <% end %>
 

@@ -1,111 +1,43 @@
-<div class="slider-wrapper">
-  <h1 class="banner-show-text"><%= @accommodation.name %></h1>
+
+<!-- <div class="slider-wrapper">
+  <h1 class="banner-show-text"><%#= @accommodation.name %></h1>
   <div>
   <div class="slider">
-    <% @accommodation.photos.each do |photo| %>
-      <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%= cl_image_path(photo.photo) %>')">
+    <%# @accommodation.photos.each do |photo| %>
+      <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%#= cl_image_path(photo.photo) %>')">
       </div>
-     <% end %>
+     <%# end %>
+    </div>
+  </div>
+</div>
+<div> -->
+  <div class="page-info-med-container-inline-flex">
+    <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
+    <div>
+      <h4><%= @accommodation.name %> with kids</h4>
+      <p><%= @accommodation.description %></p>
     </div>
   </div>
 </div>
 <div class="page-wrapper">
-<div class="show-large-container-left">
-  <div class="med-container-inline-flex">
-     <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
-    <div>
-      <h4><%= @accommodation.name %> with kids</h4>
-      <p><%= @accommodation.description %></p>
+  <div class="show-large-container-left">
+
+    <div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
     </div>
-  </div>
 
-  <!-- end of box 1, next is a div for the photo carousel -->
-<div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-</div>
-
-
-  <!-- next is header for the "experiences in this destination" cards -->
-
-
-
-<!-- next "experiences in this destination" cards
-  *This code does not create an error, but doesn't display anything either
-  ____________________________________________________________________________-->
-
+  <h4> Bucket list experiences near <%= @accommodation.name %></h4>
   <div class="med-container-inline-flex">
-     <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
     <div>
-      <h4><%= @accommodation.name %> with kids</h4>
-      <p><%= @accommodation.description %></p>
-    </div>
-  </div>
-
-
-    <h4> Bucket list experiences near <%= @accommodation.name %></h4>
-    <div class="med-container-inline-flex">
-    <div>
-    <% @destination.experiences.each do |experience| %>
-    <h1 class="banner-show-text-p"><%= image_tag 'experiences.svg', :class => "show-icon" %></h1>
-    <div>
-    <h4><%= experience.name %></h4><br>
-    <p><%= experience.description %></p>
-    <p><%= experience.price %></p>
-   </div>
- </div>
-    <% end %>
-  </div>
-
-<!-- Creating code to take a photo and turn it into an undistorted thumbnail (for show page card) in progress
-  ________________________________________________________________________________________________
-  <! <div class="med-container-inline-flex">
-    <div class="thumbnail-container thumbnail" style="background-image: url(<%#= @destination.experience.photo %>)">
-    </div> -->
-      <!-- <div class="thumbnail-container">
-        <%#= image_tag 'banner2.jpg', :class => "portrait thumbnail" %>
-        <img src="portrait-img.jpg" class="portrait" alt="Image" />
-
-
-<div class="big-flex">
-  <div class="left-column">
-    <div class="show-container">
-      <div class="left-column-element">
-        <h3>ABOUT</h3>
-        <p><%#= @destination.description %></p><br>
-accomm. and destination
+      <% @destination.experiences.each do |experience| %>
+      <h1 class="banner-show-text-p"><%= image_tag 'experiences.svg', :class => "show-icon" %></h1>
+        <div>
+          <h4><%= experience.name %></h4><br>
+          <p><%= experience.description %></p>
+          <p><%= experience.price %></p>
+        </div>
       </div>
- ___________________________________________________________________________________________________ -->
-
-<!-- map code -->
-
-
-
- <!-- div for bucket list accommodations to go here / show-page-cards -->
-
-
-<!-- div for stacked display for other recommended accommodations -->
-<!-- <div class="med-cont-vertical-flex">
-  <%#= image_tag 'accommodations.svg', :class => "show-icon" %>
-  <div>
-    <div class="right-column-show">
-      <h1><%#= @destination.name %></h1>
-      <p><%#= @destination.full_address %></p>
+      <% end %>
     </div>
-    <div class="right-column-show">
-      <h1><%#= @destination.name %></h1>
-      <p><%#= @destination.full_address %></p>
-    </div>
-  </div>
-  <div class="right-column-show">
-    <h1><%#= @destination.name %></h1>
-    <p><%#= @destination.full_address %></p>
-  </div>
-</div>
-
-  <div class="med-cont-vertical-flex">
-    <p>other accom.</p>
-  </div>
-  <div> -->
-  </div>
     <div class="show-large-container-right">
       <p> You may also like </p>
       <% @accommodations.each do |accommodation| %>
@@ -114,13 +46,9 @@ accomm. and destination
       <% end %>
       <% end %>
     </div>
-  </div>
 </div>
 
-
-
-
-  <%= link_to "back to results", root_path %>
+<%= link_to "back to results", root_path %>
     <div class="container reviews">
     <div class="row">
       <div class="col-xs-6">
@@ -151,9 +79,6 @@ accomm. and destination
         <%= link_to "Edit", edit_destination_path(@destination) %>
 
         <%= link_to "back to results", root_path %>
-</div>
-</div>
-
 
 
 

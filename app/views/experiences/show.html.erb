@@ -29,7 +29,7 @@
   <!-- next is header for the "experiences in this destination" cards -->
 
   <div class="page-text">
-    <h1> Bucket list accommodations in <%= @experience.name %></h1>
+    <h4> Bucket list accommodations near the <%= @experience.name %> experience </h4>
   </div>
 
   <div class="right-column-show">
@@ -108,8 +108,8 @@ UNUSED CODE FOR A STACKED CARD LOOK
 </div>
 
 
-
-<!-- <div class="slider-wrapper">
+<!--
+<div class="slider-wrapper">
   <div class="slider">
     <%# @experience.photos.each do |photo| %>
       <div class="slider--item" style="background-image: url('<%#= cl_image_path(photo.photo) %>')">
@@ -315,21 +315,21 @@ UNUSED CODE FOR A STACKED CARD LOOK
             <li><a href=""><i class="fa fa-share"></i></a></li>
             <li><a href=""><i class="fa fa-star"></i></a></li>
           </ul>
-        </div>
+        </div> -->
         <div class="container reviews">
 
-              <%#= render 'reviews/form', type_review: @experience, review: @review %>
+              <%= render 'reviews/form', type_review: @experience, review: @review %>
               <h3>
-                <%#= pluralize @experience.reviews.size, "review" %>
+                <%= pluralize @experience.reviews.size, "review" %>
               </h3>
               <div id="reviews">
-                <%# if @experience.reviews.blank? %>
-                Be the first to leave a review for <%#= @experience.name %>
-                <%# else %>
-                <%# @experience.reviews.each do |review| %>
-                <%#= render 'reviews/show', review: review %>
-                <%# end %>
-                <%# end %>
+                <% if @experience.reviews.blank? %>
+                Be the first to leave a review for <%= @experience.name %>
+                <% else %>
+                <% @experience.reviews.each do |review| %>
+                <%= render 'reviews/show', review: review %>
+                <% end %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -339,7 +339,7 @@ UNUSED CODE FOR A STACKED CARD LOOK
   </div>
 
 
-  <div id="map" style="width: 100%; height: 600px;" data-markers="<%#= @markers.to_json %>">
-  </div>
+  <!-- <div id="map" style="width: 100%; height: 600px;" data-markers="<%#= @markers.to_json %>">
+  </div> -->
 
- -->
+
