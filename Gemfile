@@ -21,7 +21,6 @@ gem 'puma'
 gem 'rails', '5.1.5'
 gem 'redis'
 gem 'jquery-slick-rails'
-gem 'will_paginate'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
