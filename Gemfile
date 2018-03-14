@@ -15,6 +15,7 @@ gem 'geocoder'
 gem "pundit"
 gem 'faker'
 gem 'jbuilder', '~> 2.0'
+gem 'kaminari'
 gem 'pg', '~> 0.21'
 gem 'pg_search'
 gem 'puma'

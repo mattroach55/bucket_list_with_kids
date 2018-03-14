@@ -37,6 +37,7 @@
     <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
     </ul>
     <% end %>
+    <%= paginate @show_entities %>
   </div>
 
   <div class="right-column">
