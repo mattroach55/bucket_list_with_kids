@@ -10,14 +10,15 @@
   display: flex;
   justify-content: space-around;
   height: auto;
-  padding: 30px 150px;
+  padding: 30px 300px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   margin-bottom: 30px;
   padding-bottom: 30px;
+  position: relative;
     p {
       font-size: 14px;
-      margin: 30px;
+
     }
     h1 {
       padding: 0;
@@ -55,7 +56,7 @@
 .show-large-container-left {
   display: flex;
   flex-direction: column;
-  flex: 1 0 60%;
+  flex: 1 0 70%;
   margin-right: 30px;
   margin-bottom: 30px;
 }
@@ -99,7 +100,7 @@
 }
 
 .med-container-inline-flex {
-  width: auto;
+  // flex: 1 0 60%;
   background-color: white;
   display: flex;
   justify-content: space-around;
@@ -109,6 +110,7 @@
   border-radius: 5px;
   position: relative;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .show-little-container {
@@ -119,8 +121,7 @@
 }
 
 .right-column-show {
-  width: 100%;
-  padding-left: 200px;
+  width: 300px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
   height: auto;
   background-color: white;
@@ -157,11 +158,18 @@
 }
 
 .show-icon {
-  width: 150px;
-  // vertical-align: top;
-  // display: block;
-  // margin: 0 auto;
+  width: 125px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    left: 30px;
+  :nth-child(1) {
+    left: 20%;
+  }
+
 }
+
 
 .show-container {
   padding: 20px;
