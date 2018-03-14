@@ -1,39 +1,34 @@
 <% if type == "destination" %>
-  <% proper_path = destination_path(entity) %>
-  <% icon_name = 'card_dest_icon.svg' %>
+<% proper_path = destination_path(entity) %>
+<% icon_name = 'card_dest_icon.svg' %>
 <% elsif type == "experience" %>
-  <% proper_path = experience_path(entity) %>
-  <% icon_name = 'card_exper_icon.svg' %>
+<% proper_path = experience_path(entity) %>
+<% icon_name = 'card_exper_icon.svg' %>
 <% elsif type == "accommodation" %>
-  <% proper_path = accommodation_path(entity) %>
-  <% icon_name = 'card_accomm_icon.svg' %>
+<% proper_path = accommodation_path(entity) %>
+<% icon_name = 'card_accomm_icon.svg' %>
 <% end %>
 
-  <%= link_to proper_path do %>
-  <li class="left-column-element">
-    <div class="card-index">
-
-
-
-
+<%= link_to proper_path do %>
+<li class="left-column-element">
+  <div class="card-index">
 
     <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.send(type).photos.empty? ? "" : cl_image_path(entity.send(type).photos.first.photo) %>');">
+      <div class="card-index">
+        <%= image_tag icon_name, :class => "icon-card" %>
+        <h1 class="title"><%= entity.send(type).name %></h1>
+        <h1 class="locality"><%= entity.send(type).locality %>, <%= entity.send(type).country %></h1>
 
+        <% count_path = "bucket_count_#{type}_path".to_sym %>
 
-
-        <div class="card-index">
-          <%= image_tag icon_name, :class => "icon-card" %>
-          <h1 class="title"><%= entity.send(type).name %></h1>
-          <h1 class="locality"><%= entity.send(type).locality %>, <%= entity.send(type).country %></h1>
-
-          <% count_path = "bucket_count_#{type}_path".to_sym %>
-
-          <%= link_to method(count_path).call(entity.send(type)), method: :put do %>
-          <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
-          <% end %>
+        <%= link_to method(count_path).call(entity.send(type)), method: :put do %>
+        <div class="bucket-button" style="background-image: url(<%= image_url 'small_bucket.svg' %>);">
         </div>
+
+        <% end %>
+        <%= image_tag 'small_bucket_blue.svg', :class => "bucket-button-blue" %>
+        <h6 class="count-text"><%= entity.send(type).get_upvotes.count %> added</h6>
       </div>
     </div>
-    <h6>This <%= "#{type}" %> has been added <%= entity.send(type).get_upvotes.count %> times</h6>
-    </li>
+  </li>
   <% end %>

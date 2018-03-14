@@ -1,3 +1,15 @@
+<div class="page-info-box-bucket" id="page-link">
+  <p>Unique family friendly holidays, handpicked by you:</p>
+  <div class="icons">
+    <%= image_tag 'destinations.svg', :class => "icon" %>
+    <h3><%= @destinations.count %></h3>
+    <%= image_tag 'experiences.svg', :class => "icon" %>
+    <h3><%= @experiences.count %></h3>
+    <%= image_tag 'accommodations.svg', :class => "icon" %>
+    <h3><%= @accommodations.count %></h3>
+  </div>
+</div>
+
 <!-- All bucketlist items, will filter with pressed tabs -->
 
 <!-- Filter tabs -->
@@ -26,21 +38,97 @@
   </div>
 </div>
 
-<!-- All bucketlist items, will filter with pressed tabs -->
-<div class="container">
-  <div class="tab-content active" id="mytotal">
-    <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
-    <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
-    <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
-  </div>
-  <div class="tab-content hidden" id="mydestinations">
-    <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
-  </div>
-  <div class="tab-content hidden" id="myaccommodations">
-    <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
-  </div>
-  <div class="tab-content hidden" id="myexperiences">
-    <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
-  </div>
-</div>
 
+<div class="big-flex">
+  <div class= "content">
+    <ul class="left-column">
+      <!-- All bucketlist items, will filter with pressed tabs -->
+      <div class="tab-content active" id="mytotal">
+        <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
+        <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+        <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
+      </div>
+      <div class="tab-content hidden" id="mydestinations">
+        <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
+      </div>
+      <div class="tab-content hidden" id="myaccommodations">
+        <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+      </div>
+      <div class="tab-content hidden" id="myexperiences">
+        <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
+      </div>
+    </ul>
+  </div>
+
+
+
+
+
+  <div class="right-column">
+    <p>
+      <%= form_tag destinations_path, method: :get do %>
+      <%= hidden_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
+      <button type="submit" class="btn btn-primary">Refresh filters</button><br>
+            <p><strong>FOR KIDS AGED:</strong></p>
+            <p><%= check_box_tag(:Age_0_4) %>
+              <%= label_tag(:Age_0_4, "0-4") %></p>
+              <p><%= check_box_tag(:Age_5_7) %>
+                <%= label_tag(:Age_5_7, "5-7") %></p>
+                <p><%= check_box_tag(:Age_8_11) %>
+                  <%= label_tag(:Age_8_11, "8-11") %></p>
+                  <p><%= check_box_tag(:Age_12_15) %>
+                    <%= label_tag(:Age_12_15, "12-15") %></p>
+                    <p><%= check_box_tag(:Age_16_18) %>
+                      <%= label_tag(:Age_12_15, "16-18") %></p>
+                      <br>
+                      <p><strong>EXPERIENCE THEME</strong></p>
+                      <p><%= check_box_tag(:adventure) %>
+                        <%= label_tag(:adventure, "Adventure & Sport") %></p>
+                        <p><%= check_box_tag(:art) %>
+                          <%= label_tag(:art, "Art & Culture") %></p>
+                          <p><%= check_box_tag(:automobiles) %>
+                            <%= label_tag(:automobiles, "Automobiles") %></p>
+                            <p><%= check_box_tag(:body) %>
+                              <%= label_tag(:body, "Body & Mind") %></p>
+                              <p><%= check_box_tag(:entertainment) %>
+                                <%= label_tag(:entertainment, "Entertainment") %></p>
+                                <p><%= check_box_tag(:food) %>
+                                  <%= label_tag(:food, "Food & Drink") %></p>
+                                  <p><%= check_box_tag(:science) %>
+                                    <%= label_tag(:science, "Science & Nature") %></p>
+                                    <p><%= check_box_tag(:shopping) %>
+                                      <%= label_tag(:shopping, "Shopping") %></p>
+                                      <br>
+                                      <p><strong>HOLIDAY TYPE</strong></p>
+                                      <p><%= check_box_tag(:beach) %>
+                                        <%= label_tag(:beach, "Beach") %></p>
+                                        <p><%= check_box_tag(:city) %>
+                                          <%= label_tag(:city, "City Break") %></p>
+                                          <p><%= check_box_tag(:cruise) %>
+                                            <%= label_tag(:cruise, "Cruise") %></p>
+                                            <p><%= check_box_tag(:outdoors) %>
+                                              <%= label_tag(:outdoors, "Great Outdoors") %></p>
+                                              <p><%= check_box_tag(:snow) %>
+                                                <%= label_tag(:snow, "Snow") %></p>
+                                                <br>
+                                                <p><strong>REGION</strong></p>
+                                                <p><%= check_box_tag(:asia) %>
+                                                  <%= label_tag(:asia, "Asia, China & India") %></p>
+                                                  <p><%= check_box_tag(:australia) %>
+                                                    <%= label_tag(:australia, "Australia & South Pacific") %></p>
+                                                    <p><%= check_box_tag(:europe) %>
+                                                      <%= label_tag(:rurope, "Europe") %></p>
+                                                      <p><%= check_box_tag(:middle) %>
+                                                        <%= label_tag(:middle, "Middle East & N Africa") %></p>
+                                                        <p><%= check_box_tag(:north) %>
+                                                          <%= label_tag(:north, "North America") %></p>
+                                                          <p><%= check_box_tag(:south) %>
+                                                            <%= label_tag(:south, "South America") %></p>
+                                                            <p><%= check_box_tag(:africa) %>
+                                                              <%= label_tag(:africa, "Africa (Sub-Saharan)") %></p>
+                                                              <br>
+                                                              <% end %>
+                                                            </div>
+
+
+                                                          </div>
