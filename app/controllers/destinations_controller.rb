@@ -30,24 +30,7 @@ class DestinationsController < ApplicationController
       @all_entities = @destinations + @experiences + @accommodations
     end
 
-<<<<<<< HEAD
-      # @entity = params[:entity]
-      # @holiday_type = params[:holiday_type]
-      # @theme = params[:theme]
 
-      # @filtered_entities = []
-      # @search_entities.each do |entity|
-      #   if @entity == entity || entity.holiday_type == @holiday_type || entity.theme == @theme
-      #     @filtered_entities << entity
-      #   end
-      # end
-
-    @show_entities = []
-    @all_entities.each do |entity|
-      if entity.show == true
-        @show_entities << entity
-      end
-=======
     #ENTITY FILTERS
     if params[:destination].present?
       @all_entities = @all_entities.keep_if { |entity| entity.entity == 'destination' }
@@ -92,7 +75,6 @@ class DestinationsController < ApplicationController
     end
     if params[:cruise].present?
       @all_entities = @all_entities.keep_if { |entity| entity.holiday_type == 'cruise' }
->>>>>>> a4c7350315752342228d26deed500dde8a50d8ed
     end
     if params[:outdoors].present?
       @all_entities = @all_entities.keep_if { |entity| entity.holiday_type == 'outdoors' }
