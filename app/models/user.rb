@@ -15,11 +15,11 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  after_create :subscribe_to_newsletter
+  # after_create :subscribe_to_newsletter
 
-  private
+  # private
 
-  def subscribe_to_newsletter
-    SubscribeToNewsletterService.new(self).call
-  end
+  # def subscribe_to_newsletter
+  #   SubscribeToNewsletterService.new(self).call
+  # end
 end
