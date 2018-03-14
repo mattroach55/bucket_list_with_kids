@@ -3,8 +3,6 @@ class Experience < ApplicationRecord
   has_many :accommodations
   belongs_to :user, optional: true
   belongs_to :destination
-  validates :name, presence: true
-  validates :description, presence: true
   has_many :photos, dependent: :destroy
   # mount_uploader :photo, PhotoUploader
 
@@ -18,7 +16,7 @@ class Experience < ApplicationRecord
 
 # CODE FOR PG MUlTISEARCH
   include PgSearch
-  multisearchable against: [ :name, :description, :locality, :country, :region, :holiday_type, :theme ]
+  multisearchable against: [ :name, :destination_name, :description, :locality, :country, :region, :holiday_type, :theme ]
 # CODE FOR PG MUlTISEARCH
 
   def full_address

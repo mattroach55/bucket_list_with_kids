@@ -121,13 +121,6 @@ accomm. and destination
     <p>other accom.</p>
   </div>
   <div> -->
-        <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-
-        <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-
-        <%= link_to "Edit", edit_destination_path(@destination) %>
-
-        <%= link_to "back to results", root_path %>
      </div>
 
 <div class="show-large-container-right">
@@ -152,4 +145,16 @@ accomm. and destination
     <%# end %> -->
 </div>
 </div>
+ <% if policy(Destination).new? %>
+  <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
+<% end %>
+<% if policy(Experience).new? %>
+  <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+<% end %>
+<% if policy(Accommodation).new? %>
+  <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+<% end %>
+<% if policy(@destination).edit? %>
+  <%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
+<% end %>
 

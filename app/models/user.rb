@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # after_create :subscribe_to_newsletter
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -14,8 +15,6 @@ class User < ApplicationRecord
   acts_as_voter
 
   mount_uploader :photo, PhotoUploader
-
-  # after_create :subscribe_to_newsletter
 
   # private
 

@@ -75,10 +75,6 @@
     </div>
   </div>
 
-<%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-
-<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-
-<%= link_to "Edit", edit_destination_path(@destination) %>
-
-<%= link_to "back to results", root_path %>
+<% if policy(@accommodation).edit? %>
+  <%= link_to "Edit", edit_accommodation_path(@accommodation), class: "btn btn-primary" %>
+<% end %>

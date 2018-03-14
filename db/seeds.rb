@@ -72,6 +72,7 @@ CSV.foreach(filepath, csv_options) do |row|
     new_accommodation.destination = Destination.all.sample
     new_accommodation.name = row.first.last
     new_accommodation.entity = row['entity']
+    new_accommodation.destination_name = row['destination_name']
     new_accommodation.show = row['show']
     new_accommodation.description = row['description']
     new_accommodation.street_number = row['street_number']
@@ -114,6 +115,7 @@ CSV.foreach(filepath, csv_options) do |row|
     new_experience.destination = Destination.all.sample
     new_experience.name = row.first.last
     new_experience.entity = row['entity']
+    new_experience.destination_name = row['destination_name']
     new_experience.show = row['show']
     new_experience.description = row['description']
     new_experience.street_number = row['street_number']

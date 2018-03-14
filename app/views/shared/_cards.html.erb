@@ -1,13 +1,13 @@
 
 <% if entity.class.name == "Destination" %>
 <% proper_path = destination_path(entity) %>
-<% icon_name = 'card_dest_icon.svg' %>
+<% icon_name = 'card_dest_icon_blue.svg' %>
 <% elsif entity.class.name == "Experience" %>
 <% proper_path = experience_path(entity) %>
-<% icon_name = 'card_exper_icon.svg' %>
+<% icon_name = 'card_exper_icon_blue.svg' %>
 <% elsif entity.class.name == "Accommodation" %>
 <% proper_path = accommodation_path(entity) %>
-<% icon_name = 'card_accomm_icon.svg' %>
+<% icon_name = 'card_accomm_icon_blue.svg' %>
 <% end %>
 
 <%= link_to proper_path do %>
@@ -25,8 +25,12 @@
         <%= link_to method(count_path).call(entity), method: :put do %>
         <%= image_tag 'small_bucket.svg', :class => "bucket-button" %>
         <% end %>
+         <%= image_tag 'small_bucket_blue.svg', :class => "bucket-button-blue" %>
+         <h6 class="count-text"><%= entity.get_upvotes.count %> added</h6>
       </div>
     </div>
-    <h6>This <%= "#{entity.class.name.downcase}" %> has been added <%= entity.get_upvotes.count %> times</h6>
+
+
+   <!--  This <%#= "#{entity.class.name.downcase}" %> has been added <%#= entity.get_upvotes.count %> times</h6> -->
   </li>
   <% end %>
