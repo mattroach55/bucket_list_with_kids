@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+
+  # OVERRIDING Rails.application.default_url_options[:host] FOR EXTERNAL WORLD (READ: SOCIAL MEDIA)
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:3000" }
+  end
+
   private
 
   def skip_pundit?

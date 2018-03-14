@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@destination.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @destination.description %>
+<% content_for :meta_image, cl_image_path(@destination.photos.first.path) %>
+
 <% if policy(Destination).create? %>
 <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
 <% end %>
