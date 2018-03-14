@@ -30,6 +30,9 @@ class AccommodationsController < ApplicationController
   end
 
   def show
+    @accommodations = Accommodation.all
+    @destination = @accommodation.destination
+    @experiences = @accommodation.experiences
     @review = Review.new
     # MAP CODE BELOW
     @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: @accommodation }) } }]
@@ -94,7 +97,7 @@ class AccommodationsController < ApplicationController
   end
 
   def params_accommodation
-    params.require(:accommodation).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos, :booking_link)
+    params.require(:accommodation).permit(:name, :entity, :show, :destination, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos, :booking_link)
   end
 
 end

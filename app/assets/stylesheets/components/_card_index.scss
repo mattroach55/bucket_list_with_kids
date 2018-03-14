@@ -1,7 +1,7 @@
 .card-index {
   position: relative;
   width: 400px;
-  height: 280px;
+  height: 360px;
   border-radius: 3px;
   box-shadow: 2px 2px 2px rgba(.5, .5, .5, 0.4);
   margin: 0 auto;
@@ -12,7 +12,7 @@
 .card-index:hover {
   opacity: 0.7;
   width: 401px;
-  height: 281px;
+  height: 360px;
   box-shadow: 2px 2px 2px rgba(1, 1, 1, 0.4);
   transition: all 0.15s ease;
 }
@@ -37,11 +37,19 @@
   transition: all 0.15s ease;
 }
 
+.count-text {
+  color: rgb(25, 18, 51);
+  text-transform: upcase;
+  font-size: 10px;
+  position: absolute;
+  bottom: 4px;
+  right: 12.5px;
 
+}
 .locality {
   position: absolute;
-  bottom: 15px;
-  right: 15px;
+  bottom: 95px;
+  right: 20px;
   text-align: center;
   margin: 0;
   font-weight: lighter;
@@ -55,13 +63,27 @@
   font-size: 16px;
   font-weight: lighter;
   color: rgba(255, 255, 255, .9);
-  left: 15px;
+  left: 20px;
   top: 15px;
   width: 200px;
   font-family: 'Raleway';
   font-size: 28px;
   margin-top: 0;
 }
+
+.bucket-button {
+    height: 25px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+
+  .bucket-button-blue {
+    height: 20px;
+    position: absolute;
+    bottom: 35px;
+    right: 20px;
+  }
 
 .user-image {
   // position: absolute;

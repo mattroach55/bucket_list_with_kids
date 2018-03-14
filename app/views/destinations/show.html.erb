@@ -1,36 +1,17 @@
 <div class="slider-wrapper">
   <h1 class="banner-show-text"><%= @destination.name %></h1>
   <div>
-  <div class="slider">
-    <% @destination.photos.each do |photo| %>
+    <div class="slider">
+      <% @destination.photos.each do |photo| %>
       <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%= cl_image_path(photo.photo) %>')">
       </div>
-     <% end %>
+       <% end %>
     </div>
   </div>
 </div>
 
-
-
-<% if policy(Destination).new? %>
-  <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
-<% end %>
-<% if policy(Experience).new? %>
-  <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-<% end %>
-<% if policy(Accommodation).new? %>
-  <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-<% end %>
-<% if policy(@destination).edit? %>
-  <%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
-<% end %>
-
-
-
-
-<div class="show-large-container">
-
-
+<div class="page-wrapper">
+<div class="show-large-container-left">
   <div class="med-container-inline-flex">
      <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
     <div>
@@ -40,7 +21,7 @@
   </div>
 
   <!-- end of box 1, next is a div for the photo carousel -->
-<div class="show-map-index", id="map" style="width: 70%; height: 600px;" data-markers="<%= @markers.to_json %>">
+<div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
 </div>
 
 
@@ -85,6 +66,25 @@ accomm. and destination
 <!-- map code -->
 
 
+    <!-- FRONTEND FOR TOURS AT EXPERIENCE SHOW -->
+    <div class="container tours">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <h2>Recommended Tours</h2>
+          <%= render 'shared/nearbyexperiences' %>
+        </div>
+      </div>
+    </div>
+
+    <!-- FRONTEND FOR NEARBY ACCOMMODATIONS AROUND THIS EXPERIENCE -->
+    <div class="container other-accomodation">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <h2>Family-friendly accommodation nearby</h2>
+          <%= render 'shared/booking' %>
+        </div>
+      </div>
+    </div>
 
  <!-- div for bucket list accommodations to go here / show-page-cards -->
 
@@ -99,27 +99,62 @@ accomm. and destination
 
 
 <!-- div for stacked display for other recommended accommodations -->
-<div class="med-cont-vertical-flex">
-  <%= image_tag 'accommodations.svg', :class => "show-icon" %>
+<!-- <div class="med-cont-vertical-flex">
+  <%#= image_tag 'accommodations.svg', :class => "show-icon" %>
   <div>
     <div class="right-column-show">
-      <h1><%= @destination.name %></h1>
-      <p><%= @destination.full_address %></p>
+      <h1><%#= @destination.name %></h1>
+      <p><%#= @destination.full_address %></p>
     </div>
     <div class="right-column-show">
-      <h1><%= @destination.name %></h1>
-      <p><%= @destination.full_address %></p>
+      <h1><%#= @destination.name %></h1>
+      <p><%#= @destination.full_address %></p>
     </div>
   </div>
   <div class="right-column-show">
-    <h1><%= @destination.name %></h1>
-    <p><%= @destination.full_address %></p>
+    <h1><%#= @destination.name %></h1>
+    <p><%#= @destination.full_address %></p>
   </div>
 </div>
 
   <div class="med-cont-vertical-flex">
     <p>other accom.</p>
   </div>
+  <div> -->
+     </div>
+
+<div class="show-large-container-right">
+  <p> You may also like </p>
+
+
+     <% @destinations.each do |destination| %>
+
+    <%= link_to destination_path(destination) do %>
+    <%= destination.name %>
+    <% end %>
+    <% end %>
+
+
+
+   <!--  <%# @destinations.each do |destination| %>
+    <p><%#= if destination.name != @destination.name %></p>
+    <%#= link_to destination_path(destination) do %>
+    <%# destination.name %>
+    <%# end %>
+    <%# end %>
+    <%# end %> -->
 </div>
-</div
+</div>
+ <% if policy(Destination).new? %>
+  <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
+<% end %>
+<% if policy(Experience).new? %>
+  <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+<% end %>
+<% if policy(Accommodation).new? %>
+  <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+<% end %>
+<% if policy(@destination).edit? %>
+  <%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
+<% end %>
 
