@@ -1,30 +1,53 @@
-<div class="slider-wrapper">
+<!-- <div class="slider-wrapper">
+  <h1 class="banner-show-text"><%#= @accommodation.name %></h1>
+  <div>
   <div class="slider">
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/XaidrBZfEwU/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/WP9GFwbVur0/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/A-NVHPka9Rk/1600x900)">
-    </div>
-    <div class="slider--item" style="background-image: url(https://source.unsplash.com/Q9JgdxdW1Rk/1600x900)">
+    <%# @accommodation.photos.each do |photo| %>
+      <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%#= cl_image_path(photo.photo) %>')">
+      </div>
+     <%# end %>
     </div>
   </div>
 </div>
-
-<% if policy(@accommodation).edit? %>
-  <%= link_to "Edit", edit_accommodation_path(@accommodation), class: "btn btn-primary" %>
-<% end %>
-
-<div class="big-flex">
-  <div class="left-column">
-    <div class="show-container">
-      <div class="left-column-element">
-        <h3>ABOUT</h3>
-        <p><%= @accommodation.description %></p><br>
-      </div>
+<div> -->
+  <div class="page-info-med-container-inline-flex">
+    <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
+    <div>
+      <h4><%= @accommodation.name %> with kids</h4>
+      <p><%= @accommodation.description %></p>
     </div>
   </div>
-  <%= link_to "back to results", root_path %>
+</div>
+<div class="page-wrapper">
+  <div class="show-large-container-left">
+
+    <div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+    </div>
+
+  <h4> Bucket list experiences near <%= @accommodation.name %></h4>
+  <div class="med-container-inline-flex">
+    <div>
+      <% @destination.experiences.each do |experience| %>
+      <h1 class="banner-show-text-p"><%= image_tag 'experiences.svg', :class => "show-icon" %></h1>
+        <div>
+          <h4><%= experience.name %></h4><br>
+          <p><%= experience.description %></p>
+          <p><%= experience.price %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="show-large-container-right">
+      <p> You may also like </p>
+      <% @accommodations.each do |accommodation| %>
+      <%= link_to accommodation_path(accommodation) do %>
+      <%= accommodation.name %>
+      <% end %>
+      <% end %>
+    </div>
+</div>
+
+<%= link_to "back to results", root_path %>
     <div class="container reviews">
     <div class="row">
       <div class="col-xs-6">
@@ -34,7 +57,7 @@
         </h3>
         <div id="reviews">
           <% if @accommodation.reviews.blank? %>
-            Be the first to leave a review for <%= @accommodation.name %>
+            Be the first to leave  review for <%= @accommodation.name %>
           <% else %>
           <ul class="list-inline">
             <% @accommodation.reviews.each do |review| %>
@@ -46,227 +69,11 @@
       </div>
     </div>
   </div>
-</div>
 
-<div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>"></div>
+<%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
 
+<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
 
-<!-- OWENS CODE, NOT READY FOR DEPLOYMENT YET -->
-<!-- <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%#= cl_image_path(@accommodation.photo) %>');">
-</div>
+<%= link_to "Edit", edit_destination_path(@destination) %>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6">
-        <h1 class="show-page-text">ABOUT</h1>
-        <h3><%#= @accommodation.name %></h3>
-        <p><%#= @accommodation.description %></p>
-        <p><strong>Location of <%#= @accommodation.name %>'s accommodation</strong>
-        <p><%##= @destination.locality %></p>
-        <p><%##= @destination.country %></p>
-        <p><%##= @destination.region %></p>
-        <%#= link_to "Edit", edit_accommodation_path(@accommodation) %>
-        <br>
-        <%#= link_to "Delete", accommodation_path(@accommodation),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-    </div>
-    <div class="col-xs-6">
-        <h3>You also like:</h3>
-        <ul>
-          <li>
-            Hot Air Balooning Grand Canyon
-          </li>
-          <li>
-            Hot Air Balooning Cape Town
-          </li>
-          <li>
-            Hot Air Balooning Victoria Falls
-          </li>
-          <li>
-            Hot Air Balooning Marrakech
-          </li>
-          <li>
-            Hot Air Balooning in Bath
-          </li>
-        </ul>
-    </div>
-  </div>
-</div>
-<div class="container tours">
-  <div class="row">
-    <div class="col-xs-10">
-      <h1>Recommended Tours</h1>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container accommodation">
-  <div class="row">
-    <div class="col-xs-10">
-      <h1>Bucket List Accommodation nearby</h1>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container other-accomodation">
-  <div class="row">
-    <div class="col-xs-10">
-      <h1>Other family-friendly accommodation nearby</h1>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-      <div class="product">
-        <div class='product-upvote'>
-          <div class="product-arrow"></div>
-          <div class='product-count'>95</div>
-        </div>
-        <img src="https://picsum.photos/1200/700" alt="" class="product-image hidden-xs">
-        <div class='product-body'>
-          <h3>Hot air balloon ride over Cappadocia</h3>
-          <p>Amazing views</p>
-        </div>
-        <ul class="list-inline product-controls hidden-sm hidden-xs">
-          <li><a href=""><i class="fa fa-heart"></i></a></li>
-          <li><a href=""><i class="fa fa-share"></i></a></li>
-          <li><a href=""><i class="fa fa-star"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-<! <!MAP CODE: -->
-<!-- <div id="map" style="width: 100%; height: 600px;" data-markers="<%#= @markers.to_json %>">
-</div> -->
+<%= link_to "back to results", root_path %>

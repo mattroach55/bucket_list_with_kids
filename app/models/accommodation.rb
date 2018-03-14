@@ -1,5 +1,6 @@
 class Accommodation < ApplicationRecord
   has_many :reviews
+  has_many :experiences
   belongs_to :user, optional: true
   belongs_to :destination
   has_many :photos, dependent: :destroy
