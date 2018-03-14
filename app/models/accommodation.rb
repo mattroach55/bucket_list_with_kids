@@ -17,7 +17,7 @@ class Accommodation < ApplicationRecord
 
   # CODE FOR PG MUlTISEARCH
   include PgSearch
-  multisearchable against: [ :name, :description, :locality, :country, :region, :holiday_type, :theme ]
+  multisearchable against: [ :name, :destination, :description, :locality, :country, :region, :holiday_type, :theme ]
   # CODE FOR PG MUlTISEARCH
 
   def full_address
