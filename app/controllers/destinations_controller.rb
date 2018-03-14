@@ -169,7 +169,12 @@ class DestinationsController < ApplicationController
   end
 
   def show
+    @destinations = Destination.all
     experiences = @destination.experiences
+    @experience = Experience.find(params[:id])
+    @accommodations = Accommodation.where(destination: @experience.destination)
+    @experiences = Experience.where(destination: @experience.destination)
+
     authorize @destination
     @markers = [{ lat: @destination.latitude, lng: @destination.longitude }]
   end

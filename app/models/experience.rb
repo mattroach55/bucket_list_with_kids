@@ -1,5 +1,6 @@
 class Experience < ApplicationRecord
   has_many :reviews
+  has_many :accommodations
   belongs_to :user, optional: true
   belongs_to :destination
   validates :name, presence: true

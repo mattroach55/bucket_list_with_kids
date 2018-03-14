@@ -1,10 +1,12 @@
 <!-- FOR NOW A SEPERATE PARTIAL FOR AL RECCOMMENDED NEARBY FAMILLY ACCOMMODATIONS WITH BOOKING LINKS -->
+<% @accommodations.each do |accommodation| %>
 <div class="product">
-  <img src="http://res.cloudinary.com/oya4ks4/image/upload/v1520946391/vwtsvx2iuxjrhxphc2wn.jpg" alt="" class="product-image hidden-xs">
+  <img src="<%= accommodation.photos.empty? ? "" : cl_image_path(accommodation.photos.first.photo) %>" alt="" class="product-image hidden-xs">
   <div class='product-body'>
-    <h3>Cappadocia Cave Hotel</h3>
+    <h3><%= accommodation.name %></h3>
   </div>
   <div class="link-to-see-experience">
-    <%= link_to "Booking.com", destinations_path, class: "btn btn-primary" %>
+    <%= link_to "Booking.com", accommodation.booking_link, class: "btn btn-primary" %>
   </div>
 </div>
+<% end %>

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'gibbon'
+gem "letter_opener", group: :development
 gem 'greensock-rails'
 gem 'algoliasearch-rails'
 gem 'cloudinary' # PHOTO_UPLOAD

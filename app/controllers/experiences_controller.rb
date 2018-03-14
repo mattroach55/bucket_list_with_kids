@@ -30,6 +30,8 @@ class ExperiencesController < ApplicationController
   end
 
   def show
+    @accommodations = Accommodation.where(destination: @experience.destination)
+    @experiences = Experience.where(destination: @experience.destination)
     authorize @experience
     # MAP CODE BELOW
     # @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: @experience.name }}]
