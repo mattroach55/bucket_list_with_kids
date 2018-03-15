@@ -1,13 +1,13 @@
 <% if type == "destination" %>
-  <% proper_path = destination_path(entity) %>
+  <% proper_path = destination_path(entity.send(type)) %>
   <% icon_name = 'card_dest_icon.svg' %>
   <% isempty = current_user.bucket_list_items.where(destination: entity).empty? %>
 <% elsif type == "experience" %>
-  <% proper_path = experience_path(entity) %>
+  <% proper_path = experience_path(entity.send(type)) %>
   <% icon_name = 'card_exper_icon.svg' %>
   <% isempty = current_user.bucket_list_items.where(experience: entity.experience).empty? %>
 <% elsif type == "accommodation" %>
-  <% proper_path = accommodation_path(entity) %>
+  <% proper_path = accommodation_path(entity.send(type)) %>
   <% icon_name = 'card_accomm_icon.svg' %>
   <% isempty = current_user.bucket_list_items.where(accommodation: entity.destination).empty? %>
 <% end %>
