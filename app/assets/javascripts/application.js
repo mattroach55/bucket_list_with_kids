@@ -6,3 +6,5 @@
 //= require jquery.slick
 //= require algolia/v3/algoliasearch.min
 //= require_tree .
+
+var scroll = new SmoothScroll('a[href*="#"]');
