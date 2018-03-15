@@ -94,7 +94,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method     = :postmark
-  config.action_mailer.postmark_settings   = { api_key: ENV['28487211-e77e-4dba-8a06-392aa8d3ff5d'] }
+  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API'] }
   config.action_mailer.default_url_options = { host: "http://www.bucketlistwithkids.com/" }
 
 end
