@@ -45,6 +45,31 @@
   padding: 10px;
 }
 
+.index-button {
+  background-color: none;
+  padding: 15px 20px;
+  border: 1px solid rgba(25,33,51,.9);
+  border-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 175px;
+  top: 30px;
+}
+
+.index-button:hover {
+  background-color: rgba(25,33,51,.9);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+
 .big-flex {
   margin: 75px 70px;
   display: flex;
@@ -116,16 +141,24 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: .5px .5px .5px rgba(1, 1, 1, 0.4);
+
   background-color: white;
   min-width: 190px;
   flex-wrap: nowrap;
 }
+
 .right-column p {
   padding-left: 20%;
-  font-weight: lighter;
-  color: darkgray;
-  font-size: 14px;
-}
+  font-weight: normal;
+  color: rgba(25,33,51,.9);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+
+
+    .right-column p:nth-child(1) {
+      padding-top: 50px;
+    }
+  }
 .right-column input {
   box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .3);
   -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, .3);
@@ -143,6 +176,10 @@
     // height: 15px;
     // width: 15px;
     margin: 0 5px 5px 0;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #a9a7a7;
+
   }
 
   .left-column {
