@@ -150,7 +150,7 @@ class DestinationsController < ApplicationController
       @bucket.destination = @destination
       @bucket.save
     end
-    redirect_to destinations_path
+    redirect_to destinations_path(anchor: "main-results")
   end
 
   # UPVOTE WORKS, NOW TESTING DOWNVOTE

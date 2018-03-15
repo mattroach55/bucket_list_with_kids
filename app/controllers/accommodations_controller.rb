@@ -26,7 +26,7 @@ class AccommodationsController < ApplicationController
       @bucket.destination = @destination
       @bucket.save
     end
-    redirect_to destinations_path
+    redirect_to destinations_path(anchor: "main-results")
   end
 
   def show
