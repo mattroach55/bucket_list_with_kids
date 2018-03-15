@@ -67,6 +67,7 @@
       <div class="container reviews">
         <div class="row">
           <div class="col-xs-12 col-sm-10">
+            <h2>Ticked it off already? Please leave a review to help others...</h2>
             <%= render 'reviews/form', type_review: @experience, review: @review %>
             <h3>
               <%= pluralize @experience.reviews.size, "review" %>
