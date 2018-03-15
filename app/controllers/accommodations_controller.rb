@@ -30,9 +30,10 @@ class AccommodationsController < ApplicationController
   end
 
   def show
+    @experience = Experience.find(params[:id])
+    @experiences = Experience.where(destination: @experience.destination)
     @accommodations = Accommodation.all
     @destination = @accommodation.destination
-    @experiences = @accommodation.experiences
     @review = Review.new
     # MAP CODE BELOW
     @markers = [{ lat: @accommodation.latitude, lng: @accommodation.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: @accommodation }) } }]
