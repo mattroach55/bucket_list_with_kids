@@ -4,6 +4,7 @@ class BucketListItem < ApplicationRecord
   belongs_to :destination
   belongs_to :user
 
+  # THIS IS TO UNDERSTAND _BUCKET BETTER
   # def entity
   #   if accommodation_id != nil
   #     return "accommodation"
