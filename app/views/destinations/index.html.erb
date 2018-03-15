@@ -23,12 +23,13 @@
     <%= image_tag 'accommodations.svg', :class => "icon" %>
   </div>
 </div>
-
-<div class="big-flex">
-
+ <div class="index-page-text">
+  <p>Selected by our travel editors</p>
+ </div>
+<div class="page-wrapper">
   <div class= "content">
     <% if @show_entities.empty? %>
-    <h1>Sorry - we have no recommendations matching your search. Please try again</h1>
+    <p>Sorry - we have no recommendations matching your search. Please try again</h1>
     <% else %>
     <ul class="left-column">
     <%= render partial: "shared/cards", collection: @show_entities, as: :entity %>
@@ -37,14 +38,15 @@
     <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
     </ul>
     <% end %>
+    <%= paginate @show_entities %>
   </div>
 
   <div class="right-column">
     <p>
       <%= form_tag destinations_path, method: :get do %>
       <%= hidden_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
-      <button type="submit" class="btn btn-primary">Refresh filters</button><br>
-      <p><strong>TYPE</strong></p>
+      <button type="submit" class="index-button">Refresh filters</button><br>
+      <p>TYPE</p>
       <p><%= check_box_tag(:destination) %>
       <%= label_tag(:destination, "Destination") %></p>
       <p><%= check_box_tag(:experience) %>
@@ -52,7 +54,7 @@
       <p><%= check_box_tag(:destination) %>
       <%= label_tag(:accommodation, "Accommodation") %></p>
       <br>
-      <p><strong>FOR KIDS AGED:</strong></p>
+      <p>FOR KIDS AGED:</p>
       <p><%= check_box_tag(:Age_0_4) %>
       <%= label_tag(:Age_0_4, "0-4") %></p>
       <p><%= check_box_tag(:Age_5_7) %>
@@ -64,7 +66,7 @@
       <p><%= check_box_tag(:Age_16_18) %>
       <%= label_tag(:Age_12_15, "16-18") %></p>
       <br>
-      <p><strong>EXPERIENCE THEME</strong></p>
+      <p>EXPERIENCE THEME</p>
       <p><%= check_box_tag(:adventure) %>
       <%= label_tag(:adventure, "Adventure & Sport") %></p>
       <p><%= check_box_tag(:art) %>
@@ -82,7 +84,7 @@
       <p><%= check_box_tag(:shopping) %>
       <%= label_tag(:shopping, "Shopping") %></p>
       <br>
-      <p><strong>HOLIDAY TYPE</strong></p>
+      <p>HOLIDAY TYPE</p>
       <p><%= check_box_tag(:beach) %>
       <%= label_tag(:beach, "Beach") %></p>
       <p><%= check_box_tag(:city) %>
@@ -94,7 +96,7 @@
       <p><%= check_box_tag(:snow) %>
       <%= label_tag(:snow, "Snow") %></p>
       <br>
-      <p><strong>REGION</strong></p>
+      <p>REGION</p>
       <p><%= check_box_tag(:asia) %>
       <%= label_tag(:asia, "Asia, China & India") %></p>
       <p><%= check_box_tag(:australia) %>
@@ -113,8 +115,9 @@
       <% end %>
   </div>
 </div>
-
+<div class="big-flex">
 <div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+</div>
 </div>
 
 <%= render 'shared/footer' %>

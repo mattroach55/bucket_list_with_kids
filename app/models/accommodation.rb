@@ -19,6 +19,8 @@ class Accommodation < ApplicationRecord
   multisearchable against: [ :name, :destination_name, :description, :locality, :country, :region, :holiday_type, :theme ]
   # CODE FOR PG MUlTISEARCH
 
+  paginates_per 16
+
   def full_address
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
   end

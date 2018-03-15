@@ -1,45 +1,47 @@
 <% content_for :meta_title, "#{@accommodation.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @accommodation.description %>
-
-<!-- <div class="slider-wrapper">
-  <h1 class="banner-show-text"><%#= @accommodation.name %></h1>
-  <div>
-  <div class="slider">
-    <%# @accommodation.photos.each do |photo| %>
-      <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%#= cl_image_path(photo.photo) %>')">
-      </div>
-     <%# end %>
-    </div>
-  </div>
-</div>
-<div> -->
-  <div class="page-info-med-container-inline-flex">
-    <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
+  
+<div class="slider-wrapper">
+  <h1 class="banner-show-text"><%= @accommodation.name %></h1>                        
     <div>
-      <h4><%= @accommodation.name %> with kids</h4>
-      <p><%= @accommodation.description %></p>
+      <div class="slider">
+        <% @accommodation.photos.each do |photo| %>
+        <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%= cl_image_path(photo.photo) %>')">
+      </div>
+     <% end %>
     </div>
   </div>
 </div>
+
+<div class="page-info-med-container-inline-flex">
+  <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "page-info-icon" %></h1>
+  <div class=<div class="page-info-content">
+    <h4><%= @accommodation.name %> with kids</h4>
+    <p><%= @accommodation.description %></p>
+  </div>
+</div>
+
 <div class="page-wrapper">
   <div class="show-large-container-left">
-
+    <div class="med-container-inline-flex">
     <div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
     </div>
+  </div>
 
   <h4> Bucket list experiences near <%= @accommodation.name %></h4>
-  <div class="med-container-inline-flex">
+
     <div>
       <% @destination.experiences.each do |experience| %>
+      <div class="med-container-inline-flex">
       <h1 class="banner-show-text-p"><%= image_tag 'experiences.svg', :class => "show-icon" %></h1>
         <div>
-          <h4><%= experience.name %></h4><br>
-          <p><%= experience.description %></p>
-          <p><%= experience.price %></p>
+          <h5><%= experience.name %></h5><br>
+          <h5>price: $<%= experience.price %></h>
         </div>
       </div>
       <% end %>
     </div>
+   </div>
     <div class="show-large-container-right">
       <p> You may also like </p>
       <% @accommodations.each do |accommodation| %>
