@@ -72,11 +72,13 @@ class DestinationsController < ApplicationController
       @filtered_entities += @all_entities.select { |entity| entity.allowed_age_0_4 == true }
     end
 
+
     @filtered_entities = @all_entities if @filtered_entities.empty?
 
     @filtered_entities = @filtered_entities.keep_if { |entity| entity.show == true }
     # @filtered_entities = @filtered_entities.shuffle
     @show_entities = Kaminari.paginate_array(@filtered_entities).page(params[:page]).per(12)
+
 
 
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link
@@ -102,7 +104,7 @@ class DestinationsController < ApplicationController
       @bucket.destination = @destination
       @bucket.save
     end
-    redirect_to destinations_path
+    redirect_to destinations_path(anchor: "main-results")
   end
 
   # UPVOTE WORKS, NOW TESTING DOWNVOTE
@@ -184,15 +186,6 @@ class DestinationsController < ApplicationController
     params.require(:destination).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos)
   end
 end
-
-
-# GABY FILTER CODE
-#     @filtered_entities = []
-#     SHORT_NAMES.each do |short_name, actual_name|
-#       if params[short_name].present?
-#         @filtered_entities << entity if entity.theme == actual_name
-#       end
-#     end
 
 
 
