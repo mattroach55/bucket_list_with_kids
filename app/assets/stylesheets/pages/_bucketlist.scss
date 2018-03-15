@@ -73,7 +73,21 @@
   margin: 0 auto;
 }
 
-.icon-bucket {
+.icon-bucket{
+  width: 20%;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  margin-right: -40px;
+}
+
+.test-icons-bucket {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.test-icon-bucket {
   width: 20%;
   padding-top: 10px;
   padding-bottom: 30px;
