@@ -122,8 +122,9 @@ class DestinationsController < ApplicationController
     end
 
     @all_entities = @all_entities.keep_if { |entity| entity.show == true }
-    @all_entities = @all_entities.shuffle
+
     @show_entities = Kaminari.paginate_array(@all_entities).page(params[:page]).per(12)
+
 
 
     # CODE TO ADD MAP TO HOME INDEX PAGE WITH MARKERS FOR ALL 3 ENTITIES.Markers have name, photo and link

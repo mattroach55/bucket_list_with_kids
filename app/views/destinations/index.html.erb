@@ -27,12 +27,12 @@
   <p>Selected by our travel editors</p>
  </div>
 <div class="page-wrapper">
-  <div class= "content">
+  <div class="content" id="main-results">
     <% if @show_entities.empty? %>
     <p>Sorry - we have no recommendations matching your search. Please try again</h1>
     <% else %>
     <ul class="left-column">
-    <%= render partial: "shared/cards", collection: @show_entities, as: :entity %>
+      <%= render partial: "shared/cards", collection: @show_entities, as: :entity %>
     <!-- partials are off for the shuffle funtion -->
     <%#= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
     <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>

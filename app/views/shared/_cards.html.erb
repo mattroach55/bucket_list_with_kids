@@ -11,11 +11,11 @@
   <% proper_path = accommodation_path(entity) %>
   <% icon_name = 'card_accomm_icon_blue.svg' %>
   <% isbucket = current_user && current_user.bucket_list_items.where(accommodation: entity).empty? %>
-
 <% end %>
 
-<%= link_to proper_path do %>
 <li class="left-column-element">
+<%= link_to proper_path do %>
+
   <div class="card-index">
     <!--  LINE CHANGE FOR CL WITH SEED -->
     <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= entity.photos.empty? ? "" : cl_image_path(entity.photos.first.photo) %>');">
@@ -44,5 +44,5 @@
     </div>
 
    <!--  This <%#= "#{entity.class.name.downcase}" %> has been added <%#= entity.get_upvotes.count %> times</h6> -->
-  </li>
-  <% end %>
+<% end %>
+</li>
