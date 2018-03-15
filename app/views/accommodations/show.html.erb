@@ -16,7 +16,7 @@
 <div class="page-info-med-container-inline-flex">
   <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "page-info-icon" %></h1>
   <div class=<div class="page-info-content">
-    <h4><%= @accommodation.name %> with kids</h4>
+    <h2><%= @accommodation.name %> with kids</h2>
     <p><%= @accommodation.description %></p>
       <div class="link-to-bucket-list">
     <%= link_to "Add to bucket list", bucket_count_accommodation_path(@accommodation), method: :put, class: "btn btn-primary" %>
@@ -64,7 +64,6 @@
       <%# end %>
     </div> -->
 
-<%= link_to "back to results", root_path %>
     <div class="container reviews">
     <div class="row">
       <div class="col-xs-10">
