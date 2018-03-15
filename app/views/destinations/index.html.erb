@@ -6,10 +6,10 @@
 
   <div class="banner-content">
   <%= image_tag 'logo.svg', :class => "page-logo" %><br>
-    <div>
+    <div class="form-inline">
       <%= form_tag destinations_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search for experience eg. 'Rome'" %>
-      <button type="submit" class="btn btn-primary">Search</button>
+      <%= text_field_tag :query, params[:query], class: "form-control", style: "width: 320px;", placeholder: "Search for experience eg. 'Rome'" %>
+      <button type="submit" style="height: 39.5px;" class="btn btn-primary">Search</button>
       <% end %>
     </div>
   </div>
@@ -38,6 +38,7 @@
     <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
     </ul>
     <% end %>
+    <%= paginate @show_entities %>
   </div>
 
   <div class="right-column">
