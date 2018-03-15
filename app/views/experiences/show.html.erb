@@ -34,9 +34,9 @@
    </div>
     <div class="show-large-container-right">
       <p class="page-text"> You may also like </p>
-      <% @experiences.each do |experience| %>
+      <% @experiences.each_with_index do |experience, index| %>
       <%= link_to experience_path(experience) do %>
-      <%= experience.name %>
+      <%= index + 1 %>.<%= experience.name %>
       <% end %>
       <% end %>
     </div>
