@@ -3,147 +3,91 @@
 
 <div class="slider-wrapper">
   <h1 class="banner-show-text"><%= @experience.name %></h1>
-  <div>
-  <div class="slider">
-    <% @experience.photos.each do |photo| %>
-      <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%= cl_image_path(photo.photo) %>')">
+    <div>
+      <div class="slider">
+        <% @experience.photos.each do |photo| %>
+        <div class="slider--item" style="background-image: linear-gradient(-180deg, rgba(152, 135, 143, 0.0) 0%, rgba(0, 0, 0, 0.7) 95%), url('<%= cl_image_path(photo.photo) %>')">
       </div>
      <% end %>
     </div>
   </div>
 </div>
+
+<div class="page-info-med-container-inline-flex">
+  <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "page-info-icon" %></h1>
+  <div class=<div class="page-info-content">
+    <h4><%= @experience.name %> with kids</h4>
+    <p><%= @experience.description %></p>
+  </div>
+</div>
+
 <div class="page-wrapper">
-<div class="show-large-container-left">
-
-
-  <div class="med-container-inline-flex">
-     <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
-    <div>
-      <h4><%= @experience.name %> with kids</h4>
-      <p><%= @experience.description %></p>
+  <div class="show-large-container-left">
+    <div class="med-container-inline-flex">
+    <div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
     </div>
   </div>
 
-  <!-- end of box 1, next is a div for the photo carousel -->
-<div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
-</div>
-
-
-  <!-- next is header for the "experiences in this destination" cards -->
-
-  <div class="page-text">
-    <h4> Bucket list accommodations near the <%= @experience.name %> experience </h4>
-  </div>
-
-  <!-- <div class="right-column-show">
-    <%# @destination.accommodations.each do |accommodation| %>
-    <%#= link_to accommodation_path(accommodation) do %>
-    <p><%#= accommodation.name %></p><br>
-    <p><%#= accommodation.description %></p>
-    <%# end %>
-    <%# end %>
-  </div> -->
-
-<!-- Creating code to take a photo and turn it into an undistorted thumbnail (for show page card) in progress
-  ________________________________________________________________________________________________
-  <! <div class="med-container-inline-flex">
-    <div class="thumbnail-container thumbnail" style="background-image: url(<%#= @destination.experience.photo %>)">
-    </div> -->
-      <!-- <div class="thumbnail-container">
-        <%#= image_tag 'banner2.jpg', :class => "portrait thumbnail" %>
-        <img src="portrait-img.jpg" class="portrait" alt="Image" />
-
-
-UNUSED CODE FOR A STACKED CARD LOOK
-<div for stacked display for other recommended accommodations -->
-<!-- <div class="med-cont-vertical-flex">
-  <%#= image_tag 'accommodations.svg', :class => "show-icon" %>
-  <div>
-    <div class="right-column-show">
-      <h1><%#= @destination.name %></h1>
-      <p><%#= @destination.full_address %></p>
+   </div>
+    <div class="show-large-container-right">
+      <p class="page-text"> You may also like </p>
+      <% @experiences.each do |experience| %>
+      <%= link_to experience_path(experience) do %>
+      <%= experience.name %>
+      <% end %>
+      <% end %>
     </div>
-    <div class="right-column-show">
-      <h1><%#= @destination.name %></h1>
-      <p><%#= @destination.full_address %></p>
-    </div>
-  </div>
-  <div class="right-column-show">
-    <h1><%#= @destination.name %></h1>
-    <p><%#= @destination.full_address %></p>
-  </div>
 </div>
-
-  <div class="med-cont-vertical-flex">
-    <p>other accom.</p>
-  </div>
-  <div> -->
-
-<div class="show-large-container-right">
-  <p> You may also like </p>
-
-     <% @experiences.each do |experience| %>
-
-    <%= link_to experience_path(experience) do %>
-    <%= experience.name %>
-    <% end %>
-    <% end %>
-
-   <!--  <%# @destinations.each do |destination| %>
-    <p><%#= if destination.name != @destination.name %></p>
-    <%#= link_to destination_path(destination) do %>
-    <%# destination.name %>
-    <%# end %>
-    <%# end %>
-    <%# end %> -->
-</div>
-</div>
-</div>
-
-
+<div class="show-recommendations-wrapper">
     <!-- FRONTEND FOR TOURS AT EXPERIENCE SHOW -->
     <div class="container tours">
       <div class="row">
         <div class="col-xs-12 col-sm-10">
-          <h2>Recommended Tours</h2>
+          <p class="page-text">Recommended Tours</p>
           <%= render 'shared/viator' %>
         </div>
       </div>
     </div>
+  </div>
 
     <!-- FRONTEND FOR ACCOMMODATIONS AT EXPERIENCE SHOW -->
-    <div class="container other-accomodation">
-      <div class="row">
-        <div class="col-xs-12 col-sm-10">
-          <h2>Family-friendly accommodation nearby</h2>
-          <%= render 'shared/booking' %>
-        </div>
-      </div>
-    </div>
-
-    <!-- FAST xs-12 sm-10 CLASS AROUND THE REVIEWS -->
-    <div class="container reviews">
-      <div class="row">
-        <div class="col-xs-12 col-sm-10">
-          <%= render 'reviews/form', type_review: @experience, review: @review %>
-          <h3>
-            <%= pluralize @experience.reviews.size, "review" %>
-          </h3>
-          <div id="reviews">
-            <% if @experience.reviews.blank? %>
-            Be the first to leave a review for <%= @experience.name %>
-            <% else %>
-            <% @experience.reviews.each do |review| %>
-            <%= render 'reviews/show', review: review %>
-            <% end %>
-            <% end %>
+    <div class="show-recommendations-wrapper">
+      <div class="container other-accomodation">
+        <div class="row">
+          <div class="col-xs-12 col-sm-10">
+            <p class='page-text'>Family-friendly accommodation nearby</h2>
+            <%= render 'shared/booking' %>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- FAST xs-12 sm-10 CLASS AROUND THE REVIEWS -->
+    <div class="show-recommendations-wrapper">
+      <div class="container reviews">
+        <div class="row">
+          <div class="col-xs-12 col-sm-10">
+            <%= render 'reviews/form', type_review: @experience, review: @review %>
+            <h3>
+              <%= pluralize @experience.reviews.size, "review" %>
+            </h3>
+            <div id="reviews">
+              <% if @experience.reviews.blank? %>
+              Be the first to leave a review for <%= @experience.name %>
+              <% else %>
+              <% @experience.reviews.each do |review| %>
+              <%= render 'reviews/show', review: review %>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 <% if policy(@experience).edit? %>
   <%= link_to "Edit", edit_experience_path(@experience), class: "btn btn-primary" %>
 <% end %>
 
-
+<%= render 'shared/footer' %>
