@@ -30,100 +30,54 @@ class DestinationsController < ApplicationController
       @all_entities = @destinations + @experiences + @accommodations
     end
 
-
+    @filtered_entities = []
     #ENTITY FILTERS
-    if params[:destination].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.entity == 'destination' }
-    end
-        if params[:experience].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.entity == 'experience' }
-    end
-    if params[:accommodation].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.entity == 'accommodation' }
+    [:accommodation, :experience, :destination].each do |filter|
+      if params[filter].present?
+        @filtered_entities += @all_entities.select { |entity| entity.entity == filter.to_s }
+      end
     end
     # THEME FILTERS
-    if params[:adventure].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'adventure' }
-    end
-    if params[:art].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'art' }
-    end
-    if params[:automobiles].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'automobiles' }
-    end
-    if params[:body].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'body' }
-    end
-    if params[:entertainment].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'entertainment' }
-    end
-    if params[:food].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'food' }
-    end
-    if params[:science].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'science' }
-    end
-    if params[:shopping].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.theme == 'shopping' }
+    [:adventure, :art, :automobiles, :body, :entertainment, :food, :science, :shopping].each do |filter|
+      if params[filter].present?
+        @filtered_entities += @all_entities.select { |entity| entity.theme == filter.to_s }
+      end
     end
     # HOLIDAY TYPE FILTERS
-    if params[:beach].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.holiday_type == 'beach' }
-    end
-    if params[:city].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.holiday_type == 'city' }
-    end
-    if params[:cruise].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.holiday_type == 'cruise' }
-    end
-    if params[:outdoors].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.holiday_type == 'outdoors' }
-    end
-    if params[:snow].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.holiday_type == 'snow' }
+    [:beach, :city, :cruise, :outdoors, :snow].each do |filter|
+      if params[filter].present?
+        @filtered_entities += @all_entities.select { |entity| entity.holiday_type == filter.to_s }
+      end
     end
     # REGION FILTERS
-    if params[:asia].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.region == 'Asia' }
-    end
-    if params[:australia].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.region == 'Australia and South Pacific' }
-    end
-    if params[:europe].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.region == 'Europe' }
-    end
-    if params[:middle].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.region == 'Middle East and North Africa' }
-    end
-    if params[:north].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.region == 'North America' }
-    end
-    if params[:south].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.region == 'South America' }
-    end
-    if params[:africa].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.region == 'Africa (Sub-Saharan)' }
+    [:asia, :australia, :europe, :middle, :north, :south, :africa].each do |filter|
+      if params[filter].present?
+        @filtered_entities += @all_entities.select { |entity| entity.region == filter.to_s }
+      end
     end
     # AGE FILTERS
     if params[:age_0_4].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.age_allowed_0_4 == true }
+      @filtered_entities += @all_entities.select { |entity| entity.allowed_age_0_4 == true }
     end
     if params[:age_5_7].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.age_allowed_5_7 == true }
+      @filtered_entities += @all_entities.select { |entity| entity.allowed_age_0_4 == true }
     end
     if params[:age_8_11].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.age_allowed_8_11 == true }
+      @filtered_entities += @all_entities.select { |entity| entity.allowed_age_0_4 == true }
     end
     if params[:age_12_15].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.age_allowed_12_15 == true }
+      @filtered_entities += @all_entities.select { |entity| entity.allowed_age_0_4 == true }
     end
     if params[:age_16_18].present?
-      @all_entities = @all_entities.keep_if { |entity| entity.age_allowed_16_18 == true }
+      @filtered_entities += @all_entities.select { |entity| entity.allowed_age_0_4 == true }
     end
 
-    @all_entities = @all_entities.keep_if { |entity| entity.show == true }
 
-    @show_entities = Kaminari.paginate_array(@all_entities).page(params[:page]).per(12)
+    @filtered_entities = @all_entities if @filtered_entities.empty?
+
+    @filtered_entities = @filtered_entities.keep_if { |entity| entity.show == true }
+    # @filtered_entities = @filtered_entities.shuffle
+    @show_entities = Kaminari.paginate_array(@filtered_entities).page(params[:page]).per(12)
 
 
 
@@ -232,15 +186,6 @@ class DestinationsController < ApplicationController
     params.require(:destination).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos)
   end
 end
-
-
-# GABY FILTER CODE
-#     @filtered_entities = []
-#     SHORT_NAMES.each do |short_name, actual_name|
-#       if params[short_name].present?
-#         @filtered_entities << entity if entity.theme == actual_name
-#       end
-#     end
 
 
 
