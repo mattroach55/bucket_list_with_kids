@@ -34,9 +34,9 @@
    </div>
     <div class="show-large-container-right">
       <p class="page-text"> You may also like </p>
-      <% @destinations.each do |destination| %>
+      <% @destinations.each_with_index do |destination, index| %>
       <%= link_to destination_path(destination) do %>
-      <%= destination.name %>
+      <%= index + 1 %>.<%= destination.name %>
       <% end %>
       <% end %>
     </div>
@@ -47,7 +47,7 @@
   <div class="container tours">
     <div class="row">
       <div class="col-xs-12 col-sm-10">
-        <p class="page-text">Recommended Tours</p>
+        <p class="page-text">Bucket List Experiences in this destination</p>
         <%= render 'shared/nearbyexperiences' %>
       </div>
     </div>
@@ -56,7 +56,7 @@
       <div class="container other-accomodation">
         <div class="row">
           <div class="col-xs-12 col-sm-10">
-            <p class='page-text'>Family-friendly accommodation nearby</h2>
+            <p class='page-text'>Family-friendly accommodation in this destination</h2>
             <%= render 'shared/booking' %>
           </div>
         </div>
