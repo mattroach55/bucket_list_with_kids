@@ -4,9 +4,6 @@ class DestinationsController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
 
-  # SHORT_NAMES: {
-  #   adventure: 'adventure and sport'
-  # }
 
   def index
     policy_scope(Destination)
