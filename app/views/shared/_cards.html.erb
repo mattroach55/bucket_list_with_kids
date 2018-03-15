@@ -18,7 +18,7 @@
 <li class="left-column-element">
   <div class="card-index">
     <!--  LINE CHANGE FOR CL WITH SEED -->
-    <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.photos.empty? ? "" : cl_image_path(entity.photos.first.photo) %>');">
+    <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= entity.photos.empty? ? "" : cl_image_path(entity.photos.first.photo) %>');">
       <div class="card-index">
         <%= image_tag icon_name, :class => "icon-card" %>
         <h1 class="title"><%= entity.name %></h1>
