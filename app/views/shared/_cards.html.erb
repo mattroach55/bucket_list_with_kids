@@ -1,13 +1,17 @@
 
 <% if entity.class.name == "Destination" %>
-<% proper_path = destination_path(entity) %>
-<% icon_name = 'card_dest_icon_blue.svg' %>
+  <% proper_path = destination_path(entity) %>
+  <% icon_name = 'card_dest_icon_blue.svg' %>
+  <% isempty = current_user.bucket_list_items.where(destination: entity).empty? %>
 <% elsif entity.class.name == "Experience" %>
-<% proper_path = experience_path(entity) %>
-<% icon_name = 'card_exper_icon_blue.svg' %>
+  <% proper_path = experience_path(entity) %>
+  <% icon_name = 'card_exper_icon_blue.svg' %>
+  <% isempty = current_user.bucket_list_items.where(experience: entity).empty? %>
 <% elsif entity.class.name == "Accommodation" %>
-<% proper_path = accommodation_path(entity) %>
-<% icon_name = 'card_accomm_icon_blue.svg' %>
+  <% proper_path = accommodation_path(entity) %>
+  <% icon_name = 'card_accomm_icon_blue.svg' %>
+  <% isempty = current_user.bucket_list_items.where(accommodation: entity).empty? %>
+
 <% end %>
 
 <%= link_to proper_path do %>
@@ -22,11 +26,18 @@
 
         <% count_path = "bucket_count_#{entity.class.name.downcase}_path".to_sym %>
 
-        <%= link_to method(count_path).call(entity), method: :put do %>
-        <div class="bucket-button" style="background-image: url(<%= image_url 'small_bucket.svg' %>);">
-        </div>
-
+        <!-- If added logo will change -->
+        <% if isempty %>
+          <%= link_to method(count_path).call(entity), method: :put do %>
+            <div class="bucket-button" style="background-image: url(<%= image_url 'small_bucket.svg' %>);">
+            </div>
+          <% end %>
+        <% else %>
+            <div class="bucket-tick">
+            <i class="fa fa-check-circle"></i>
+          </div>
         <% end %>
+
          <%= image_tag 'small_bucket_blue.svg', :class => "bucket-button-blue" %>
          <h6 class="count-text"><%= entity.get_upvotes.count %> added</h6>
       </div>
