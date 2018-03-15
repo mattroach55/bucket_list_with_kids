@@ -33,11 +33,3 @@ $(function(){
     $(id).removeClass("hidden");
   });
 });
-
-
-(function(){
-  $("a.bucket-button").on("click", function(e){
-    // CHANGE TAB
-    e.preventDefault();
-  });
-});
