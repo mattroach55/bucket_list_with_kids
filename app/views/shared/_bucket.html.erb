@@ -5,7 +5,7 @@
 <% elsif type == "experience" %>
   <% proper_path = experience_path(entity) %>
   <% icon_name = 'card_exper_icon.svg' %>
-  <% isempty = current_user.bucket_list_items.where(experience: entity.destination).empty? %>
+  <% isempty = current_user.bucket_list_items.where(experience: entity.experience).empty? %>
 <% elsif type == "accommodation" %>
   <% proper_path = accommodation_path(entity) %>
   <% icon_name = 'card_accomm_icon.svg' %>
