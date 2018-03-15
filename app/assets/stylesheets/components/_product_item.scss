@@ -17,10 +17,11 @@
 .product-body {
   flex: auto;
 }
-.product-body h3 {
+.product-body h3, a {
   font-weight: normal !important;
   font-size: 28px;
   margin-top: 0;
+  text-decoration: none !important;
 }
 .product-body p {
   font-weight: lighter;

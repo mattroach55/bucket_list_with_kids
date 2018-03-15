@@ -3,7 +3,9 @@
 <div class="product">
   <img src="<%= accommodation.photos.empty? ? "" : cl_image_path(accommodation.photos.first.photo) %>" alt="" class="product-image hidden-xs">
   <div class='product-body'>
+    <%= link_to accommodation.booking_link do %>
     <h4><%= accommodation.name %></h4>
+    <% end %>
   </div>
   <div class="link-to-see-experience">
     <%= link_to "Booking.com", accommodation.booking_link, class: "btn btn-primary" %>
