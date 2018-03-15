@@ -1,7 +1,8 @@
 <% if policy(Destination).create? %>
 <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
 <% end %>
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0.3) 0%, rgba(73, 78, 107, 0.3) 50%), url('<%= cl_image_path 'safari1_copy2.jpg'%>');">
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0.2) 0%, rgba(73, 78, 107, 0.2) 50%), url('<%= cl_image_path 'safari1_copy2.jpg'%>');">
 
   <div class="banner-content">
   <%= image_tag 'logo.svg', :class => "page-logo" %><br>
