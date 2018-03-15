@@ -4,6 +4,8 @@
   padding: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
+  background-color: white;
+  border-bottom: 1px solid gray;
 }
 
 /* hour design */
@@ -16,8 +18,8 @@
   flex: auto;
 }
 .product-body h3 {
-  font-weight: bold;
-  font-size: 23px;
+  font-weight: normal !important;
+  font-size: 28px;
   margin-top: 0;
 }
 .product-body p {
@@ -57,7 +59,7 @@
 
 /* Hover effects */
 .product:hover {
-  background: #f7f7fa;
+  background: rgb(244, 244, 244) !important;
   cursor: pointer;
 }
 .product-upvote:hover, .product-upvote.product-upvote-upvoted {
