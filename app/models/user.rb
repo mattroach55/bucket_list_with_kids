@@ -16,9 +16,11 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  # private
+  after_create :send_welcome_email
 
-  # def subscribe_to_newsletter
-  #   SubscribeToNewsletterService.new(self).call
-  # end
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 end

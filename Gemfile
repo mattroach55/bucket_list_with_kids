@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.3'
 
+gem 'postmark-rails'
 gem 'gibbon'
 gem "letter_opener", group: :development
 gem 'greensock-rails'
