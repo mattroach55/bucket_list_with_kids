@@ -136,6 +136,16 @@
   flex-wrap: nowrap;
 }
 
+.show-large-container-right li {
+    padding-bottom: 15px;
+    color: gray;
+}
+
+.show-large-container-right a {
+  size: 14px !important;
+}
+
+
 .right-column-show {
   width: 300px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);

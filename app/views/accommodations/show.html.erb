@@ -1,8 +1,8 @@
 <% content_for :meta_title, "#{@accommodation.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @accommodation.description %>
-  
+
 <div class="slider-wrapper">
-  <h1 class="banner-show-text"><%= @accommodation.name %></h1>                        
+  <h1 class="banner-show-text"><%= @accommodation.name %></h1>
     <div>
       <div class="slider">
         <% @accommodation.photos.each do |photo| %>
@@ -27,30 +27,39 @@
     <div class="show-map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
     </div>
   </div>
+</div>
 
-  <h4> Bucket list experiences near <%= @accommodation.name %></h4>
-
-    <div>
-      <% @destination.experiences.each do |experience| %>
-      <div class="med-container-inline-flex">
-      <h1 class="banner-show-text-p"><%= image_tag 'experiences.svg', :class => "show-icon" %></h1>
-        <div>
-          <h5><%= experience.name %></h5><br>
-          <h5>price: $<%= experience.price %></h>
-        </div>
-      </div>
-      <% end %>
-    </div>
-   </div>
-    <div class="show-large-container-right">
-      <p> You may also like </p>
+  <div class="show-large-container-right">
+      <p class="page-text"> You may also like </p>
       <% @accommodations.each do |accommodation| %>
       <%= link_to accommodation_path(accommodation) do %>
       <%= accommodation.name %>
       <% end %>
       <% end %>
     </div>
-</div>
+   </div>
+ </div>
+
+    <div class="show-recommendations-wrapper">
+    <!-- FRONTEND FOR TOURS AT EXPERIENCE SHOW -->
+    <div class="container tours">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <p class="page-text">Recommended Tours</p>
+          <%= render 'shared/viator' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <div class="show-large-container-right">
+      <p> You may also like </p>
+      <%# @accommodations.each do |accommodation| %>
+      <%#= link_to accommodation_path(accommodation) do %>
+      <%#= accommodation.name %>
+      <%# end %>
+      <%# end %>
+    </div> -->
 
 <%= link_to "back to results", root_path %>
     <div class="container reviews">
