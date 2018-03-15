@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@accommodation.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @accommodation.description %>
+
 <!-- <div class="slider-wrapper">
   <h1 class="banner-show-text"><%#= @accommodation.name %></h1>
   <div>
@@ -10,7 +13,6 @@
   </div>
 </div>
 <div> -->
-
   <div class="page-info-med-container-inline-flex">
     <h1 class="banner-show-text-p"><%= image_tag 'destinations.svg', :class => "show-icon" %></h1>
     <div>
