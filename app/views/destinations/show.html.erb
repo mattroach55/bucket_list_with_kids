@@ -28,15 +28,16 @@
       </div>
     </div>
 
-  </div>
-  <div class="show-large-container-right">
-    <p class="page-text"> You may also like </p>
-    <% @experiences.each do |destination| %>
-    <%= link_to destination_path(destination) do %>
-    <%= destination.name %>
-    <% end %>
-    <% end %>
-  </div>
+   </div>
+    <div class="show-large-container-right">
+      <p class="page-text"> You may also like </p>
+      <% @destinations.each do |destination| %>
+      <%= link_to destination_path(destination) do %>
+      <%= destination.name %>
+      <% end %>
+      <% end %>
+    </div>
+
 </div>
 <!-- FRONTEND FOR TOURS AT EXPERIENCE SHOW -->
 <div class="show-recommendations-wrapper">
@@ -47,33 +48,22 @@
         <%= render 'shared/nearbyexperiences' %>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- FRONTEND FOR ACCOMMODATIONS AT EXPERIENCE SHOW -->
-<div class="show-recommendations-wrapper">
-  <div class="container other-accomodation">
-    <div class="row">
-      <div class="col-xs-12 col-sm-10">
-        <p class='page-text'>Family-friendly accommodation nearby</h2>
-          <%= render 'shared/booking' %>
+    <!-- FRONTEND FOR ACCOMMODATIONS AT EXPERIENCE SHOW -->
+      <div class="container other-accomodation">
+        <div class="row">
+          <div class="col-xs-12 col-sm-10">
+            <p class='page-text'>Family-friendly accommodation nearby</h2>
+            <%= render 'shared/booking' %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container-right">
-    <% @destination.accommodations.each do |accommodation| %>
-    <%= link_to accommodation_path(accommodation) do %>
-    <p><%= accommodation.name %></p><br>
-    <p><%= accommodation.description %></p>
-    <% end %>
-    <% end %>
-  </div>
-</div>
-</div>
-<% if policy(Destination).new? %>
-<%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
+ <% if policy(Destination).new? %>
+  <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
+
 <% end %>
 <% if policy(Experience).new? %>
 <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
@@ -85,3 +75,4 @@
 <%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
 <% end %>
 
+<%= render 'shared/footer' %>

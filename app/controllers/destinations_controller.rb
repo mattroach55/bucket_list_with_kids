@@ -4,9 +4,6 @@ class DestinationsController < ApplicationController
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
 
-  # SHORT_NAMES: {
-  #   adventure: 'adventure and sport'
-  # }
 
   def index
     policy_scope(Destination)
@@ -127,10 +124,9 @@ class DestinationsController < ApplicationController
 
   def show
     @destinations = Destination.all
-    experiences = @destination.experiences
-    @experience = Experience.find(params[:id])
-    @accommodations = Accommodation.where(destination: @experience.destination)
-    @experiences = Experience.where(destination: @experience.destination)
+    @destination = Destination.find(params[:id])
+    @accommodations = Accommodation.where(destination: @destination)
+    @experiences = Experience.where(destination: @destination)
 
     authorize @destination
     @markers = [{ lat: @destination.latitude, lng: @destination.longitude }]
