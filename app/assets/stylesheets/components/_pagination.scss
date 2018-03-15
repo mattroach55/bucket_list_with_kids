@@ -1,0 +1,28 @@
+.paginate {
+  text-align: center;
+}
+
+.pagination {
+  font-family: open sans;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.pagination > li > a {
+  color: #303851;
+  border-color: #418aca;
+}
+
+.pagination > li > a:hover {
+  background-color: #efefefe6;
+  color: #303851;
+  border-color: #418aca;
+}
+
+.pagination > .active a,
+.pagination > .active > a:hover {
+  background-color: #192133e6;
+}
+
+
