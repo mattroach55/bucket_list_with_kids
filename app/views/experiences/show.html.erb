@@ -18,6 +18,9 @@
   <div class=<div class="page-info-content">
     <h4><%= @experience.name %> with kids</h4>
     <p><%= @experience.description %></p>
+  <div class="link-to-bucket-list">
+    <%= link_to "Add to bucket list", bucket_count_experience_path(@experience), method: :put, class: "btn btn-primary" %>
+  </div>
   </div>
 </div>
 
