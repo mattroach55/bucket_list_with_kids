@@ -1,7 +1,6 @@
 <% if policy(Destination).create? %>
 <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
 <% end %>
-
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0.3) 0%, rgba(73, 78, 107, 0.3) 50%), url('<%= cl_image_path 'safari1_copy2.jpg'%>');">
 
   <div class="banner-content">
@@ -27,12 +26,12 @@
   <p>Selected by our travel editors</p>
  </div>
 <div class="page-wrapper">
-  <div class= "content">
+  <div class="content" id="main-results">
     <% if @show_entities.empty? %>
     <p>Sorry - we have no recommendations matching your search. Please try again</h1>
     <% else %>
     <ul class="left-column">
-    <%= render partial: "shared/cards", collection: @show_entities, as: :entity %>
+      <%= render partial: "shared/cards", collection: @show_entities, as: :entity %>
     <!-- partials are off for the shuffle funtion -->
     <%#= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
     <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
