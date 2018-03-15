@@ -1,14 +1,23 @@
 <!-- FOR NOW A SEPERATE PARTIAL FOR AL RECCOMMENDED NEARBY FAMILLY ACCOMMODATIONS WITH BOOKING LINKS -->
-<% @accommodations.each do |accommodation| %>
-<div class="product">
-  <img src="<%= accommodation.photos.empty? ? "" : cl_image_path(accommodation.photos.first.photo) %>" alt="" class="product-image hidden-xs">
-  <div class='product-body'>
-    <%= link_to accommodation_path(accommodation) do %>
-    <h4><%= accommodation.name %></h4>
-    <% end %>
+
+<% if @accommodation %>
+  <% @accommodations.each do |accommodation| %>
+  <div class="product">
+    <img src="<%= accommodation.photos.empty? ? "" : cl_image_path(accommodation.photos.first.photo) %>" alt="" class="product-image hidden-xs">
+    <div class='product-body'>
+      <%= link_to accommodation_path(accommodation) do %>
+      <h4><%= accommodation.name %></h4>
+      <% end %>
+    </div>
+    <div class="link-to-see-experience">
+      <%= link_to "Booking.com", accommodation.booking_link, class: "btn btn-primary" %>
+    </div>
   </div>
-  <div class="link-to-see-experience">
-    <%= link_to "Booking.com", accommodation.booking_link, class: "btn btn-primary" %>
-  </div>
-</div>
+  <% end %>
+  <% else %>
+    <div class="product">
+      <div class="product-body">
+        <p>Sorry we don't yet have any specific recommendations</p>
+      </div>
+    </div>
 <% end %>

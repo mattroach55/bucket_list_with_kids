@@ -18,9 +18,9 @@
   <div class=<div class="page-info-content">
     <h2><%= @destination.name %> with kids</h2>
     <p><%= @destination.description %></p>
-      <div class="link-to-bucket-list">
-    <%= link_to "Add to bucket list", bucket_count_destination_path(@destination), method: :put, class: "btn btn-primary" %>
-  </div>
+    <div class="link-to-bucket-list">
+      <%= link_to "Add to bucket list", bucket_count_destination_path(@destination), method: :put, class: "btn btn-primary" %>
+    </div>
   </div>
 </div>
 
@@ -31,15 +31,15 @@
       </div>
     </div>
 
-   </div>
-    <div class="show-large-container-right">
-      <p class="page-text"> You may also like </p>
-      <% @destinations.each_with_index do |destination, index| %>
-      <%= link_to destination_path(destination) do %>
-      <%= index + 1 %>.<%= destination.name %>
-      <% end %>
-      <% end %>
-    </div>
+  </div>
+  <div class="show-large-container-right">
+    <p class="page-text"> You may also like </p>
+    <% @destinations.each_with_index do |destination, index| %>
+    <%= link_to destination_path(destination) do %>
+    <%= index + 1 %>.<%= destination.name %>
+    <% end %>
+    <% end %>
+  </div>
 
 </div>
 <!-- FRONTEND FOR TOURS AT EXPERIENCE SHOW -->
@@ -53,10 +53,10 @@
     </div>
 
     <!-- FRONTEND FOR ACCOMMODATIONS AT EXPERIENCE SHOW -->
-      <div class="container other-accomodation">
-        <div class="row">
-          <div class="col-xs-12 col-sm-10">
-            <p class='page-text'>Family-friendly accommodation in this destination</h2>
+    <div class="container other-accomodation">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10">
+          <p class='page-text'>Family-friendly accommodation in this destination</h2>
             <%= render 'shared/booking' %>
           </div>
         </div>
@@ -64,18 +64,18 @@
     </div>
   </div>
 
- <% if policy(Destination).new? %>
+  <% if policy(Destination).new? %>
   <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
 
-<% end %>
-<% if policy(Experience).new? %>
-<%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
-<% end %>
-<% if policy(Accommodation).new? %>
-<%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
-<% end %>
-<% if policy(@destination).edit? %>
-<%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
-<% end %>
+  <% end %>
+  <% if policy(Experience).new? %>
+  <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+  <% end %>
+  <% if policy(Accommodation).new? %>
+  <%= link_to "Add new accommodation", new_destination_accommodation_path(@destination), class: "btn btn-primary" %>
+  <% end %>
+  <% if policy(@destination).edit? %>
+  <%= link_to "Edit", edit_destination_path(@destination), class: "btn btn-primary" %>
+  <% end %>
 
-<%= render 'shared/footer' %>
+  <%= render 'shared/footer' %>
