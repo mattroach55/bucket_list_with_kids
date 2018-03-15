@@ -1,4 +1,14 @@
-<!-- All bucketlist items, will filter with pressed tabs -->
+<div class="page-info-box-bucket" id="page-link">
+  <p>Unique family friendly holidays, handpicked by you:</p>
+  <div class="icons-bucket">
+    <%= image_tag 'destinations.svg', :class => "icon-bucket", 'data-target' => "#mydestinations" %>
+    <h3><%= @destinations.count %></h3>
+    <%= image_tag 'experiences.svg', :class => "icon-bucket", 'data-target' => "#myexperiences"  %>
+    <h3><%= @experiences.count %></h3>
+    <%= image_tag 'accommodations.svg', :class => "icon-bucket", 'data-target' => "#myaccommodations"  %>
+    <h3><%= @accommodations.count %></h3>
+  </div>
+</div>
 
 <!-- Filter tabs -->
 <div class = "tab-container">
@@ -26,22 +36,30 @@
   </div>
 </div>
 
+
 <!-- All bucketlist items, will filter with pressed tabs -->
-<div class="container">
-  <div class="tab-content active" id="mytotal">
-    <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
-    <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
-    <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
+<div class="page-wrapper">
+  <div class= "content">
+    <ul class="left-column">
+      <!-- All bucketlist items, will filter with pressed tabs -->
+      <div class="tab-content active" id="mytotal">
+        <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
+        <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+        <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
+      </div>
+      <div class="tab-content hidden" id="mydestinations">
+        <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
+      </div>
+      <div class="tab-content hidden" id="myaccommodations">
+        <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+      </div>
+      <div class="tab-content hidden" id="myexperiences">
+        <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
+      </div>
+    </ul>
   </div>
-  <div class="tab-content hidden" id="mydestinations">
-    <%= render partial: "shared/bucket", collection: @destinations, as: :entity, locals: { type: "destination" } %>
-  </div>
-  <div class="tab-content hidden" id="myaccommodations">
-    <%= render partial: "shared/bucket", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
-  </div>
-  <div class="tab-content hidden" id="myexperiences">
-    <%= render partial: "shared/bucket", collection: @experiences, as: :entity, locals: { type: "experience" } %>
-  </div>
+  <!-- filter -->
+  <%= render partial: "shared/filter" %>
 </div>
 
 <%= render 'shared/filter' %>
