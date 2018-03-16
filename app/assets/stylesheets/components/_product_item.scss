@@ -17,7 +17,7 @@
 .product-body {
   flex: auto;
 }
-.product-body h3, a {
+.product-body h3, {
   font-weight: normal !important;
   font-size: 22px;
   margin-top: 0;
@@ -27,6 +27,15 @@
   font-weight: lighter;
   color: #999999;
   margin-bottom: 0;
+}
+
+.product-body a {
+  font-weight: lighter;
+  color: #999999;
+  margin-bottom: 0;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
 }
 
 /* Product image */
