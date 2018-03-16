@@ -18,7 +18,7 @@
   <div class=<div class="page-info-content">
     <h4><%= @destination.name %> with kids</h4>
     <p><%= @destination.description %></p>
-  
+
     <div class="link-to-bucket-list">
       <%= link_to "Add to bucket list", bucket_count_destination_path(@destination), method: :put, class: "btn btn-primary" %>
     </div>
@@ -63,7 +63,6 @@
           </div>
         </div>
       </div>
-    </div>
 
   <% if policy(Destination).new? %>
   <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
