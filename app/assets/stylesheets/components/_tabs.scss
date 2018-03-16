@@ -3,12 +3,18 @@
 .tabs-container {
 }
 .tabs {
-  // background: #53443F;
+  background: #53443F;
   display: flex;
+  opacity: 0.95;
   // padding: 5px 5px 0 5px;
 }
 .tabs a {
   color: white;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  font-size: 14px !important;
+  padding-bottom: 8px;
 }
 .tabs a:hover {
   cursor: pointer;
@@ -17,7 +23,7 @@
 }
 .tabs h3 {
   font-size: 17px;
-  font-weight: bold;
+  font-weight: lighter;
   margin-top: 0;
 }
 .tabs p {
