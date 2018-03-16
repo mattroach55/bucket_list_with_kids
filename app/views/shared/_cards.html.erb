@@ -26,7 +26,7 @@
 
         <% count_path = "bucket_count_#{entity.class.name.downcase}_path".to_sym %>
 
-        <!-- If added logo will change -->
+        <!-- If added logo will change to FA icon -->
         <% if isbucket || !current_user %>
           <%= link_to method(count_path).call(entity), method: :put do %>
             <div class="bucket-button" style="background-image: url(<%= image_url 'small_bucket.svg' %>);">
