@@ -18,10 +18,11 @@ class ApplicationController < ActionController::Base
   # end
 
 
-  # OVERRIDING Rails.application.default_url_options[:host] FOR EXTERNAL WORLD (READ: SOCIAL MEDIA)
+  # BELOW - OVERRIDING Rails.application.default_url_options[:host] FOR EXTERNAL WORLD (READ: SOCIAL MEDIA)
   def default_url_options
     { host: ENV["HOST"] || "localhost:3000" }
   end
+  # ABOVE - OVERRIDING Rails.application.default_url_options[:host] FOR EXTERNAL WORLD (READ: SOCIAL MEDIA)
 
   private
 
