@@ -5,20 +5,16 @@ class AccommodationPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    user.admin? if user
-  end
-
   def show
     true
   end
 
-  def create?
-   true
+  def new?
+    user.admin? if user
   end
 
-  def upvote?
-    true
+  def create?
+   true
   end
 
   def edit?
@@ -32,4 +28,9 @@ class AccommodationPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def upvote?
+    true
+  end
+
 end
