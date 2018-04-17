@@ -2,29 +2,21 @@
 <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
 <% end %>
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0) 0%, rgba(73, 78, 107, 0.2) 50%), url('<%= cl_image_path 'safari1_copy2.jpg'%>');">
+<div class="banner" style="background-image: url('<%= cl_image_path 'safari1_copy2.jpg'%>');">
 
   <div class="banner-content">
-  <%= image_tag 'small_bucket', :class => "page-logo" %><br>
     <div class="form-inline">
       <p>Unique holiday inspiration for families</p>
       <%= form_tag destinations_path, method: :get do %>
-      <%= text_field_tag :query, params[:query], class: "form-control", style: "width: 320px;", placeholder: "Search for experience eg. 'Rome'" %>
+      <%= text_field_tag :query, params[:query], class: "form-control", style: "width: 700px;", placeholder: "Search for experience eg. 'Rome'" %>
       <button type="submit" style="height: 39.5px;" class="btn btn-primary">Search</button>
       <% end %>
     </div>
   </div>
 </div>
 
-<div class="page-info-box" id="page-link">
-  <div class="icons">
-    <%= image_tag 'destinations.svg', :class => "icon" %>
-    <%= image_tag 'experiences.svg', :class => "icon" %>
-    <%= image_tag 'accommodations.svg', :class => "icon" %>
-  </div>
-</div>
  <div class="index-page-text">
-  <p>Selected by our travel editors</p>
+  <h1>Selected by our travel editors</h1>
  </div>
 <div class="page-wrapper">
   <div class="content" id="main-results">
