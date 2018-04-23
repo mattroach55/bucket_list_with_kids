@@ -1,15 +1,12 @@
 
 <% if entity.class.name == "Destination" %>
   <% proper_path = destination_path(entity) %>
-  <% icon_name = 'card_dest_icon_blue.svg' %>
   <% isbucket = current_user && current_user.bucket_list_items.where(destination: entity).empty? %>
 <% elsif entity.class.name == "Experience" %>
   <% proper_path = experience_path(entity) %>
-  <% icon_name = 'card_exper_icon_blue.svg' %>
   <% isbucket = current_user && current_user.bucket_list_items.where(experience: entity).empty? %>
 <% elsif entity.class.name == "Accommodation" %>
   <% proper_path = accommodation_path(entity) %>
-  <% icon_name = 'card_accomm_icon_blue.svg' %>
   <% isbucket = current_user && current_user.bucket_list_items.where(accommodation: entity).empty? %>
 <% end %>
 
@@ -20,7 +17,6 @@
     <!--  LINE CHANGE FOR CL WITH SEED -->
     <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= entity.photos.empty? ? "" : cl_image_path(entity.photos.first.photo) %>');">
       <div class="card-index">
-        <%= image_tag icon_name, :class => "icon-card" %>
         <h1 class="title"><%= entity.name %></h1>
         <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
 

@@ -1,14 +1,11 @@
 <% if type == "destination" %>
   <% proper_path = destination_path(entity.send(type)) %>
-  <% icon_name = 'card_dest_icon.svg' %>
   <% isempty = current_user.bucket_list_items.where(destination: entity).empty? %>
 <% elsif type == "experience" %>
   <% proper_path = experience_path(entity.send(type)) %>
-  <% icon_name = 'card_exper_icon.svg' %>
   <% isempty = current_user.bucket_list_items.where(experience: entity.experience).empty? %>
 <% elsif type == "accommodation" %>
   <% proper_path = accommodation_path(entity.send(type)) %>
-  <% icon_name = 'card_accomm_icon.svg' %>
   <% isempty = current_user.bucket_list_items.where(accommodation: entity.destination).empty? %>
 <% end %>
 
@@ -18,7 +15,6 @@
 
     <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= entity.send(type).photos.empty? ? "" : cl_image_path(entity.send(type).photos.first.photo) %>');">
       <div class="card-index">
-        <%= image_tag icon_name, :class => "icon-card" %>
         <h1 class="title"><%= entity.send(type).name %></h1>
         <h1 class="locality"><%= entity.send(type).locality %>, <%= entity.send(type).country %></h1>
 
