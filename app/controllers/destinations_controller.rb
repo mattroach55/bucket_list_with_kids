@@ -3,8 +3,6 @@ class DestinationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
 
-
-
   def index
     policy_scope(Destination)
 
