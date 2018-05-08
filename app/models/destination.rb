@@ -12,6 +12,9 @@ class Destination < ApplicationRecord
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_street?
 
+  # make sure the default
+  before_validation :set_entity
+
   acts_as_votable
 
 # CODE FOR PG MUlTISEARCH
@@ -23,5 +26,10 @@ class Destination < ApplicationRecord
 
   def full_address
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
+  end
+
+  private
+  def set_entity
+    self.entity ||= 'destination'
   end
 end
