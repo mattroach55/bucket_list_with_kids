@@ -1,0 +1,14 @@
+<p>
+<%= link_to "Create new destination", new_destination_path %>
+</p>
+<table>
+  <tbody>
+    <% @destinations.each do |destination| %>
+      <tr>
+        <td>
+          <%= link_to destination.name, edit_destination_path(destination) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -12,10 +12,17 @@
       <div class="dropdown">
       <!-- Uploaded profile picture from current_user only if user is signed in -->
       <%= image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <!-- Dropdown appearing only if user is signed in -->
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-            <%= link_to profile_path do %>
+      <!-- Dropdown appearing only if user is signed in -->
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <% if user_can_manage_content? %>
+        <li>
+          <%= link_to manage_content_path do %>
+            <i class="fa fa-user-circle"> </i><%= t(".settings", default: " Admin") %>
+          <% end %>
+        </li>
+        <% end %>
+        <li>
+          <%= link_to profile_path do %>
             <i class="fa fa-user-circle"> </i><%= t(".settings", default: " Profile") %>
           <% end %>
         </li>

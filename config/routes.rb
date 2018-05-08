@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   # PROFILE PAGE (DASHBOARD STYLE)
   get '/profile', to: 'users#profile', as: :profile
 
+  # Content management pages
+  get '/manage', to: 'management#index', as: :manage_content
+  get '/manage/destinations', to: 'management#destinations', as: :manage_destinations
+
   # RESOURCES
   devise_for :users
 
