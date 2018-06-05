@@ -140,7 +140,7 @@ class DestinationsController < ApplicationController
     authorize @destination
     @destination.user = current_user
     if @destination.save
-      store_photos
+      # store_photos
       redirect_to destination_path(@destination)
     else
       render 'new'
@@ -177,7 +177,7 @@ class DestinationsController < ApplicationController
   end
 
   def params_destination
-    params.require(:destination).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, :photos)
+    params.require(:destination).permit(:name, :entity, :show, :description, :street_number, :street, :locality, :country, :region, :latitude, :longitude, :holiday_type, :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11, :allowed_age_12_15, :allowed_age_16_18, :duration, :price, :bucket_list_count, :average_review_score, photos_attributes: {photo: :url})
   end
 end
 

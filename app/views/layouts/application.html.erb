@@ -41,13 +41,15 @@
 
   <%= render 'shared/flashes' %>
   <%= content_for?(:content) ? yield(:content) : yield %>
-  
+
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
   <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/instantsearch.js@2.6.0' %>
   <%= javascript_include_tag 'https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js' %>
   <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
   <%= javascript_pack_tag 'map' %>
+  <%= yield :extra_javascript %>
+
   <script src="//rum-static.pingdom.net/pa-5ad5a1540b346800070006e7.js" async></script>
 </body>
 </html>

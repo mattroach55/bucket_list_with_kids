@@ -1,18 +1,15 @@
 <!-- shared form for new and edit -->
+
 <%= simple_form_for(destination) do |f| %>
   <section class="main">
     <%= f.input :name, placeholder: "Enter destination name" %>
-    <%= f.input :show %>
     <%= f.text_area :description, placeholder: "Enter destination synopsis" %>
     <%= f.input :booking_link %>
-  
-    <ul class="photos">
-      <% destination.photos.each do|photo| %>
-        <li>
-          <%= cl_image_tag photo.photo, height: 80 %>
-        </li>
-      <% end %>
+    
+    <ul id="photos_form_list" class="photos">
     </ul>
+
+    <a href="#" id="upload_widget_opener">Add images</a>
   </section>
   
   <section class="location">
@@ -82,5 +79,85 @@
     <%= f.input :average_review_score %>
   </section>
  
+  <%= f.input :show, label: "Published" %>
   <%= f.submit %>
+<% end %>
+
+<% content_for :extra_javascript do %>
+  <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    /* 
+    Example structure of photo:
+    {
+      created_at: "2018-05-07T19:31:58.191Z"
+      destination_id: 2
+      id: 3
+      photo: {
+        url: "http://res.cloudinary.com/tinco-it/image/upload/v1525721518/waerd6nklxa65oopmknh.jpg"
+      }
+      updated_at: "2018-05-07T19:31:58.191Z"
+    }
+    */
+    const initialPhotos = <%= destination.photos.to_json.html_safe %>;
+    const destinationId = <%= destination.id || "null" %>;
+    
+    const renderPhoto = (photo) => {
+      const [urlPrefix, photoPath] = photo.photo.url.split(/\/image\/upload\//);
+      const thumbnailModifiers = "h_80";
+      const url = `${urlPrefix}/${thumbnailModifiers}/${photoPath}`;
+      const list = document.getElementById('photos_form_list');
+      const id = photo.id;
+      let number = 0;
+      if (list.lastElementChild) {
+        number = parseInt(list.lastElementChild.dataset.number) + 1;
+      }
+
+      const photoHTML = `
+        <li data-number=${number}>
+          <img src="${ url }">
+          <button onclick="return onRemovePhoto(${number});">Remove</button>
+          <input type="hidden" name="destination[photos_attributes][][photo][url]" value="${photo.photo.url}">
+          <input type="hidden" name="destination[photos_attributes][][id]" value="${id}">
+        </li>
+      `;
+      list.insertAdjacentHTML('beforeend', photoHTML);
+    }
+
+    initialPhotos.forEach(renderPhoto);
+
+    const cloudinaryUploadSettings = {
+      cloud_name: "<%= Cloudinary.config.cloud_name %>",
+      upload_preset: "<%= Cloudinary.config.upload_preset %>"
+    };
+
+    const onRemovePhoto = (number) => {
+      console.log("Removing photo " + number);
+      return false;
+    }
+
+    const onPhotosUploaded = (error, result) => {
+      if (error) {
+        console.log("An error ocurred: ", error); // TODO
+        return;
+      }
+
+      console.log("Succeeded upload", result);
+
+      result.forEach( (i) => {
+        const photo = {
+          id: null,
+          destination_id: destinationId,
+          photo: {
+            url: i.url
+          }
+        }
+        renderPhoto(photo);
+      });
+    };
+
+    document.getElementById("upload_widget_opener").addEventListener("click", () => {
+      cloudinary.openUploadWidget(cloudinaryUploadSettings, onPhotosUploaded, false);
+    });
+  </script>
 <% end %>

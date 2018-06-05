@@ -6,6 +6,8 @@ class Destination < ApplicationRecord
   validates :name, presence: true
   # validates :show, default: true
   has_many :photos, dependent: :destroy
+  accepts_nested_attributes_for :photos, allow_destroy: true
+
   # mount_uploader :photo, PhotoUploader
 
 # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE

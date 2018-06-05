@@ -14,7 +14,7 @@ class DestinationPolicy < ApplicationPolicy
   end
 
   def create?
-
+    user.admin? if user
   end
 
   def edit?
