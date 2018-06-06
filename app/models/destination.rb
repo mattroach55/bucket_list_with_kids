@@ -1,9 +1,15 @@
 class Destination < ApplicationRecord
+  def to_param
+    url_name
+  end
+
   has_many :accommodations
   has_many :experiences
   # has_many :bucket_list_items
   belongs_to :user
   validates :name, presence: true
+  validates :url_name, presence: true
+
   # validates :show, default: true
   has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true

@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if params[:experience_id]
-      @experience = Experience.find(params[:experience_id])
+      @experience = Experience.find_by_url_name(params[:experience_id])
       @review.experience_id = @experience.id
     else
       # accommodation
@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
 
     if @review.save
       respond_to do |format|
-        format.html { redirect_to experience_path(@review.experience) }
+        format.html { redirect_to experience_path(@review.experience.destination, @review.experience) }
         format.js  { render (@review.experience_id ? :create_experience :  :create_accommodation) }
       end
     else

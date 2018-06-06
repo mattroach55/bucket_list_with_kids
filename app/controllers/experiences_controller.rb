@@ -94,11 +94,11 @@ class ExperiencesController < ApplicationController
   end
 
   def set_destination
-    @destination = Destination.find(params[:destination_id])
+    @destination = Destination.find_by_url_name(params[:destination_id])
   end
 
   def set_experience
-    @experience = Experience.find(params[:id])
+    @experience = Experience.find_by_url_name(params[:id])
   end
 
   def params_experience

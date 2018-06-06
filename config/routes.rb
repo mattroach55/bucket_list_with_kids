@@ -25,7 +25,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :destinations do
+  resources :accommodations
+  resources :photos, only: [:destroy]
+  resources :reviews, only: [:destroy]
+
+  resources :destinations, only: [:index, :create]
+  resources :destinations, path: '', except: [:index, :create] do
     member do
       put :bucket_count, to: 'destinations#upvote'
       put :bucket_count_down, to: 'destinations#downvote'
@@ -34,26 +39,13 @@ Rails.application.routes.draw do
     resources :accommodations, only: [:new, :create]
     resources :photos, only: [:index, :show, :edit, :destroy, :update]
   end
-
-  resources :experiences, only: [:index, :show, :edit, :destroy, :update] do
+ 
+  resources :experiences, only: [:index]
+  resources :experiences, path: ':destination_id', only: [:show, :edit, :destroy, :update] do
     member do
       put :bucket_count, to: 'experiences#upvote'
     end
    resources :reviews, only: [:new, :create]
    resources :photos, only: [:index, :show, :edit, :destroy, :update]
   end
-
-  resources :accommodations, only: [:index, :show, :edit, :destroy, :update] do
-    member do
-      put :bucket_count, to: 'accommodations#upvote'
-    end
-   resources :reviews, only: [:create]
-   resources :photos, only: [:index, :show, :edit, :destroy, :update]
-  end
-
-  resources :photos, only: [:destroy]
-  resources :reviews, only: [:destroy]
-
-  get '/:destination_name', to: 'destinations#show_by_name', as: :destination_by_name
-  get '/:destination_name/:experience_name', to: 'experiences#show_by_name', as: :experience_by_name
 end

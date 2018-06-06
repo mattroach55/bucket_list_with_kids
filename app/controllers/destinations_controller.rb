@@ -107,7 +107,7 @@ class DestinationsController < ApplicationController
   end
 
   def set_destination
-    @destination = Destination.find(params[:id])
+    @destination = Destination.find_by_url_name(params[:id])
   end
 
   def params_destination

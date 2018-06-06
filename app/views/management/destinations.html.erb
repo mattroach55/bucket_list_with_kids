@@ -9,6 +9,9 @@
           <td>
             <%= link_to destination.name, edit_destination_path(destination) %>
           </td>
+          <td>
+            <%= link_to 'Destroy',  destination_path(destination),  method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
         </tr>
       <% end %>
     </tbody>

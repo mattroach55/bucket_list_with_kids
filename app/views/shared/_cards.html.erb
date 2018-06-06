@@ -2,9 +2,11 @@
 <% if entity.class.name == "Destination" %>
   <% proper_path = destination_path(entity) %>
   <% isbucket = current_user && current_user.bucket_list_items.where(destination: entity).empty? %>
+  <% count_path = bucket_count_destination_path(entity) %>
 <% elsif entity.class.name == "Experience" %>
   <% proper_path = experience_path(entity) %>
   <% isbucket = current_user && current_user.bucket_list_items.where(experience: entity).empty? %>
+  <% count_path = bucket_count_experience_path(entity.destination, entity) %>
 <% elsif entity.class.name == "Accommodation" %>
   <% proper_path = accommodation_path(entity) %>
   <% isbucket = current_user && current_user.bucket_list_items.where(accommodation: entity).empty? %>
@@ -20,11 +22,10 @@
         <h1 class="title"><%= entity.name %></h1>
         <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>
 
-        <% count_path = "bucket_count_#{entity.class.name.downcase}_path".to_sym %>
 
         <!-- If added logo will change to FA icon -->
         <% if isbucket || !current_user %>
-          <%= link_to method(count_path).call(entity), method: :put do %>
+          <%= link_to count_path, method: :put do %>
             <div class="bucket-button" style="background-image: url(<%= image_url 'small_bucket.svg' %>);">
             </div>
           <% end %>
