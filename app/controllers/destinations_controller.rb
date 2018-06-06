@@ -89,6 +89,20 @@ class DestinationsController < ApplicationController
 
   end
 
+  def show_redirect
+    @destination = Destination.find(params[:id])
+    redirect_to "/#{@destination.url_friendly_name}", status: :moved_permanently
+  end
+
+  def show_by_name
+    @destination = Destination.where(url_name: params[:destination_name]).first
+    if @destination.nil?
+      raise ActionController::RoutingError.new('Not Found')
+    else
+      show
+    end
+  end
+
   def upvote
     @destination = Destination.find(params[:id])
     authorize @destination
@@ -122,12 +136,14 @@ class DestinationsController < ApplicationController
 
   def show
     @destinations = Destination.all
-    @destination = Destination.find(params[:id])
+    @destination = Destination.find(params[:id]) unless @destination
     @accommodations = Accommodation.where(destination: @destination)
     @experiences = Experience.where(destination: @destination)
 
     authorize @destination
     @markers = [{ lat: @destination.latitude, lng: @destination.longitude }]
+
+    render :show
   end
 
   def new

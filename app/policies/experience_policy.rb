@@ -13,6 +13,10 @@ class ExperiencePolicy < ApplicationPolicy
     true
   end
 
+  def show_by_name?
+    true
+  end
+
   def create?
     true
   end

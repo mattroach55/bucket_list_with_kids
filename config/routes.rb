@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # BUCKETLIST PAGE
   get '/bucketlist', to: 'users#bucketlist', as: :bucketlist
 
+  # get '/destinations/:destination_id', to: 'destinations#show_redirect'
+
   # PROFILE PAGE (DASHBOARD STYLE)
   get '/profile', to: 'users#profile', as: :profile
 
@@ -49,4 +51,7 @@ Rails.application.routes.draw do
 
   resources :photos, only: [:destroy]
   resources :reviews, only: [:destroy]
+
+  get '/:destination_name', to: 'destinations#show_by_name', as: :destination_by_name
+  get '/:destination_name/:experience_name', to: 'experiences#show_by_name', as: :experience_by_name
 end

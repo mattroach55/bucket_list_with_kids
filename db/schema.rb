@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314103038) do
+ActiveRecord::Schema.define(version: 20180606112602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,11 @@ ActiveRecord::Schema.define(version: 20180314103038) do
     t.boolean "allowed_age_12_15"
     t.boolean "allowed_age_16_18"
     t.string "photos"
+    t.string "url_name"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "page_title"
+    t.index ["url_name"], name: "index_destinations_on_url_name"
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
@@ -138,7 +143,12 @@ ActiveRecord::Schema.define(version: 20180314103038) do
     t.boolean "allowed_age_16_18"
     t.string "photos"
     t.string "destination_name"
+    t.string "url_name"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.string "page_title"
     t.index ["destination_id"], name: "index_experiences_on_destination_id"
+    t.index ["url_name"], name: "index_experiences_on_url_name"
     t.index ["user_id"], name: "index_experiences_on_user_id"
   end
 

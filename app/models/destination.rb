@@ -28,6 +28,10 @@ class Destination < ApplicationRecord
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
   end
 
+  def headline
+    description.split(".", 2).first + "."
+  end
+
   private
   def set_entity
     self.entity ||= 'destination'

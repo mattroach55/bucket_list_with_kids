@@ -13,6 +13,10 @@ class DestinationPolicy < ApplicationPolicy
     true
   end
 
+  def show_by_name?
+    true
+  end
+
   def create?
     user.admin? if user
   end

@@ -38,6 +38,13 @@ class ExperiencesController < ApplicationController
     @markers = [{ lat: @experience.latitude, lng: @experience.longitude, infoWindow: { content: render_to_string(partial: "shared/marker_window", locals: { selection: @experience }) } }]
     # MAP CODE ABOVE
     @review = Review.new
+
+    render :show
+  end
+
+  def show_by_name
+    @experience = Experience.where(url_name: params[:experience_name]).first
+    show
   end
 
   def new
