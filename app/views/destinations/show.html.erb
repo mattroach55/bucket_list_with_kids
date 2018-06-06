@@ -1,5 +1,6 @@
-<% content_for :meta_title, "#{@destination.name} is on #{DEFAULT_META["meta_product_name"]}" %>
-<% content_for :meta_description, @destination.description %>
+<% content_for :meta_title, "#{@destination.meta_title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @destination.meta_description %>
+
 <% content_for :extra_meta do %>
   <script type="application/ld+json">
   {
@@ -9,7 +10,7 @@
       "@type": "WebPage",
       "@id": "https://google.com/article"
     },
-    "headline": "<%= @destination.name %>",
+    "headline": "<%= @destination.meta_title %>",
     "image": [
       "<%= @destination.photos.map {|p| p.photo.url }.join("\",\n\"").html_safe %>"
      ],
@@ -27,7 +28,7 @@
         "url": "https://google.com/logo.jpg"
       }
     },
-    "description": "<%= @destination.description %>"
+    "description": "<%= @destination.meta_description %>"
   }
   </script>
 <% end %>

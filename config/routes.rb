@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # LANDING PAGE
-  root to: 'destinations#index'
+  root to: 'pages#home'
+
+  get 'search', to: 'pages#search'
 
   # BUCKETLIST PAGE
   get '/bucketlist', to: 'users#bucketlist', as: :bucketlist
