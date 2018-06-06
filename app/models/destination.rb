@@ -8,8 +8,6 @@ class Destination < ApplicationRecord
   has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true
 
-  # mount_uploader :photo, PhotoUploader
-
 # TO GET GEOCODE WHERE ADDRESS THAT IT BROKEN UP INTO SEPARATE COLUMNS IN THE TABLE
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_street?

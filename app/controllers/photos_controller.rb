@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
+
   def index
     @photos = Photo.all
   end
@@ -33,6 +34,12 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    @photo = Photo.find(params[:id])
+    authorize @photo
+    @photo.destroy
+
+
+    render :json => { result: "success" }
   end
 
 end
