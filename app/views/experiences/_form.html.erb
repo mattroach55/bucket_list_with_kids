@@ -5,7 +5,9 @@
 <%= simple_form_for(experience, url: submit_path, html: { multipart: true}) do |f| %>
   <section class="main">
     <%= f.input :name, placeholder: "Enter experience name" %>
+    <%= f.input :meta_title, placeholder: "Enter meta title" %>
     <%= f.text_area :description, placeholder: "Enter experience synopsis" %>
+    <%= f.text_area :meta_description, placeholder: "Enter destination meta description" %>
     <%= f.input :booking_link %>
   </section>
 

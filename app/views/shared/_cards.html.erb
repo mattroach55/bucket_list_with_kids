@@ -4,11 +4,11 @@
   <% isbucket = current_user && current_user.bucket_list_items.where(destination: entity).empty? %>
   <% count_path = bucket_count_destination_path(entity) %>
 <% elsif entity.class.name == "Experience" %>
-  <% proper_path = experience_path(entity) %>
+  <% proper_path = experience_path(entity.destination, entity) %>
   <% isbucket = current_user && current_user.bucket_list_items.where(experience: entity).empty? %>
   <% count_path = bucket_count_experience_path(entity.destination, entity) %>
 <% elsif entity.class.name == "Accommodation" %>
-  <% proper_path = accommodation_path(entity) %>
+  <% proper_path = accommodation_path(entity.destination, entity) %>
   <% isbucket = current_user && current_user.bucket_list_items.where(accommodation: entity).empty? %>
 <% end %>
 

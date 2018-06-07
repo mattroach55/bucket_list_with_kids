@@ -6,12 +6,12 @@
   <%= cl_image_tag (first_photo) %>
   <% end %>
 <% elsif selection.class == Accommodation %>
-  <%= link_to accommodation_path(selection) do %>
+  <%= link_to accommodation_path(selection.destination, selection) do %>
   <%= selection.name %>
   <%= cl_image_tag(first_photo) %>
   <% end %>
 <% else %>
-  <%= link_to experience_path(selection) do %>
+  <%= link_to experience_path(selection.destination, selection) do %>
   <%= selection.name %>
   <%= cl_image_tag(first_photo) %>
   <% end %>

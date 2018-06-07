@@ -3,7 +3,9 @@
 <%= simple_form_for(destination, html: { multipart: true}) do |f| %>
   <section class="main">
     <%= f.input :name, placeholder: "Enter destination name" %>
+    <%= f.input :meta_title, placeholder: "Enter meta title" %>
     <%= f.text_area :description, placeholder: "Enter destination synopsis" %>
+    <%= f.text_area :meta_description, placeholder: "Enter destination meta description" %>
     <%= f.input :booking_link %>
   </section>
 

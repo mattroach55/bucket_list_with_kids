@@ -117,7 +117,8 @@ class DestinationsController < ApplicationController
       :locality, :country, :region, :latitude, :longitude, :holiday_type,
       :theme, :allowed_age_0_4, :allowed_age_5_7, :allowed_age_8_11,
       :allowed_age_12_15, :allowed_age_16_18, :duration, :price,
-      :bucket_list_count, :average_review_score, photos_attributes: [:photo]
+      :bucket_list_count, :average_review_score, :meta_title,
+      :meta_description, photos_attributes: [:photo]
     )
   end
 end
