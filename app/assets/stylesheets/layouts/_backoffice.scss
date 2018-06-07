@@ -20,4 +20,14 @@
     width: 100%;
     min-height: 20em;
   }
+
+  table {
+    width: 100%;
+    td:first-child {
+      width: 80%;
+    }
+    td {
+      padding: 5px;
+    }
+  }
 }

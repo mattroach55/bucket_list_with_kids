@@ -54,7 +54,7 @@ class DestinationsController < ApplicationController
 
   def show
     @destinations = Destination.all
-    @destination = Destination.find(params[:id]) unless @destination
+    @destination = Destination.find_by_url_name(params[:id])
     @accommodations = Accommodation.where(destination: @destination)
     @experiences = Experience.where(destination: @destination)
 
@@ -97,10 +97,11 @@ class DestinationsController < ApplicationController
   def destroy
     authorize @destination
     @destination.destroy
-    redirect_to experiences_path
+    redirect_to manage_destinations_path
   end
 
   private
+
   def store_photos
     photos = params[:destination][:photos]
     photos.each {|photo| @destination.photos.create(photo: photo)} if photos

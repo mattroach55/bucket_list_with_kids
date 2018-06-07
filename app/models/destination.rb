@@ -1,7 +1,5 @@
 class Destination < ApplicationRecord
-  def to_param
-    url_name
-  end
+  before_validation :set_url_name
 
   has_many :accommodations
   has_many :experiences
@@ -38,8 +36,16 @@ class Destination < ApplicationRecord
     description.split(".", 2).first + "."
   end
 
+  def to_param
+    url_name
+  end
+
   private
   def set_entity
     self.entity ||= 'destination'
+  end
+
+  def set_url_name
+    self.url_name ||= name.parameterize
   end
 end

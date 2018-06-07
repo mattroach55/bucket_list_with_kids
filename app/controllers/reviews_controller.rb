@@ -25,11 +25,13 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.delete
     authorize @review
+    experience = @review.experience
+ 
+    @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to experience_path(Experience.find(@review.experience_id)) }
+      format.html { redirect_to experience_path(experience.destination, experience) }
       format.js { render :destroy }
     end
   end

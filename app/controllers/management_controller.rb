@@ -12,4 +12,12 @@ class ManagementController < ApplicationController
 
     @destinations = Destination.all # TODO paginate
   end
+
+  def destination_experiences
+    policy_scope(Destination)
+    authorize :management, :experiences
+
+    @destination = Destination.find_by_url_name(params[:destination_id])
+    @experiences = @destination.experiences
+  end
 end

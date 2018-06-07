@@ -1,4 +1,6 @@
 class Experience < ApplicationRecord
+  before_validation :set_url_name
+
   def to_param
     url_name
   end
@@ -29,5 +31,10 @@ class Experience < ApplicationRecord
 
   def full_address
     "#{street} #{street_number}, #{locality}, #{country}, #{region}"
+  end
+  
+  private
+  def set_url_name
+    self.url_name ||= name.parameterize
   end
 end

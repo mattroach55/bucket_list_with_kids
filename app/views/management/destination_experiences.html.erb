@@ -1,0 +1,24 @@
+<%= render 'layouts/backoffice' do %>
+  <h1>Experiences for <%= @destination.name %></h1>
+  <p>
+  <%= link_to "Add new experience", new_destination_experience_path(@destination), class: "btn btn-primary" %>
+  </p>
+  <table class="table table-striped">
+    <tbody>
+      <% @experiences.each do |experience| %>
+        <tr>
+          <td>
+            <%= link_to experience.name, experience_path(@destination, experience) %>
+          </td>
+
+          <td>
+            <%= link_to "Edit", edit_experience_path(@destination, experience), class: "btn btn-default" %>
+          </td>
+          <td>
+            <%= link_to 'Destroy',  experience_path(@destination, experience),  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

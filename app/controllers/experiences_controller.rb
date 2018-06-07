@@ -1,5 +1,5 @@
 class ExperiencesController < ApplicationController
-  before_action :set_destination, only: [:new, :create]
+  before_action :set_destination, only: [:new, :edit, :show, :update, :create]
   before_action :set_experience, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :authenticate_admin!, only: [:new, :edit, :update, :destroy]
@@ -54,13 +54,11 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(params_experience)
-    @destination = Destination.find(params[:destination_id])
     @experience.destination = @destination
     @experience.user = current_user
     authorize @experience
     if @experience.save
-      store_photos
-      redirect_to experience_path(@experience)
+      redirect_to experience_path(@destination, @experience)
     else
       render :new
     end
@@ -71,7 +69,6 @@ class ExperiencesController < ApplicationController
   end
 
   def update
-    @experience = Experience.find(params[:id])
     authorize @experience
     if @experience.update(params_experience)
       redirect_to experience_path(@experience)

@@ -1,0 +1,179 @@
+<!-- shared form for new and edit -->
+
+<% submit_path = experience.new_record? ? destination_experiences_path(destination, experience) : experience_path(destination, experience) %>
+
+<%= simple_form_for(experience, url: submit_path, html: { multipart: true}) do |f| %>
+  <section class="main">
+    <%= f.input :name, placeholder: "Enter experience name" %>
+    <%= f.text_area :description, placeholder: "Enter experience synopsis" %>
+    <%= f.input :booking_link %>
+  </section>
+
+  <section class="photos">
+    <h2>Photos</h2>
+
+    <ul id="photos_form_list" class="photos">
+    </ul>
+
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo, id: "photoSelector", accept: ".jpg, .jpeg, .png", multiple: true, name: "experience[photos_attributes][][photo]" %>
+    <div id="photoPreview"></div>
+  </section>
+  
+  <section class="location">
+    <h2>Location</h2>
+    <p>
+      <%= f.input :street %>
+      <%= f.input :street_number %>
+    </p>
+    <p>
+    <%= f.input :locality, placeholder: "Enter locality" %>
+    </p>
+    <p>
+    <%= f.input :country, placeholder: "Enter country" %>
+    </p>
+    <p>
+    <%= f.input :region, placeholder: "Enter region" %>
+    </p>
+    <p>
+    <%= f.input :latitude %>
+    </p>
+    <p>
+    <%= f.input :longitude %>
+    </p>
+  </section>
+ 
+  <section class="extra">
+    <h2>Extra information</h2>
+    <p>
+    <%= f.input :holiday_type %>
+    </p>
+    <p>
+    <%= f.input :theme %>
+    </p>
+    <p>
+    <%= f.input :allowed_age_0_4 %>
+    <%= f.input :allowed_age_5_7 %>
+    <%= f.input :allowed_age_8_11 %>
+    <%= f.input :allowed_age_12_15%>
+    <%= f.input :allowed_age_16_18 %>
+    </p>
+    <p>
+    <%= f.input :duration %>
+    </p>
+    <p>
+    <%= f.input :price %>
+    </p>
+    <p>
+    <%= f.input :kids_club %>
+    </p>
+    <p>
+    <%= f.input :kids_menu %>
+    </p>
+    <p>
+    <%= f.input :connecting_rooms %>
+    </p>
+    <p>
+    <%= f.input :pool %>
+    </p>
+    <p>
+    <%= f.input :beach %>
+    </p>
+  </section>
+  
+  <section class="dynamic">
+    <h2>Dynamically populated information</h2>
+    <%= f.input :bucket_list_count %>
+    <%= f.input :average_review_score %>
+  </section>
+ 
+  <%= f.input :show, label: "Published" %>
+  <%= f.submit %>
+<% end %>
+
+<% content_for :extra_javascript do %>
+  <script type="text/javascript">
+    /* 
+    Example structure of photo:
+    {
+      created_at: "2018-05-07T19:31:58.191Z"
+      experience_id: 2
+      id: 3
+      photo: {
+        url: "http://res.cloudinary.com/tinco-it/image/upload/v1525721518/waerd6nklxa65oopmknh.jpg"
+      }
+      updated_at: "2018-05-07T19:31:58.191Z"
+    }
+    */
+    const initialPhotos = <%= experience.photos.to_json.html_safe %>;
+    const experienceId = <%= experience.id || "null" %>;
+    
+    const renderPhoto = (photo) => {
+      const [urlPrefix, photoPath] = photo.photo.url.split(/\/image\/upload\//);
+      const thumbnailModifiers = "h_80";
+      const url = `${urlPrefix}/${thumbnailModifiers}/${photoPath}`;
+      const list = document.getElementById('photos_form_list');
+      const id = photo.id || "";
+
+      const photoHTML = `
+        <li>
+          <img src="${ url }">
+          <button onclick="onRemovePhoto(this.parentElement, ${id}); return false">Remove</button>
+        </li>
+      `;
+      list.insertAdjacentHTML('beforeend', photoHTML);
+    }
+
+    initialPhotos.forEach(renderPhoto);
+
+    const input = document.getElementById("photoSelector");
+    const preview = document.getElementById('photoPreview');
+
+    const updateImageDisplay = () => {
+      // clear preview
+      while(preview.firstChild) { preview.removeChild(preview.firstChild); }
+
+      const curFiles = Array.from(input.files);
+  
+      if(curFiles.length === 0) {
+        const para = document.createElement('p');
+        para.textContent = 'No files currently selected for upload';
+        preview.appendChild(para);
+        return;
+      }
+
+      const list = document.createElement('ol');
+      preview.appendChild(list);
+      curFiles.forEach( (file) => {
+        const listItem = document.createElement('li');
+        const para = document.createElement('p');
+  
+        para.textContent = file.name;
+        const image = document.createElement('img');
+        image.style.setProperty("height", "80px");
+        image.src = window.URL.createObjectURL(file);
+
+        listItem.appendChild(image);
+        listItem.appendChild(para);
+
+        list.appendChild(listItem);
+      });
+    }
+
+    input.addEventListener('change', updateImageDisplay);
+
+    const onRemovePhoto = (e, id) => {
+      fetch(`/photos/${id}`, {
+        method: 'DELETE',
+        headers: { "X-CSRF-Token": Rails.csrfToken() },
+        credentials: 'same-origin'
+      })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+          e.remove();
+      });
+    }
+
+  </script>
+<% end %>

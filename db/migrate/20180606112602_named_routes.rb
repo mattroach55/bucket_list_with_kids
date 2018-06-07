@@ -15,7 +15,7 @@ class NamedRoutes < ActiveRecord::Migration[5.1]
 
     [Destination, Experience].each do |k|
       k.all.each do |d|
-        d.update! url_name: d.name.gsub(' ', '-').downcase
+        d.update! url_name: d.name.parameterize
       end
     end
   end

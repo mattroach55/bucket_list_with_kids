@@ -1,16 +1,18 @@
+<% first_photo = selection.photos.first&.photo %>
+
 <% if selection.class == Destination %>
   <%= link_to destination_path(selection) do %>
   <%= selection.name %>
-  <%= cl_image_tag (selection.photos.first.photo) %>
+  <%= cl_image_tag (first_photo) %>
   <% end %>
 <% elsif selection.class == Accommodation %>
   <%= link_to accommodation_path(selection) do %>
   <%= selection.name %>
-  <%= cl_image_tag(selection.photos.first.photo) %>
+  <%= cl_image_tag(first_photo) %>
   <% end %>
 <% else %>
   <%= link_to experience_path(selection) do %>
   <%= selection.name %>
-  <%= cl_image_tag(selection.photos.first.photo) %>
+  <%= cl_image_tag(first_photo) %>
   <% end %>
 <% end %>

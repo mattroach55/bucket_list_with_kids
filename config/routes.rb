@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # Content management pages
   get '/manage', to: 'management#index', as: :manage_content
   get '/manage/destinations', to: 'management#destinations', as: :manage_destinations
+  get '/manage/experiences/:destination_id', to: 'management#destination_experiences', as: :manage_destination_experiences
 
   # RESOURCES
   devise_for :users

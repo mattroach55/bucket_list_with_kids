@@ -6,4 +6,8 @@ class ManagementPolicy < ApplicationPolicy
   def destinations
   	user.admin?
   end
+
+  def experiences
+    user.admin?
+  end
 end 
