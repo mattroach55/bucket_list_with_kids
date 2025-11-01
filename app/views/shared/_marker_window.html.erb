@@ -3,16 +3,22 @@
 <% if selection.class == Destination %>
   <%= link_to destination_path(selection) do %>
   <%= selection.name %>
-  <%= cl_image_tag (first_photo) %>
+  <% if selection.photos.present? && selection.photos.any? %>
+    <%= safe_cl_image_tag(selection.photos.first.photo) %>
+  <% end %>
   <% end %>
 <% elsif selection.class == Accommodation %>
   <%= link_to accommodation_path(selection.destination, selection) do %>
   <%= selection.name %>
-  <%= cl_image_tag(first_photo) %>
+  <% if selection.photos.present? && selection.photos.any? %>
+    <%= safe_cl_image_tag(selection.photos.first.photo) %>
+  <% end %>
   <% end %>
 <% else %>
   <%= link_to experience_path(selection.destination, selection) do %>
   <%= selection.name %>
-  <%= cl_image_tag(first_photo) %>
+  <% if selection.photos.present? && selection.photos.any? %>
+    <%= safe_cl_image_tag(selection.photos.first.photo) %>
+  <% end %>
   <% end %>
 <% end %>

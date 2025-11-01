@@ -5,9 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'cloudinary'
-include CloudinaryHelper
 require 'csv'
+
+# Check if Cloudinary is configured
+begin
+  require 'cloudinary'
+  # Try to configure Cloudinary from environment variables
+  Cloudinary.config if defined?(Cloudinary)
+  if Cloudinary.config.api_key.present?
+    CLOUDINARY_CONFIGURED = true
+    include CloudinaryHelper
+  else
+    CLOUDINARY_CONFIGURED = false
+    puts "Warning: Cloudinary not configured. Photos will be skipped during seeding."
+  end
+rescue => e
+  CLOUDINARY_CONFIGURED = false
+  puts "Warning: Cloudinary not configured (#{e.message}). Photos will be skipped during seeding."
+end
 
 puts "Cleaning our database..."
 Experience.destroy_all
@@ -24,7 +39,12 @@ filepath    = 'db/blwkseed.csv'
 user = User.first_or_initialize(username: "mr555", admin: true, email: "matt@growx3.com", password: "testtest")
 user.save
 
-CSV.foreach(filepath, csv_options) do |row|
+# Skip geocoding during seeding since we already have lat/lng from CSV
+Destination.skip_callback(:validation, :after, :geocode)
+Accommodation.skip_callback(:validation, :after, :geocode)
+Experience.skip_callback(:validation, :after, :geocode)
+
+CSV.foreach(filepath, **csv_options) do |row|
   if row['entity'] == 'destination'
     new_destination = Destination.new(user_id: user.id)
 
@@ -57,15 +77,21 @@ CSV.foreach(filepath, csv_options) do |row|
     new_destination.average_review_score = row['average_review_score']
     new_destination.booking_link = row['booking_link']
     new_destination.save!
-    new_destination.photos.create([
-        {
-          remote_photo_url: row['photo1']
-        },
-        {
-          remote_photo_url: row['photo2']
-        }
-      ]
-    )
+    if CLOUDINARY_CONFIGURED && row['photo1'].present? && row['photo2'].present?
+      begin
+        new_destination.photos.create([
+            {
+              remote_photo_url: row['photo1']
+            },
+            {
+              remote_photo_url: row['photo2']
+            }
+          ]
+        )
+      rescue => e
+        puts "Warning: Could not create photos for #{new_destination.name}: #{e.message}"
+      end
+    end
 
   elsif row['entity'] == 'accommodation'
     new_accommodation = Accommodation.new(user_id: user.id)
@@ -100,15 +126,21 @@ CSV.foreach(filepath, csv_options) do |row|
     new_accommodation.average_review_score = row['average_review_score']
     new_accommodation.booking_link = row['booking_link']
     new_accommodation.save!
-    new_accommodation.photos.create([
-        {
-          remote_photo_url: row['photo1']
-        },
-        {
-          remote_photo_url: row['photo2']
-        }
-      ]
-    )
+    if CLOUDINARY_CONFIGURED && row['photo1'].present? && row['photo2'].present?
+      begin
+        new_accommodation.photos.create([
+            {
+              remote_photo_url: row['photo1']
+            },
+            {
+              remote_photo_url: row['photo2']
+            }
+          ]
+        )
+      rescue => e
+        puts "Warning: Could not create photos for #{new_accommodation.name}: #{e.message}"
+      end
+    end
 
   else
     new_experience = Experience.new(user_id: user.id)
@@ -143,18 +175,30 @@ CSV.foreach(filepath, csv_options) do |row|
     new_experience.average_review_score = row['average_review_score']
     new_experience.booking_link = row['booking_link']
     new_experience.save!
-    new_experience.photos.create([
-        {
-          remote_photo_url: row['photo1']
-        },
-        {
-          remote_photo_url: row['photo2']
-        }
-      ]
-    )
+    if CLOUDINARY_CONFIGURED && row['photo1'].present? && row['photo2'].present?
+      begin
+        new_experience.photos.create([
+            {
+              remote_photo_url: row['photo1']
+            },
+            {
+              remote_photo_url: row['photo2']
+            }
+          ]
+        )
+      rescue => e
+        puts "Warning: Could not create photos for #{new_experience.name}: #{e.message}"
+      end
+    end
 
   end
 end
+
+# Re-enable geocoding callbacks after seeding
+Destination.set_callback(:validation, :after, :geocode)
+Accommodation.set_callback(:validation, :after, :geocode)
+Experience.set_callback(:validation, :after, :geocode)
+
 puts "Finished seeding process..."
 
 

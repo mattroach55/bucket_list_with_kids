@@ -17,7 +17,7 @@
 
   <div class="card-index">
     <!--  LINE CHANGE FOR CL WITH SEED -->
-    <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= entity.photos.empty? ? "" : cl_image_path(entity.photos.first.photo) %>');">
+    <div class="card-background-image" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('<%= entity.photos.present? && entity.photos.any? ? safe_cl_image_path_for_photo(entity.photos.first) || "" : "" %>');">
       <div class="card-index">
         <h1 class="title"><%= entity.name %></h1>
         <h1 class="locality"><%= entity.locality %>, <%= entity.country %></h1>

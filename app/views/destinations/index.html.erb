@@ -2,4 +2,57 @@
 <%= link_to "Add new destination", new_destination_path, class: "btn btn-primary" %>
 <% end %>
 
-#TODO
+<% banner_image = safe_cl_image_path('safari1_copy2.jpg') %>
+<div class="banner" <%= "style=\"background-image: linear-gradient(-225deg, rgba(152, 135, 143, 0) 0%, rgba(73, 78, 107, 0.2) 50%), url('#{banner_image}');\"" if banner_image.present? %>>
+
+  <div class="banner-content">
+  <%= image_tag 'small_bucket', :class => "page-logo" %><br>
+    <div class="form-inline">
+      <p>Unique holiday inspiration for families</p>
+      <%= form_tag destinations_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], class: "form-control", style: "width: 320px;", placeholder: "Search for experience eg. 'Rome'" %>
+      <button type="submit" style="height: 39.5px;" class="btn btn-primary">Search</button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="page-info-box" id="page-link">
+  <div class="icons">
+    <%= image_tag 'destinations.svg', :class => "icon" %>
+    <%= image_tag 'experiences.svg', :class => "icon" %>
+    <%= image_tag 'accommodations.svg', :class => "icon" %>
+  </div>
+</div>
+ <div class="index-page-text">
+  <p>Selected by our travel editors</p>
+ </div>
+<div class="page-wrapper">
+  <div class="content" id="main-results">
+    <% if @show_entities.empty? %>
+    <p>Sorry - we have no recommendations matching your search. Please try again</h1>
+    <% else %>
+    <ul class="left-column">
+      <%= render partial: "shared/cards", collection: @show_entities, as: :entity %>
+    <!-- partials are off for the shuffle funtion -->
+    <%#= render partial: "shared/cards", collection: @accommodations, as: :entity, locals: { type: "accommodation" } %>
+    <%#= render partial: "shared/cards", collection: @experiences, as: :entity, locals: { type: "experience" } %>
+    </ul>
+    <% end %>
+
+    <div class="paginate">
+      <%= paginate @show_entities %>
+    </div>
+
+  </div>
+
+<%= render 'shared/filter' %>
+
+</div>
+<div class="big-flex">
+<div class="map-index", id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>">
+</div>
+</div>
+
+<%= render 'shared/footer' %>
+

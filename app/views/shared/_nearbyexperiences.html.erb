@@ -1,6 +1,6 @@
 <% @experiences.each do |experience| %>
 <div class="product">
-  <img src="<%= experience.photos.empty? ? "" : cl_image_path(experience.photos.first.photo) %>" alt="" class="product-image hidden-xs">
+  <img src="<%= experience.photos.present? && experience.photos.any? ? safe_cl_image_path_for_photo(experience.photos.first) || "" : "" %>" alt="" class="product-image hidden-xs">
   <div class='product-body'>
     <%= link_to experience_path(experience) do %>
     <h3><%= experience.name %> hour</h3>

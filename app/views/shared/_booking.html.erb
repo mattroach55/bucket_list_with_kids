@@ -1,7 +1,7 @@
 <!-- FOR NOW A SEPERATE PARTIAL FOR AL RECCOMMENDED NEARBY FAMILLY ACCOMMODATIONS WITH BOOKING LINKS -->
 <% @accommodations.each do |accommodation| %>
 <div class="product">
-  <img src="<%= accommodation.photos.empty? ? "" : cl_image_path(accommodation.photos.first.photo) %>" alt="" class="product-image hidden-xs">
+  <img src="<%= accommodation.photos.present? && accommodation.photos.any? ? safe_cl_image_path_for_photo(accommodation.photos.first) || "" : "" %>" alt="" class="product-image hidden-xs">
   <div class='product-body'>
     <%= link_to accommodation_path(accommodation) do %>
     <h4><%= accommodation.name %></h4>
